@@ -98,7 +98,7 @@ async function startNEXUS() {
         if (!NEXUS.public && !mek.key.fromMe && chatUpdate.type === 'notify') return
         if (mek.key.id.startsWith('BAE5') && mek.key.id.length === 16) return
         m = smsg(NEXUS, mek, store)
-        require("./Nexus")(NEXUS, m, chatUpdate, store)
+        require("./Xiao_❤_core")(NEXUS, m, chatUpdate, store)
         } catch (e) {
             console.log(e)
         }
