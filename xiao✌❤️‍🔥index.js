@@ -145,14 +145,14 @@ let docs = pickRandom(documents)
                 try {
                     ppuser = await NEXUS.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser ='./Xiao-❤_Media/Xiao2.jpeg'
+                    ppuser =fs.readFileSync('./Xiao-❤_Media/Xiao2.jpeg')
                 }
 
                 // Get Profile Picture Group
                 try {
                     ppgroup = await zass.profilePictureUrl(anu.id, 'image')
                 } catch {
-                    ppgroup = './Xiao-❤-Media/Xiao1.jpeg'
+                    ppgroup = fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg')
                 }
 
                 //welcome\\
@@ -294,6 +294,7 @@ NEXUS.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 	NEXUS.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
     }
 
+	
     NEXUS.setStatus = (status) => {
         NEXUS.query({
             tag: 'iq',
