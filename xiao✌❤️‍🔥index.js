@@ -181,7 +181,7 @@ let buttons = [
 {buttonId: ` command`, buttonText: {displayText: 'Welcome '}, type: 1}
 ]
 let buttonMessage = {
-document: fs.readFileSync('./XBOTMedia/theme/XBOT.xlsx'),
+document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
 mimetype: docs,
 jpegThumbnail:nexusWlcm,
 mentions: [num],
@@ -222,7 +222,7 @@ let buttons = [
 {buttonId: `help`, buttonText: {displayText: 'Sayonara '}, type: 1}
 ]
 let buttonMessage = {
-document: fs.readFileSync('./XBOTMedia/theme/XBOT.xlsx'),
+document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
 mimetype: docs,
 jpegThumbnail:nexusLft,
 mentions: [num],
