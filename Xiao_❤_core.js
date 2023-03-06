@@ -67,18 +67,6 @@ let vote = db.data.others.vote = []
 let premium = JSON.parse(fs.readFileSync('./database/user/premium.json'));
 let banned = JSON.parse(fs.readFileSync('./database/user/banned.json'));
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'));
-let ntvirtex = JSON.parse(fs.readFileSync('./database/antivirus.json'));
-let nttoxic = JSON.parse(fs.readFileSync('./database/antitoxic.json'));
-let ntwame = JSON.parse(fs.readFileSync('./database/antiwame.json'));
-let ntlinkgc =JSON.parse(fs.readFileSync('./database/antilinkgc.json'));
-let ntilinkall =JSON.parse(fs.readFileSync('./database/antilinkall.json'));
-let ntilinktwt =JSON.parse(fs.readFileSync('./database/antilinktwitter.json'));
-let ntilinktt =JSON.parse(fs.readFileSync('./database/antilinktiktok.json'));
-let ntilinktg =JSON.parse(fs.readFileSync('./database/antilinktelegram.json'));
-let ntilinkfb =JSON.parse(fs.readFileSync('./database/antilinkfacebook.json'));
-let ntilinkig =JSON.parse(fs.readFileSync('./database/antilinkinstagram.json'));
-let ntilinkytch =JSON.parse(fs.readFileSync('./database/antilinkytchannel.json'));
-let ntilinkytvid =JSON.parse(fs.readFileSync('./database/antilinkytvideo.json'));
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
@@ -156,7 +144,7 @@ if (cek == null) return null
     	const isAdmins = m.isGroup ? groupAdmins.includes(m.sender) : false
         const groupOwner = m.isGroup ? groupMetadata.owner : ''
         const isGroupOwner = m.isGroup ? (groupOwner ? groupOwner : groupAdmins).includes(m.sender) : false
-	    const isBan = banned.includes(m.sender)
+	const isBan = banned.includes(m.sender)
         const isPremium = premium.includes(m.sender)
         const Autoreply = m.isGroup ? autorep.includes(from) : false
         const isAutoSticker = m.isGroup ? autosticker.includes(from) : false
@@ -4263,8 +4251,7 @@ NEXUS.sendMessage(m.chat, {image: {url: anuoncr2},viewOnce : true},{quoted: m })
         }
         }
         break
-case 'autostickergc':
-            case 'autosticker':
+case 'autostickergc': case 'autosticker':{
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
@@ -4279,6 +4266,7 @@ let anuticker1 = autosticker.indexOf(from)
 autosticker.splice(anuticker1, 1)
 fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
 m.reply('auto sticker deactivated')
+}
 }
 break
 case 'antivirus': case 'antivirtex': {
