@@ -214,7 +214,7 @@ NEXUS.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 │
 ╰⪼${metadata.subject}
 ╔══════✮❁•°♛°•❁✮ ═════╗
-║𝐌𝐄𝐌𝐁𝐄𝐑𝐒:${nexusmembers}th
+║𝐌𝐄𝐌𝐁𝐄𝐑𝐒:${nexusmembers}th  
 ║𝐃𝐀𝐓𝐄✡︎𝐓𝐈𝐌𝐄:${nexustime} ${nexusdate}
 ╚══════✮❁•°❀°•❁✮══════╝
 `
