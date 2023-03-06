@@ -145,7 +145,7 @@ let docs = pickRandom(documents)
                 try {
                     ppuser = await NEXUS.profilePictureUrl(num, 'image')
                 } catch {
-                    ppuser =fs.readFileSync('./Xiao-❤_Media/Xiao2.jpeg')
+                    ppuser =fs.readFileSync('./Xiao-❤-Media/Xiao2.jpeg')
                 }
 
                 // Get Profile Picture Group
