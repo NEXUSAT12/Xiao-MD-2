@@ -1,9 +1,3 @@
-//╭━╮╱╭┳━━━┳━╮╭━┳╮╱╭┳━━━╮
-//┃┃╰╮┃┃╭━━┻╮╰╯╭┫┃╱┃┃╭━╮┃
-//┃╭╮╰╯┃╰━━╮╰╮╭╯┃┃╱┃┃╰━━╮
-//┃┃╰╮┃┃╭━━╯╭╯╰╮┃┃╱┃┣━━╮┃
-//┃┃╱┃┃┃╰━━┳╯╭╮╰┫╰━╯┃╰━╯┃
-//╰╯╱╰━┻━━━┻━╯╰━┻━━━┻━━━╯
 const fs = require('fs')
 const chalk = require('chalk')
 
@@ -124,6 +118,23 @@ busur: '🏹',
 panah: '💘',
 kapak: '🪓'
 }
+
+global.ntvirtex = []
+global.nttoxic = []
+global.ntwame = []
+global.ntlinkgc = []
+global.ntilinkall = []
+global.ntilinktwt = []
+global.ntilinktt = []
+global.ntilinktg = []
+global.ntilinkfb = []
+global.ntilinkig = []
+global.ntilinkytch = []
+global.ntilinkytvid = []
+
+
+
+
 
 let file = require.resolve(__filename)
 fs.watchFile(file, () => {
