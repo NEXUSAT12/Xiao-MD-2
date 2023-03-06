@@ -195,7 +195,7 @@ contextInfo:{externalAdReply:{
 title: `${ownername}`,
 body: `Don't forget to read group description`,
 mediaType:2,
-thumbnail:'./Xiao-❤-Media/xiao1.jpeg',
+thumbnail:fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'),
 sourceUrl: 'https://linktr.ee/Nexus_21/',
 mediaUrl: 'https://youtu.be/5IGmJCEErCg'
 }}
@@ -236,7 +236,7 @@ contextInfo:{externalAdReply:{
 title: `${ownername}`,
 body: `Bye! my friend, take care.`,
 mediaType:2,
-thumbnail: fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg')
+thumbnail: fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'), 
 sourceUrl: 'https://linktr.ee/Nexus_21',
 mediaUrl: 'https://youtu.be/5IGmJCEErCg'
 }}
