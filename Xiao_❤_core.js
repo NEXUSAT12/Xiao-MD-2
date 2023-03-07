@@ -679,7 +679,7 @@ const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI();
 emoji.get(satu)
 .then(emoji => {
-const buttons = [{buttonId: "emote", buttonText: {displayText:𝓮𝓶𝓸𝓽𝓮 ❤}, type: 1}]
+const buttons = [{buttonId: "emote", buttonText: {displayText:'𝓮𝓶𝓸𝓽𝓮 ❤'}, type: 1}]
 const buttonMessage = {image: {url: emoji.images[dua].url},caption: "Here you go!",footerText: `${botname}`,buttons: buttons,headerType: 4}
 NEXUS.sendMessage(from, buttonMessage, {quoted:m})
 })
