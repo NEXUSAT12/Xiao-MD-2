@@ -53,10 +53,10 @@ global.mess = {
 }
 
 //media target
-global.thum = fs.readFileSync("./Xiao-❤-Media/Xiao1.jpeg") //ur thumb pic
+global.thum = fs.readFileSync("./Xiao-❤-Media/xiao1.jpeg") //ur thumb pic
 global.log0 = fs.readFileSync("./Xiao-❤-Media/Xiao.jpeg") //ur logo pic
 global.err4r = fs.readFileSync("./Xiao-❤-Media/Xiao2.jpeg") //ur error pic
-global.thumb = fs.readFileSync("./Xiao-❤-Media/Xiao1.jpeg") //ur thumb pic
+global.thumb = fs.readFileSync("./Xiao-❤-Media/xiao1.jpeg") //ur thumb pic
 
 //menu image maker
 global.flaming = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&text='

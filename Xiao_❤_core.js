@@ -679,7 +679,7 @@ const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI();
 emoji.get(satu)
 .then(emoji => {
-const buttons = [{buttonId: "emote", buttonText: {displayText:𝓮𝓶𝓸𝓽𝓮 ❤}, type: 1}]
+const buttons = [{buttonId: "emote", buttonText: {displayText:'𝓮𝓶𝓸𝓽𝓮 ❤'}, type: 1}]
 const buttonMessage = {image: {url: emoji.images[dua].url},caption: "Here you go!",footerText: `${botname}`,buttons: buttons,headerType: 4}
 NEXUS.sendMessage(from, buttonMessage, {quoted:m})
 })
@@ -5754,12 +5754,14 @@ break
 case 'tqtt': {
 let text = ` ╭──────༺♡༻──────╮\n│     𝐓𝐇𝐀𝐍𝐊𝐒 𝐓𝐎       │\n╰──────༺♡༻──────╯\n\n ➦𝐓𝐇𝐄 𝐅𝐈𝐑𝐒𝐓 𝐓𝐇𝐀𝐍𝐊𝐒 𝐈𝐒 𝐓𝐎 𝐌𝐘 𝐌𝐀𝐇𝐀𝐃𝐄𝐕 \n➻ 𝐒𝐄𝐂𝐎𝐍𝐃 𝐓𝐇𝐀𝐍𝐊𝐒 𝐓𝐎 𝐌𝐄 𝐌𝐘𝐒𝐄𝐋𝐅  \n➳𝐋𝐀𝐒𝐓 𝐓𝐇𝐀𝐍𝐊𝐒 𝐓𝐎 𝐘𝐎𝐔 𝐀𝐋𝐋 𝐓𝐇𝐄 𝐔𝐒𝐄𝐑𝐒 𝐅𝐎𝐑 𝐔𝐒𝐈𝐍𝐆 𝐌𝐘 𝐁𝐎𝐓 \n\n ╭──────༺♡༻──────╮\n │         𝐍𝐄𝐗𝐔𝐒          │\n╰──────༺♡༻──────╯` 
 let  lol = fs.readFileSync('./Xiao-❤-Media/Xiao2.jpeg') 
+NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 }
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
-let teks = `*「 ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nDont forget to donate 🍜`
+let teks = `*「 ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nDont forget to give a star and follow`
 let buttons = [
-{buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1,{buttonId: `command`, buttonText: {displayText: 'ᥬ☤🄻🄸🅂🅃 🄼🄴🄽🅄☤​᭄'}, type: 1}
+{buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1},
+{buttonId: `command`, buttonText: {displayText: 'ᥬ☤🄻🄸🅂🅃 🄼🄴🄽🅄☤​᭄'}, type: 1}
 ]
 let buttonMessage = {
 image: fs.readFileSync('./Xiao-❤-Media/Xiao2.jpeg' ), 
