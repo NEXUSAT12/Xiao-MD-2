@@ -1202,23 +1202,23 @@ Cieeee, What's Going On❤️💖👀`
                 m.reply(mess.success)
                 }
                 break
-            case 'tagall': {
+            case 'tagall':  case 'ping' : case 'everyone': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 let teks = `╚»˙·٠𓄂⃝   ⃢${themeemoji}●♥ ${botname}♥●${themeemoji}𓁞˙«╝ \n\n
- 🎀 Group: ${m.groupMetadata?.subject}*\n📢 *Announcer: @${m.sender.jid.split("@")[0]}*\n🌿 *Message : ${q ? q : 'empty'}*\n`
+ 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n`
                 for (let mem of participants) {
                 teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}\n╰──────༺♡༻──────╯`
                }
                 NEXUS.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
-                case 'hidetag': {
+                case 'hidetag': case 'texttag': {
             if (!m.isGroup) throw mess.group
             if (!isBotAdmins) throw mess.botAdmin
             if (!isAdmins) throw mess.admin
-            let tex = `🎀 Group: ${m.groupMetadata?.subject}*\n📢 *Announcer: @${m.sender.jid.split("@")[0]}*\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
+            let tex = `🎀 Group: ${m.groupmetadata.subject}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
             NEXUS.sendMessage(m.chat, { text : tex , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
@@ -3665,7 +3665,7 @@ case 'setthumb':{
                        if (!m.key.fromMe && !isCreator) return m.reply(mess.owner)
                        if (!isQuotedImage) return m.reply('Reply the picture!')
                                  let media = await NEXUS.downloadMediaMessage(m.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage, 'image')
-                await fs.writeFileSync('./Xiao-❤-Media/theme/Xiao1.jpg', media)
+                await fs.writeFileSync('./Xiao-❤-Media/theme/xiao1.jpeg', media)
                m.reply(mess.success)
             }
           break
@@ -5580,7 +5580,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"I deserve something for my hardwork",
 body: "Click to donate", 
-thumbnail: fs.readFileSync("Xiao-❤-Media/Xiao1.jpg"),
+thumbnail: fs.readFileSync("Xiao-❤-Media/xiao1.jpeg"),
 mediaType:1,
 mediaUrl: 'https://youtu.be/5IGmJCEErCg',
 sourceUrl: "https://linktr.ee/Nexus_21"
@@ -5773,7 +5773,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"I deserve something for my hardwork",
 body: "Click to donate", 
-thumbnail: fs.readFileSync("Xiao-❤-Media/Xiao1.jpg"),
+thumbnail: fs.readFileSync("Xiao-❤-Media/xiao1.jpeg"),
 mediaType:1,
 mediaUrl: 'https://youtu.be/5IGmJCEErCg',
 sourceUrl: "https://linktr.ee/Nexus_21"
@@ -5885,12 +5885,7 @@ NEXUS.sendMessage(m.chat, buttonMessage, { quoted: m })
 										"title": "Other Menu 🐸",
 										"description": "Displays The List Miscellaneous Features",
 										"rowId": `${prefix}othermenu`
-									     },
-										{
-										"title": "War Menu☣️",
-										"description": "Displays The List Of War Features",
-										"rowId": `${prefix}warmenu`
-									}
+									     }
 								]
 							},
 							{
@@ -6891,54 +6886,6 @@ const buttonMessage = {
 ╠❤️‍🔥${prefix}𝚍𝚘𝚗𝚊𝚝𝚎
 ╠❤️‍🔥${prefix}𝚛𝚎𝚚𝚞𝚎𝚜𝚝
 ╠❤️‍🔥${prefix}𝚛𝚎𝚙𝚘𝚛𝚝 [𝚋𝚞𝚐]
-╚═════════════✪`,
-    footer: `${botname}`,
-    buttons: buttons,
-    headerType: 4
-}
-const sendMsg = await NEXUS.sendMessage(m.chat, buttonMessage)
-}
-break
-case 'warmenu':{
-var unicorn = await getBuffer(picak+'War Menu')
-
-const buttons = [
-  {buttonId: 'script', buttonText: {displayText: 'Script 🔖'}, type: 1}, 
-  {buttonId: 'owner', buttonText: {displayText: '𓄂⃝🅾𝔀𝓷𝓮𝓻'}, type: 1}
-]
-const buttonMessage = {
-    image: unicorn,
-    caption: `╔═══════✪「 𝚋𝚞𝚐 𝚖𝚎𝚗𝚞 」	
-╠════☾𝚙𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝙿𝚌𝚋𝚞𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚟𝚗 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚜𝚝𝚒𝚌𝚔 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚏𝚊𝚜𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚜𝚕𝚘𝚠 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚋𝚞𝚗𝚗𝚢 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝚇𝚌𝚛𝚊𝚜𝚑𝚎𝚛 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚌𝚌𝚘𝚗𝚝𝚊𝚌𝚝 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚅𝚒𝚛𝚝𝚎𝚡5 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙵𝚕𝚘𝚠𝚎𝚛 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚘𝚕𝚕𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙲𝚊𝚝𝚊𝚕𝚘𝚐𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚃𝚛𝚘𝚕𝚕𝚢𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚃𝚛𝚘𝚕𝚕𝚢𝚋𝚞𝚐2 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠════☾𝚐𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝙶𝚌𝚜𝚕𝚘𝚠
-╠❤️‍🔥${prefix}𝙶𝚌𝚏𝚊𝚜𝚝
-╠❤️‍🔥${prefix}𝙶𝚌𝚋𝚞𝚗𝚗𝚢
-╠❤️‍🔥${prefix}𝚃𝚊𝚐𝚊𝚕𝚕𝚋𝚞𝚐
-╠════☾𝚙𝚌 & 𝙶𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝚅𝚗𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚜𝚕𝚘𝚠 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚏𝚊𝚜𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚋𝚞𝚗𝚗𝚢 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝚃𝚎𝚡𝚝𝚜𝚑𝚘𝚝
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚏𝚞𝚌𝚔 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚜𝚘𝚏𝚝 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚜𝚘𝚏𝚝2 [𝙰𝚖𝚘𝚞𝚗𝚝]
 ╚═════════════✪`,
     footer: `${botname}`,
     buttons: buttons,
