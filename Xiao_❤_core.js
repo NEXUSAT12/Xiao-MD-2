@@ -67,7 +67,7 @@ let vote = db.data.others.vote = []
 let premium = JSON.parse(fs.readFileSync('./database/user/premium.json'));
 let banned = JSON.parse(fs.readFileSync('./database/user/banned.json'));
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'));
-let autoresetgclink -JSON.parse(fs.readFileSync('./databse/autoresetgclink.json'));
+let autoresetgclink = JSON.parse(fs.readFileSync('./databse/autoresetgclink.json'));
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
@@ -471,7 +471,7 @@ NEXUS.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kic
 //autoresetgclink//
 if (autoresetgclink) {
 let cron = require('node-cron')
-    cron.schedule('*/2 * * * *', () => { NEXUS.groupRevokeInvite(m.chat)}, 
+    cron.schedule('0 9 * * *', () => { NEXUS.groupRevokeInvite(m.chat)}, 
 	{
     scheduled: true,
     timezone: "Asia/Kolkata"
@@ -5289,6 +5289,7 @@ let animetxt = `
 💫 *Popularity: ${anime.popularity}*
 ♦️ *Trailer: ${anime.trailer}*
 🌐 *URL: ${anime.url}*
+
 ❄ *Description:* ${anime.synopsis}*`
                 await NEXUS.sendMessage(m.chat,{image:{url:anime.picture}, caption:animetxt},{quoted:m})
                 break
@@ -5360,7 +5361,8 @@ case 'beautifulcheck':
 				if (!text) return m.reply(`Tag Someone, Example : ${prefix + command} @X`)
 					const can = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
 					const tik = can[Math.floor(Math.random() * can.length)]
-NEXUS.sendMessage(from, { text: `*${command}*\n\nNama : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
+
+					NEXUS.sendMessage(from, { text: `*${command}*\n\nNama : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
 					break
 					case 'charactercheck':
 					if (!text) return m.reply(`Tag Someone, Example : ${prefix + command} @X`)
