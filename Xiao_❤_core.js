@@ -3535,7 +3535,7 @@ case 'keluar': case 'leave': {
                     await NEXUS.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
                 break
-            
+	    }
 case 'public': {
  if (!isCreator) return reply(mess.owner)
  NEXUS.public = true
