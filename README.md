@@ -9,3 +9,5 @@
 
 <h1 align="center">DEPLOY<br></h1>
 
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/OOOqrc?referralCode=xUeEzP)
