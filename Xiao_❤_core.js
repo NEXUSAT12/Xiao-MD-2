@@ -67,7 +67,7 @@ let vote = db.data.others.vote = []
 let premium = JSON.parse(fs.readFileSync('./database/user/premium.json'));
 let banned = JSON.parse(fs.readFileSync('./database/user/banned.json'));
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'));
-let autoresetgclink = JSON.parse(fs.readFileSync('./databse/autoresetgclink.json'));
+let autoresetgclink = JSON.parse(fs.readFileSync('./database/autoresetgclink.json'));
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
