@@ -1967,8 +1967,6 @@ await NEXUS.sendMessage(m.chat,{
 },{quoted:m})
 break
 case 'ytad': case 'getmusic': case 'yt': case 'youtube': case 'ytmp3': case 'ytmusic': case 'ytdl': {
-    if (isBan) return reply(mess.banned)	 			
-    if (isBanChat) return reply(mess.bangc)
     reply(` Getting  your 𝗮𝘂𝗱𝗶𝗼 ${pushname}_`)
     const YT=require('./lib/ytdl')
     let yts = require("youtube-yts")
