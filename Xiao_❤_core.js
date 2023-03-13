@@ -1897,7 +1897,7 @@ if (!text) return m.reply(`Example : ${prefix + command} Stay jb`)
                 let buttons = [
                     {buttonId: `ytad ${anulay.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
                     {buttonId: `ytvd ${anulay.url}`, buttonText: {displayText: '► Video'}, type: 1},
-		    {buttonId: `ytdoc ${anulay.url}`, buttonText: {displayText: '► Document'}, type: 1}
+		            {buttonId: `ytdoc ${anulay.url}`, buttonText: {displayText: '► Document'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: anulay.thumbnail },
@@ -3545,7 +3545,7 @@ case 'public': {
  break
  
  case 'self': {
- if (!isCreator) return reply(mess.botowner)
+ if (!isCreator) return reply(mess.owner)
  NEXUS.public = false
  reply('Only Owner can use me now!')
  NEXUS.setStatus(`Mode : Self`)
