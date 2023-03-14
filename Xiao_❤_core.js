@@ -1224,10 +1224,10 @@ Cieeee, What's Going On❤️💖👀`
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `╚»˙·٠𓄂⃝   ⃢${themeemoji}●♥ ${botname}♥●${themeemoji}𓁞˙«╝ \n\n
+let teks = `╚»˙♥ ${botname}♥●𓁞˙«╝ \n\n
  🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n`
                 for (let mem of participants) {
-                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}│\n╰──────༺♡༻──────╯`
+                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}│`
                }
                 NEXUS.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
@@ -1925,7 +1925,7 @@ const Xplaymp3 = require('./lib/ytdl2')
 let yts = require("youtube-yts")
         let search = await yts(text)
         let anup3k = search.videos[0]
-const pl= await Xplaymp3.mp3(anup3k.url)
+const pl= await Xplaymp3.yta(anup3k.url)
 await NEXUS.sendMessage(m.chat,{
     audio: fs.readFileSync(pl.path),
     fileName: anup3k.title + '.mp3',
@@ -1949,7 +1949,7 @@ const Xplaymp4 = require('./lib/ytdl2')
 let ytsmp4 = require("youtube-yts")
         let Xsearch13 = await ytsmp4(text)
         let anuvidoke4 = Xsearch13.videos[0]
-const pl2= await Xplaymp4.mp4(anuvidoke4.url)
+const pl2= await Xplaymp4.ytv(anuvidoke4.url)
 await NEXUS.sendMessage(m.chat,{
     document: {url:pl2.videoUrl},
     fileName: anuvidoke4.title + '.mp4',
@@ -1980,7 +1980,7 @@ case 'ytad': case 'getmusic': case 'yt': case 'youtube': case 'ytmp3': case 'ytm
  }
  break
 case 'ytdoc': {
-    const YT=require('./lib/ytdl')
+    const YT=require('./lib/y2mate2')
     let yts = require("youtube-yts")
     let search = await yts(text)
     let anu = search.videos[0]
@@ -4537,6 +4537,13 @@ var walb = [
                     return('Error!')
                 })
 //NEXUS.sendMessage(m.chat,{image:{url:wallpaper[i].image},caption:`*Query :* ${q}`})            
+break
+case 'bot': {
+let h = `${args.join(" ")}`
+const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[h]`)
+let txt = `BOT😗: ${botreply.data.cnt}`
+m.reply(txt)
+}	
 break
 case 'igemoji': 
 case 'instagramemoji': 
