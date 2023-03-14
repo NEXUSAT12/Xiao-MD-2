@@ -67,6 +67,7 @@ let vote = db.data.others.vote = []
 let premium = JSON.parse(fs.readFileSync('./database/user/premium.json'));
 let banned = JSON.parse(fs.readFileSync('./database/user/banned.json'));
 let autosticker = JSON.parse(fs.readFileSync('./database/autosticker.json'));
+let autoresetgclink = JSON.parse(fs.readFileSync('./database/autoresetgclink.json'));
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
@@ -132,7 +133,7 @@ if (cek == null) return null
 		const fvideo = {key: { fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {}) },message: { "videoMessage": { "title":botname, "h": wm,'seconds': '359996400', 'caption': `${pushname}`, 'jpegThumbnail': thumb}}}
 		const floc = {key : {participant : '0@s.whatsapp.net', ...(m.chat ? { remoteJid: `status@broadcast` } : {}) },message: {locationMessage: {name: wm,jpegThumbnail: thumb}}}
 		const fkontak = { key: {participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': ownername, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${ownername},;;;\nFN:${ownername}\nitem1.TEL;waid=918130784851:918130784851\nitem1.X-ABLabel:Mobile\nEND:VCARD`, 'jpegThumbnail': thumb, thumbnail: thumb,sendEphemeral: true}}}
-	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./Xiao-❤-Media/theme/XBOT.jpg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
+	    const fakestatus = {key: {fromMe: false,participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: "status@broadcast" } : {})},message: { "imageMessage": {"url": "https://mmg.whatsapp.net/d/f/At0x7ZdIvuicfjlf9oWS6A3AR9XPh0P-hZIVPLsI70nM.enc","mimetype": "image/jpeg","caption": wm,"fileSha256": "+Ia+Dwib70Y1CWRMAP9QLJKjIJt54fKycOfB2OEZbTU=","fileLength": "28777","height": 1080,"width": 1079,"mediaKey": "vXmRR7ZUeDWjXy5iQk17TrowBzuwRya0errAFnXxbGc=","fileEncSha256": "sR9D2RS5JSifw49HeBADguI23fWDz1aZu4faWG/CyRY=","directPath": "/v/t62.7118-24/21427642_840952686474581_572788076332761430_n.enc?oh=3f57c1ba2fcab95f2c0bb475d72720ba&oe=602F3D69","mediaKeyTimestamp": "1610993486","jpegThumbnail": fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'),"scansSidecar": "1W0XhfaAcDwc7xh1R8lca6Qg/1bB4naFCSngM2LKO2NoP5RI7K+zLw=="}}}
 		
 	
 // Group
@@ -148,6 +149,7 @@ if (cek == null) return null
         const isPremium = premium.includes(m.sender)
         const Autoreply = m.isGroup ? autorep.includes(from) : false
         const isAutoSticker = m.isGroup ? autosticker.includes(from) : false
+	const isAutoresetgclink = m.isGroup ? autoresetgclink.includes(from) : false
         const antiVirtex = m.isGroup ? ntvirtex.includes(from) : true
         const Antilinkgc = m.isGroup ? ntlinkgc.includes(m.chat) : false
         const AntiLinkYoutubeVid = m.isGroup ? ntilinkytvid.includes(from) : false
@@ -237,7 +239,7 @@ return list[Math.floor(Math.random() * list.length)]
 
 // Public & Self
 if (!NEXUS.public) {
-    if (!m.key.fromMe) return
+if (!m.key.fromMe) return
 }
 function randomNomor(angka){
 return Math.floor(Math.random() * angka) + 1
@@ -249,6 +251,13 @@ const hsjdh = randomNomor(5)
 //autotyper all
   if (global.autoTyping) { if (m.chat) { NEXUS.sendPresenceUpdate('composing', m.chat) }
 }
+	    
+//////////////////////////////////////////////
+if (!isCmd && !m.isGroup){
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[budy]`)
+    let txt = `${botreply.data.cnt}`
+    m.reply(txt)
+    }
 
 // total hit
         global.hit = {}
@@ -310,7 +319,7 @@ detectLinks: false,
     //reply fake
 	//group target \\
 const reply = (teks) => {
-           NEXUS.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./Xiao-❤-Media/theme/XBOT.jpg`),"sourceUrl": `${linkz}`}}}, { quoted: m})
+           NEXUS.sendMessage(m.chat, { text: teks, contextInfo:{"externalAdReply": {"title": ` ${global.botname}`,"body": `${ownername}`, "previewType": "PHOTO","thumbnailUrl": ``,"thumbnail": fs.readFileSync(`./Xiao-❤-Media/xiao1.jpeg`),"sourceUrl": `${linkz}`}}}, { quoted: m})
         }
 
 	//button
@@ -459,6 +468,15 @@ NEXUS.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kic
 			NEXUS.sendMessage(from, {text:`\`\`\`「 Virus Detected 」\`\`\`\n\n@${m.sender.split("@")[0]} Has been kicked because of sending virus in this group`, contextInfo:{mentionedJid:[m.sender]}}, {quoted:m})
   }
   }
+//autoresetgclink//
+if (autoresetgclink) {
+let cron = require('node-cron')
+    cron.schedule('0 9 * * *', () => { NEXUS.groupRevokeInvite(m.chat)}, 
+	{
+    scheduled: true,
+    timezone: "Asia/Kolkata"
+    })
+}
 //anti bad words by X
 if (antiToxic)
 if (bad.includes(messagesD)) {
@@ -1202,23 +1220,23 @@ Cieeee, What's Going On❤️💖👀`
                 m.reply(mess.success)
                 }
                 break
-            case 'tagall': {
+            case 'tagall':  case 'ping' : case 'everyone': {
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
 let teks = `╚»˙·٠𓄂⃝   ⃢${themeemoji}●♥ ${botname}♥●${themeemoji}𓁞˙«╝ \n\n
- 🎀 Group: ${m.groupMetadata?.subject}*\n📢 *Announcer: @${m.sender.jid.split("@")[0]}*\n🌿 *Message : ${q ? q : 'empty'}*\n`
+ 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n`
                 for (let mem of participants) {
-                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}\n╰──────༺♡༻──────╯`
+                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}│\n╰──────༺♡༻──────╯`
                }
                 NEXUS.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
                 break
-                case 'hidetag': {
+                case 'hidetag': case 'texttag': {
             if (!m.isGroup) throw mess.group
             if (!isBotAdmins) throw mess.botAdmin
             if (!isAdmins) throw mess.admin
-            let tex = `🎀 Group: ${m.groupMetadata?.subject}*\n📢 *Announcer: @${m.sender.jid.split("@")[0]}*\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
+            let tex = `🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
             NEXUS.sendMessage(m.chat, { text : tex , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
@@ -1744,7 +1762,20 @@ case 'tomp4': case 'tovideo': {
                 await fs.unlinkSync(media)
             }
             break
-            case 'imagenobg': case 'removebg': case 'remove-bg': {
+case 'tourl': {
+let { UploadFileUgu, webp2mp4File, TelegraPh } = require('./lib/uploader')
+let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
+if (/image/.test(mime)) {
+let anu = await TelegraPh(media)
+reply(util.format(anu))
+} else if (!/image/.test(mime)) {
+let anu = await UploadFileUgu(media)
+reply(util.format(anu))
+}
+await fs.unlinkSync(media)
+}
+break
+case 'imagenobg': case 'removebg': case 'remove-bg': {
 	    if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
 	    if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
 	    if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
@@ -1864,8 +1895,9 @@ if (!text) return m.reply(`Example : ${prefix + command} Stay jb`)
                 let search = await yts(text)
                 let anulay = search.videos[Math.floor(Math.random() * search.videos.length)]
                 let buttons = [
-                    {buttonId: `playmp3 ${anulay.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
-                    {buttonId: `playmp4 ${anulay.url}`, buttonText: {displayText: '► Video'}, type: 1}
+                    {buttonId: `ytad ${anulay.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
+                    {buttonId: `ytvd ${anulay.url}`, buttonText: {displayText: '► Video'}, type: 1},
+		            {buttonId: `ytdoc ${anulay.url}`, buttonText: {displayText: '► Document'}, type: 1}
                 ]
                 let buttonMessage = {
                     image: { url: anulay.thumbnail },
@@ -1934,59 +1966,43 @@ await NEXUS.sendMessage(m.chat,{
     },
 },{quoted:m})
 break
-case 'ytmp3': case 'ytaudio': 
-const Xaudp3 = require('./lib/ytdl2')
-if (args.length < 1 || !isUrl(text) || !Xaudp3.isYTUrl(text)) throw `Where's the yt link?\nExample: ${prefix + command} https://youtube.com/shorts/YQf-vMjDuKY?feature=share`
-const audio=await Xaudp3.mp3(text)
-await NEXUS.sendMessage(m.chat,{
-    audio: fs.readFileSync(audio.path),
-    mimetype: 'audio/mp4', ptt: true,
-    contextInfo:{
-        externalAdReply:{
-            title:audio.meta.title,
-            body: botname,
-            thumbnail: await fetchBuffer(audio.meta.image),
-            mediaType:2,
-            mediaUrl:text,
-        }
-
-    },
-},{quoted:m})
-await fs.unlinkSync(audio.path)
-break
-	    case 'ytmp3xx': case 'ytaudioxx': {
-                let { yta } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-                let quality = args[1] ? args[1] : '128kbps'
-                let media = await yta(text, quality)
-                if (media.filesize >= 100000) return m.reply('File Over Limit '+util.format(media))
-                NEXUS.sendImage(m.chat, media.thumb, `${themeemoji} Title : ${media.title}\n${themeemoji} File Size : ${media.filesizeF}\n${themeemoji} Url : ${isUrl(text)}\n${themeemoji} Ext : MP3\n${themeemoji} Resolution : ${args[1] || '128kbps'}`, m)
-                NEXUS.sendMessage(m.chat, { audio: { url: media.dl_link }, mimetype: 'audio/mpeg', fileName: `${media.title}.mp3` }, { quoted: m })
-            }
-            break
-case 'ytmp4': case 'ytvideo': 
-const Xvidoh = require('./lib/ytdl2')
-if (args.length < 1 || !isUrl(text) || !Xvidoh.isYTUrl(text)) throw `Where is the link??\n\nExample : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 128kbps`
-const vid=await Xvidoh.mp4(text)
-const ytc=`
-*${themeemoji}Tittle:* ${vid.title}
-*${themeemoji}Date:* ${vid.date}
-*${themeemoji}Duration:* ${vid.duration}
-*${themeemoji}Quality:* ${vid.quality}`
-await NEXUS.sendMessage(m.chat,{
-    video: {url:vid.videoUrl},
-    caption: ytc
-},{quoted:m})
-break
-            case 'ytmp4xx': case 'ytvideoxx': {
-                let { ytv } = require('./lib/y2mate')
-                if (!text) throw `Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`
-                let quality = args[1] ? args[1] : '360p'
-                let media = await ytv(text, quality)
-                if (media.filesize >= 100000) return m.reply('File Over Limit '+util.format(media))
-                NEXUS.sendMessage(m.chat, { video: { url: media.dl_link }, mimetype: 'video/mp4', fileName: `${media.title}.mp4`, caption: `${themeemoji} Title : ${media.title}\n${themeemoji} File Size : ${media.filesizeF}\n${themeemoji} Url : ${isUrl(text)}\n${themeemoji} Ext : MP3\n${themeemoji} Resolution : ${args[1] || '360p'}` }, { quoted: m })
-            }
-            break
+case 'ytad': case 'getmusic': case 'yt': case 'youtube': case 'ytmp3': case 'ytmusic': case 'ytdl': {
+    reply(` Getting  your 𝗮𝘂𝗱𝗶𝗼 ${pushname}_`)
+    const YT=require('./lib/ytdl')
+    let yts = require("youtube-yts")
+    let search = await yts(text)
+    let anu = search.videos[0]
+    const ytmp3play = await YT.mp3(anu.url)
+    let stats = fs.statSync(ytmp3play.path)
+    let fileSizeInBytes = stats.size;
+    if (fileSizeInBytes > 60000000) return reply('Cant send audios longer than 60 MB!')
+ NEXUS.sendMessage(from, {audio: fs.readFileSync(ytmp3play.path),fileName: anu.title + '.mp3',mimetype: 'audio/mpeg',}, {quoted:m})
+ }
+ break
+case 'ytdoc': {
+    const YT=require('./lib/ytdl')
+    let yts = require("youtube-yts")
+    let search = await yts(text)
+    let anu = search.videos[0]
+    const ytmp3play = await YT.mp3(anu.url)
+    let stats = fs.statSync(ytmp3play.path)
+    let fileSizeInBytes = stats.size;
+    if (fileSizeInBytes > 60000000) return reply('Cant send audios longer than 60 MB!')
+ NEXUS.sendMessage(from, {document: fs.readFileSync(ytmp3play.path),fileName: anu.title + '.mp3',mimetype: 'audio/mpeg',}, {quoted:m})
+ }
+ break
+ case 'ytvd': case 'getvideo': case 'ytvideo': case 'ytmp4': {
+    reply(`Getting ready your 𝘃𝗶𝗱𝗲𝗼 ${pushname}_`)
+ const YT=require('./lib/ytdl')
+    let yts = require("youtube-yts")
+    let search = await yts(text)
+    let anu = search.videos[0]
+    const ytmp4play = await YT.mp4(anu.url)
+    let vidduration =ytmp4play.duration;
+    if (vidduration > 1800) return reply('Cant send videos longer than *30 min*')
+NEXUS.sendMessage(from, {video:{url:ytmp4play.videoUrl}, mimetype:"video/mp4", caption:anu.title+` By *${global.BotName} MD*`,}, {quoted:m})
+ }
+ break
 case 'pinterest': {
                 m.reply(mess.wait)
 		let { pinterest } = require('./lib/scraper')
@@ -3517,19 +3533,23 @@ case 'keluar': case 'leave': {
                     await NEXUS.sendButtonText(m.chat, buttons, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
                 break
-            }
-            case 'public': {
-                if (!isCreator) throw mess.owner
-                NEXUS.public = true
-                m.reply('*Successful in Changing To Public Usage*')
-            }
-            break
-            case 'self': {
-                if (!isCreator) throw mess.owner
-                NEXUS.public = false
-                m.reply('*Successful in Changing To Self Usage*')
-            }
-            break
+	    }
+case 'public': {
+ if (!isCreator) return reply(mess.owner)
+ NEXUS.public = true
+ reply('I am now Publicly accessable!')
+ NEXUS.setStatus(`Mode : Public`)
+ }
+ break
+ 
+ case 'self': {
+ if (!isCreator) return reply(mess.owner)
+ NEXUS.public = false
+ reply('Only Owner can use me now!')
+ NEXUS.setStatus(`Mode : Self`)
+ }
+ break
+
             case 'ping': case 'botstatus': case 'statusbot': case 'p': {
                 const used = process.memoryUsage()
                 const cpus = os.cpus().map(cpu => {
@@ -3665,7 +3685,7 @@ case 'setthumb':{
                        if (!m.key.fromMe && !isCreator) return m.reply(mess.owner)
                        if (!isQuotedImage) return m.reply('Reply the picture!')
                                  let media = await NEXUS.downloadMediaMessage(m.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage, 'image')
-                await fs.writeFileSync('./Xiao-❤-Media/theme/Xiao1.jpg', media)
+                await fs.writeFileSync('./Xiao-❤-Media/theme/xiao1.jpeg', media)
                m.reply(mess.success)
             }
           break
@@ -4266,6 +4286,24 @@ let anuticker1 = autosticker.indexOf(from)
 autosticker.splice(anuticker1, 1)
 fs.writeFileSync('./database/autosticker.json', JSON.stringify(autosticker))
 m.reply('auto sticker deactivated')
+}
+}
+break
+case 'autoresetgclink': case 'autoreset':{
+if (!m.isGroup) return m.reply(mess.group)
+if (!isBotAdmins) return m.reply(mess.botAdmin)
+if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (args.length < 1) return m.reply('type auto sticker on to enable\ntype auto sticker off to disable')
+if (args[0]  === 'on'){
+if (isAutoresetgclink) return m.reply(`Already activated`)
+autoresetgclink.push(from)
+fs.writeFileSync('./database/autoresetgclink.json', JSON.stringify(autoresetgclink))
+m.reply('autosticker activated')
+} else if (args[0] === 'off'){
+let anuticker1 = autoresetgclink.indexOf(from)
+autoresetgclink.splice(anuticker1, 1)
+fs.writeFileSync('./database/autoresetgclink.json', JSON.stringify(autoresetgclink))
+m.reply('auto reset gc link  deactivated')
 }
 }
 break
@@ -5249,12 +5287,13 @@ let animetxt = `
 💫 *Popularity: ${anime.popularity}*
 ♦️ *Trailer: ${anime.trailer}*
 🌐 *URL: ${anime.url}*
+
 ❄ *Description:* ${anime.synopsis}*`
                 await NEXUS.sendMessage(m.chat,{image:{url:anime.picture}, caption:animetxt},{quoted:m})
                 break
 case 'patrick':
 case 'patricksticker': {
-var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/Xiao-❤-Media/main/patrick')
+var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/patrick')
 var wifegerak = ano.split('\n')
 var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
 encmedia = await NEXUS.sendImageAsSticker(from, wifegerakx, m, { packname: global.packname, author: global.author, })
@@ -5263,14 +5302,13 @@ await fs.unlinkSync(encmedia)
 break
 case 'ttp': {
            if (!text) return m.reply(`*Example : ${prefix + command} hello*`)
-           await NEXUS.sendMedia(m.chat, `https://cililitan.herokuapp.com/api/texttopng2?teks=${text}`, 'A L Y A', 'B O T M D', m, {asSticker: true})
-         
+           await NEXUS.sendMedia(m.chat, `https://cililitan.herokuapp.com/api/texttopng2?teks=${text}`, 'N E X U S', 'B O T M D', m, {asSticker: true})
                      }
                      break
 case 'dogesticker':
 case 'dogestick':
 	case 'doge':{
-var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/Xiao-❤-Media/main/doge')
+var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/doge')
 var wifegerak = ano.split('\n')
 var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
 encmedia = await NEXUS.sendImageAsSticker(from, wifegerakx, m, { packname: global.packname, author: global.author, })
@@ -5279,7 +5317,7 @@ await fs.unlinkSync(encmedia)
 break
 case 'lovesticker':
 case 'lovestick' :{
-var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/Xiao-❤-Media/main/love')
+var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/love')
 var wifegerak = ano.split('\n')
 var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
 encmedia = await NEXUS.sendImageAsSticker(from, wifegerakx, m, { packname: global.packname, author: global.author, })
@@ -5288,7 +5326,7 @@ await fs.unlinkSync(encmedia)
 break
 case 'gura':
 case 'gurastick':{
-var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/Xiao-❤-Media/main/gura')
+var ano = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/gura')
 var wifegerak = ano.split('\n')
 var wifegerakx = wifegerak[Math.floor(Math.random() * wifegerak.length)]
 encmedia = await NEXUS.sendImageAsSticker(from, wifegerakx, m, { packname: global.packname, author: global.author, })
@@ -5321,7 +5359,8 @@ case 'beautifulcheck':
 				if (!text) return m.reply(`Tag Someone, Example : ${prefix + command} @X`)
 					const can = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
 					const tik = can[Math.floor(Math.random() * can.length)]
-NEXUS.sendMessage(from, { text: `*${command}*\n\nNama : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
+
+					NEXUS.sendMessage(from, { text: `*${command}*\n\nNama : ${q}\nAnswer : *${tik}%*` }, { quoted: m })
 					break
 					case 'charactercheck':
 					if (!text) return m.reply(`Tag Someone, Example : ${prefix + command} @X`)
@@ -5580,7 +5619,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"I deserve something for my hardwork",
 body: "Click to donate", 
-thumbnail: fs.readFileSync("Xiao-❤-Media/Xiao1.jpg"),
+thumbnail: fs.readFileSync("Xiao-❤-Media/xiao1.jpeg"),
 mediaType:1,
 mediaUrl: 'https://youtu.be/5IGmJCEErCg',
 sourceUrl: "https://linktr.ee/Nexus_21"
@@ -5773,7 +5812,7 @@ headerType: 4,
 contextInfo:{externalAdReply:{
 title:"I deserve something for my hardwork",
 body: "Click to donate", 
-thumbnail: fs.readFileSync("Xiao-❤-Media/Xiao1.jpg"),
+thumbnail: fs.readFileSync("Xiao-❤-Media/xiao1.jpeg"),
 mediaType:1,
 mediaUrl: 'https://youtu.be/5IGmJCEErCg',
 sourceUrl: "https://linktr.ee/Nexus_21"
@@ -5885,12 +5924,7 @@ NEXUS.sendMessage(m.chat, buttonMessage, { quoted: m })
 										"title": "Other Menu 🐸",
 										"description": "Displays The List Miscellaneous Features",
 										"rowId": `${prefix}othermenu`
-									     },
-										{
-										"title": "War Menu☣️",
-										"description": "Displays The List Of War Features",
-										"rowId": `${prefix}warmenu`
-									}
+									     }
 								]
 							},
 							{
@@ -6891,54 +6925,6 @@ const buttonMessage = {
 ╠❤️‍🔥${prefix}𝚍𝚘𝚗𝚊𝚝𝚎
 ╠❤️‍🔥${prefix}𝚛𝚎𝚚𝚞𝚎𝚜𝚝
 ╠❤️‍🔥${prefix}𝚛𝚎𝚙𝚘𝚛𝚝 [𝚋𝚞𝚐]
-╚═════════════✪`,
-    footer: `${botname}`,
-    buttons: buttons,
-    headerType: 4
-}
-const sendMsg = await NEXUS.sendMessage(m.chat, buttonMessage)
-}
-break
-case 'warmenu':{
-var unicorn = await getBuffer(picak+'War Menu')
-
-const buttons = [
-  {buttonId: 'script', buttonText: {displayText: 'Script 🔖'}, type: 1}, 
-  {buttonId: 'owner', buttonText: {displayText: '𓄂⃝🅾𝔀𝓷𝓮𝓻'}, type: 1}
-]
-const buttonMessage = {
-    image: unicorn,
-    caption: `╔═══════✪「 𝚋𝚞𝚐 𝚖𝚎𝚗𝚞 」	
-╠════☾𝚙𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝙿𝚌𝚋𝚞𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚟𝚗 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚜𝚝𝚒𝚌𝚔 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚏𝚊𝚜𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚜𝚕𝚘𝚠 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚋𝚞𝚗𝚗𝚢 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝚇𝚌𝚛𝚊𝚜𝚑𝚎𝚛 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚌𝚌𝚘𝚗𝚝𝚊𝚌𝚝 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚅𝚒𝚛𝚝𝚎𝚡5 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙵𝚕𝚘𝚠𝚎𝚛 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚘𝚕𝚕𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙲𝚊𝚝𝚊𝚕𝚘𝚐𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚃𝚛𝚘𝚕𝚕𝚢𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝚃𝚛𝚘𝚕𝚕𝚢𝚋𝚞𝚐2 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠════☾𝚐𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝙶𝚌𝚜𝚕𝚘𝚠
-╠❤️‍🔥${prefix}𝙶𝚌𝚏𝚊𝚜𝚝
-╠❤️‍🔥${prefix}𝙶𝚌𝚋𝚞𝚗𝚗𝚢
-╠❤️‍🔥${prefix}𝚃𝚊𝚐𝚊𝚕𝚕𝚋𝚞𝚐
-╠════☾𝚙𝚌 & 𝙶𝚌 𝙰𝚝𝚝𝚊𝚌𝚔☽
-╠❤️‍🔥${prefix}𝚅𝚗𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚋𝚞𝚐 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚜𝚕𝚘𝚠 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚏𝚊𝚜𝚝 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝙿𝚌𝚐𝚌𝚋𝚞𝚗𝚗𝚢 [𝙽𝚞𝚖𝚋𝚎𝚛]
-╠❤️‍🔥${prefix}𝚃𝚎𝚡𝚝𝚜𝚑𝚘𝚝
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚏𝚞𝚌𝚔 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚜𝚘𝚏𝚝 [𝙰𝚖𝚘𝚞𝚗𝚝]
-╠❤️‍🔥${prefix}𝙳𝚘𝚌𝚜𝚘𝚏𝚝2 [𝙰𝚖𝚘𝚞𝚗𝚝]
 ╚═════════════✪`,
     footer: `${botname}`,
     buttons: buttons,
