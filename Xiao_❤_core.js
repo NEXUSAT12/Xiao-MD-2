@@ -1224,10 +1224,11 @@ Cieeee, What's Going On❤️💖👀`
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `╚»˙♥ ${botname}♥●𓁞˙«╝ \n\n
- 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n`
+let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
+ 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n\n╭──────⊹⊱𝓜𝓮𝓶𝓫𝓮𝓻𝓼 ✨⊰⊹──────╮
+`
                 for (let mem of participants) {
-                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}│`
+                teks+=`\n❤:@${mem.id.split('@')[0]}`
                }
                 NEXUS.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
