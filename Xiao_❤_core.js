@@ -31,6 +31,7 @@ ig.setCookie("csrftoken=6wrPrUbsa05Csm9wlqxAOSqRwxxscjD;rur=16771\05427758921939
 const maker = require('mumaker')
 const textpro = require('./lib/textpro')
 const { fetchBuffer } = require("./lib/myfunc2")
+const fetch = require('node-fetch')
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
@@ -254,7 +255,7 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd && !isGroup){
+if (!isCmd && !m.isGroup){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
@@ -4557,7 +4558,7 @@ var walb = [
 break
 case 'bot': {
 if (!text) return m.reply('How are you brother?')
-const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${text}`)
+const botreply = await fetch(`https://simsimi.info/api/?text=${text}&lc=id`)
 let txt = `BOT😗:  ${botreply.data.cnt}`
 m.reply(txt) 
 }	
