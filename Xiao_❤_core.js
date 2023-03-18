@@ -88,6 +88,7 @@ const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '')
 const itsMe = m.sender == botNumber ? true : false
 const text = q = args.join(" ")
 const quoted = m.quoted ? m.quoted : m
+const bquoted = m. quoted == botnumber? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
@@ -253,14 +254,14 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd && !m.isGroup){
+if (!isCmd && !bquoted ){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[budy]`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
 
 // total hit
-        global.hit = {}
+ global.hit = {}
 if (isCmd) {
 data = await fetchJson('https://api.countapi.xyz/hit/Xiao-MD/visits')
 jumlahcmd = `${data.value}`
@@ -4540,10 +4541,10 @@ var walb = [
 //NEXUS.sendMessage(m.chat,{image:{url:wallpaper[i].image},caption:`*Query :* ${q}`})            
 break
 case 'bot': {
-let h = `${args.join(" ")}`
-const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[h]`)
-let txt = `BOT😗: ${botreply.data.cnt}`
-m.reply(txt)
+if (!text) return m.reply('How are you brother?')
+let botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[text]`)
+let txt = `BOT😗:  ${botreply.data.cnt}`
+NEXUS.sendMessage(m.chat , text: txt , {quoted :m}) 
 }	
 break
 case 'igemoji': 
