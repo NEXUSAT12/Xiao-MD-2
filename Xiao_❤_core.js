@@ -254,8 +254,8 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd){
-    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[budy]`)
+if (!isCmd && !isGroup){
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
@@ -3079,8 +3079,9 @@ var hasil = pickRandom(notnot)
 NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'BTS' : case 'bts':{ 
-let hi = await getBuffer(`https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts`)
-let hwe = pickRandom(hi)
+var hi  = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
+var ah = hi.split('\n')
+let hwe = pickRandom(ah)
 let buttons  = [ { buttonId: `bts`, buttonText: { displayText: 'Next✌' }, type: 1 }]
 let buttonmessage1 = {
                     image: { url: hwe },
@@ -4556,9 +4557,9 @@ var walb = [
 break
 case 'bot': {
 if (!text) return m.reply('How are you brother?')
-let botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[text]`)
+const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${text}`)
 let txt = `BOT😗:  ${botreply.data.cnt}`
-NEXUS.sendMessage(m.chat,txt, {quoted :m}) 
+m.reply(txt) 
 }	
 break
 case 'igemoji': 
