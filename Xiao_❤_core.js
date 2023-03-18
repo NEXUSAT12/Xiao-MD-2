@@ -6014,9 +6014,8 @@ const sendMsg = await NEXUS.sendMessage(m.chat, buttonMessage)
 break
             case 'groupmenu':{
 var unicorn = await getBuffer(picak+'Group Menu')
-
-const buttons = [
 NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
+const buttons = [
   {buttonId: 'script', buttonText: {displayText: 'Script 🔖'}, type: 1},
   {buttonId: 'owner', buttonText: {displayText: '𓄂⃝🅾𝔀𝓷𝓮𝓻'}, type: 1}
 ]
