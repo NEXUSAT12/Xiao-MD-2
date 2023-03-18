@@ -88,7 +88,7 @@ const isCreator = [botNumber, ...global.owner].map(v => v.replace(/[^0-9]/g, '')
 const itsMe = m.sender == botNumber ? true : false
 const text = q = args.join(" ")
 const quoted = m.quoted ? m.quoted : m
-const bquoted = m. quoted == botnumber? true : false
+const bquoted = m.quoted == botnumber ? true : false
 const mime = (quoted.msg || quoted).mimetype || ''
 const isMedia = /image|video|sticker|audio/.test(mime)
 const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.participant) : mek.key.remoteJid
