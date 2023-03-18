@@ -4544,7 +4544,7 @@ case 'bot': {
 if (!text) return m.reply('How are you brother?')
 let botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[text]`)
 let txt = `BOT😗:  ${botreply.data.cnt}`
-NEXUS.sendMessage(m.chat , text: txt , {quoted :m}) 
+NEXUS.sendMessage(m.chat,txt, {quoted :m}) 
 }	
 break
 case 'igemoji': 
