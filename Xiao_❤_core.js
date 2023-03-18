@@ -34,7 +34,6 @@ const { fetchBuffer } = require("./lib/myfunc2")
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
-
 //TIME
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
@@ -95,6 +94,8 @@ const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
 const type = Object.keys(mek.message)[0]  
 const from = mek.key.remoteJid      
 const content = JSON.stringify(mek.message)
+let allmenureact = ['🐦','🐤','🍒','📃','🎃','📑','🗞️','🔥','❤️','❤️‍🩹','👿','💙','✌','☕','🍜']
+let allmenureactemoji = pickRandom(allmenureact)
 
 	    const cekUser = (users, id) => {     
 var cek = null
@@ -253,14 +254,14 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd && !m.isGroup){
+if (!isCmd){
     const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[budy]`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
 
 // total hit
-        global.hit = {}
+ global.hit = {}
 if (isCmd) {
 data = await fetchJson('https://api.countapi.xyz/hit/Xiao-MD/visits')
 jumlahcmd = `${data.value}`
@@ -1224,10 +1225,11 @@ Cieeee, What's Going On❤️💖👀`
                 if (!m.isGroup) throw mess.group
                 if (!isBotAdmins) throw mess.botAdmin
                 if (!isAdmins) throw mess.admin
-let teks = `╚»˙♥ ${botname}♥●𓁞˙«╝ \n\n
- 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n`
+let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
+ 🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n\n╭──────⊹⊱𝓜𝓮𝓶𝓫𝓮𝓻𝓼 ✨⊰⊹──────╮
+`
                 for (let mem of participants) {
-                teks += `╭──────༺♡༻──────╮\n│@${mem.id.split('@')[0]}│`
+                teks+=`\n❤:@${mem.id.split('@')[0]}`
                }
                 NEXUS.sendMessage(m.chat, { text: teks, mentions: participants.map(a => a.id) }, { quoted: m })
                 }
@@ -3076,6 +3078,20 @@ var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/blackpink.j
 var hasil = pickRandom(notnot)
 NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
+case 'BTS' : case 'bts':{ 
+let hi = await getBuffer(`https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts`)
+let hwe = pickRandom(hi)
+let buttons  = [ { buttonId: `bts`, buttonText: { displayText: 'Next✌' }, type: 1 }]
+let buttonmessage1 = {
+                    image: { url: hwe },
+                    caption: ` 𝓗𝓮𝓻𝓮 𝓨𝓸𝓾 𝓰𝓸❤`,
+                    footer: botname,
+                    buttons: buttons,
+                    headerType: 4
+                    }
+NEXUS.sendMessage(m.chat, buttonmessage1, { quoted: m })
+}
+break                    
 case 'bike':
 m.reply(mess.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
@@ -3665,7 +3681,7 @@ case 'report': case 'bug': {
             await NEXUS.sendButtonText(m.chat, buttons, akhji, botname, m, {mentions: ments})
             }
             break
-            case 'sound1': {
+case 'sound': {
 NEXUS_dev = await getBuffer(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
 await NEXUS.sendMessage(m.chat, { audio: NEXUS_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
 }  
@@ -4539,10 +4555,10 @@ var walb = [
 //NEXUS.sendMessage(m.chat,{image:{url:wallpaper[i].image},caption:`*Query :* ${q}`})            
 break
 case 'bot': {
-let h = `${args.join(" ")}`
-const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[h]`)
-let txt = `BOT😗: ${botreply.data.cnt}`
-m.reply(txt)
+if (!text) return m.reply('How are you brother?')
+let botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[text]`)
+let txt = `BOT😗:  ${botreply.data.cnt}`
+NEXUS.sendMessage(m.chat,txt, {quoted :m}) 
 }	
 break
 case 'igemoji': 
@@ -5804,6 +5820,7 @@ NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 }
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
+NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
 let teks = `*「 ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nDont forget to give a star and follow`
 let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1},
@@ -5997,7 +6014,7 @@ const sendMsg = await NEXUS.sendMessage(m.chat, buttonMessage)
 break
             case 'groupmenu':{
 var unicorn = await getBuffer(picak+'Group Menu')
-
+NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
 const buttons = [
   {buttonId: 'script', buttonText: {displayText: 'Script 🔖'}, type: 1},
   {buttonId: 'owner', buttonText: {displayText: '𓄂⃝🅾𝔀𝓷𝓮𝓻'}, type: 1}
