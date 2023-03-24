@@ -5,7 +5,7 @@
 
 <h1 align="center">Scan qr code<br></h1>
 
-<a href="https://replit.com/@DEVILL-MASCOT/Xiao"><img src="https://play-lh.googleusercontent.com/901aMQFFnVoX2T-YuJmTIwpPve_SUgMv_QSyzMSPtAqt_l0CyXN1DxfD6xXU0r2f9iM=w240-h480-rw" width="90" />
+<a href="https://replit.com/@DEVILL-MASCOT/Xiao-Md"><img src="https://play-lh.googleusercontent.com/901aMQFFnVoX2T-YuJmTIwpPve_SUgMv_QSyzMSPtAqt_l0CyXN1DxfD6xXU0r2f9iM=w240-h480-rw" width="90" />
 
 <h1 align="center">DEPLOY<br></h1>
 
