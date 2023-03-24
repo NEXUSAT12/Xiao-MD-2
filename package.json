@@ -44,7 +44,7 @@
     "jimp": "^0.16.1",
     "jsdom": "^16.4.0",
     "lowdb": "^2.1.0",
-    "mal-scraper": "^2.11.4",
+    "mal-scraper": "^1.5.0",
     "moment-timezone": "^0.5.34",
     "mongoose": "^6.2.1",
     "mumaker": "^1.0.0",
@@ -80,7 +80,6 @@
     "lib": "lib",
     "src": "src"
   },
-  "devDependencies": {},
   "repository": "git+https://github.com/NEXUSAT12/Xiao-MD-2.git",
   "bugs": {
     "url": "https://github.com/NEXUSAT12/Xiao-MD-2/issues"
