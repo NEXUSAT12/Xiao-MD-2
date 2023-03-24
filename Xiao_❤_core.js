@@ -254,8 +254,8 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd){
-    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=[budy]`)
+if (!isCmd && !m.isGroup ){
+    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
@@ -3682,8 +3682,8 @@ case 'report': case 'bug': {
             }
             break
 case 'sound': {
-NEXUS_dev = await getBuffer(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
-await NEXUS.sendMessage(m.chat, { audio: NEXUS_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
+let dev = await axios.get(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
+await NEXUS.sendMessage(m.chat, { audio: dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
 }  
 break
 case 'hijack':{
@@ -4309,7 +4309,7 @@ case 'autoresetgclink': case 'autoreset':{
 if (!m.isGroup) return m.reply(mess.group)
 if (!isBotAdmins) return m.reply(mess.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(mess.admin)
-if (args.length < 1) return m.reply('type auto sticker on to enable\ntype auto sticker off to disable')
+if (args.length < 1) return m.reply('type auto sticker on to enable\ntype autoresetgclink off to disable')
 if (args[0]  === 'on'){
 if (isAutoresetgclink) return m.reply(`Already activated`)
 autoresetgclink.push(from)
