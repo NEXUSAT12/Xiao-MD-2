@@ -255,7 +255,7 @@ const hsjdh = randomNomor(5)
 	    
 //////////////////////////////////////////////
 if (!isCmd && !m.isGroup ){
-    const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
+    var botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
     let txt = `${botreply.data.cnt}`
     m.reply(txt)
     }
@@ -3081,7 +3081,8 @@ break
 case 'BTS' : case 'bts':{ 
 var hi  = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
 let hwe = pickRandom(hi)
-let buttons  = [ { buttonId: `bts`, buttonText: { displayText: 'Next✌' }, type: 1 }]
+let buttons  = [ { buttonId: `bts`, buttonText: { displayText: 'Next✌' }, type: 1 },
+	       { buttonId: `btss`, buttonText: { displayText: 'Sticker' }, type: 1 }]
 let buttonmessage1 = {
                     image: { url: hwe },
                     caption: ` 𝓗𝓮𝓻𝓮 𝓨𝓸𝓾 𝓰𝓸❤`,
@@ -3092,6 +3093,12 @@ let buttonmessage1 = {
 NEXUS.sendMessage(m.chat, buttonmessage1, { quoted: m })
 }
 break                    
+case'btss':{
+var ho = await fetchJson(`https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts`)
+let hh = pickRandom(ho)
+NEXUS.sendImageAsSticker(from,hh, m ,{packname: global.packname,author:global.author,})
+}
+break
 case 'bike':
 m.reply(mess.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
@@ -3682,7 +3689,7 @@ case 'report': case 'bug': {
             }
             break
 case 'sound': {
-let dev = await axios.get(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
+const dev = await getBuffer(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
 await NEXUS.sendMessage(m.chat, { audio: dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
 }  
 break
