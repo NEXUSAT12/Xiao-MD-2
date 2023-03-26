@@ -21,7 +21,9 @@
   "license": "AGPL-3",
   "dependencies": {
     "@adiwajshing/baileys": "^4.4.0",
+    "@adiwajshing/baileys2": "github:QueenAnya/topa",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "@adiwajshing/keyed-db2": "github:QueenAnya/topb",
     "@bochilteam/scraper": "^2.0.0",
     "anime-wallpaper": "^1.0.2",
     "awesome-phonenumber": "^2.64.0",
