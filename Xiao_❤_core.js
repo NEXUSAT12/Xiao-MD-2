@@ -3098,8 +3098,7 @@ case'btss': case 'btssticker':{
 var ho = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
 var ss = ho.split('\n')
 let hh = pickRandom(ss)
-encymedia = NEXUS.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
-await fs.unlinkSync(encymedia)
+NEXUS.sendImageAsSticker(m.chat, hh, m, { packname: global.packname, author: global.author })
 }
 break
 case 'bike':
@@ -3692,9 +3691,10 @@ case 'report': case 'bug': {
             }
             break
 case 'sound': {
-const dev = await getBuffer(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
-await NEXUS.sendMessage(m.chat, { audio: dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
-}  
+if(!text) throw `example: ${prefix + command} sound 12`
+NEXUS_dev = await getBuffer(`https://github.com/NEXUSAT12/Tiktokmusic-API/raw/master/tiktokmusic/sound${command}.mp3`)
+await NEXUS.sendMessage(m.chat, { audio: NEXUS_dev, mimetype: 'audio/mp4', ptt: true }, { quoted: m })   
+}   
 break
 case 'hijack':{
   if(!isCreator) throw mess.owner
@@ -5371,7 +5371,7 @@ if(!m.isGroup) throw mess.group
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 let hdv = ['https://media.tenor.com/R10x1pfpx4cAAAPo/kids-on-the-slope-jun.mp4']
 let to = `Cheers to you for another trip around the sun The day is all yours 💙Maybe you receive the greatest of joys and everlasting bliss. You are a gift yourself, and you deserve the best of everything. Happy birthday•\n 🥂🎂💙 *HAPPY BIRTHDAY* 🎂🥂\n🥳🥳🥳✨ Enyoy this special day in celebration of a most wonderful you🙂🥳🤩😍 @${users.split('@')[0]}\n`
-NEXUS.sendMessage(m.chat,{image:{url:hdv},caption:to,mentions:participants.map(a=>a.id)},{quoted:m})
+NEXUS.sendMessage(m.chat,{video:{url:hdv},caption:to,mentions:participants.map(a=>a.id)},{quoted:m})
 }
 case 'rate': {
             	if (!text) throw `Example : ${prefix + command} my profile`
