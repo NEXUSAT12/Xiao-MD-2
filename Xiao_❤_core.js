@@ -255,10 +255,10 @@ const hsjdh = randomNomor(5)
 	    
 //////////////////////////////////////////////
 if (!isCmd && !m.isGroup ){
-    var botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
-    let txt = `${botreply.data.cnt}`
-    m.reply(txt)
-    }
+const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
+let txt = `${botreply.data.cnt}`
+m.reply(txt)
+}
 
 // total hit
  global.hit = {}
@@ -3080,12 +3080,13 @@ NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, bu
 break
 case 'BTS' : case 'bts':{ 
 var hi  = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
-let hwe = pickRandom(hi)
+var jj = hi.split('\n')
+let hwe = pickRandom(jj)
 let buttons  = [ { buttonId: `bts`, buttonText: { displayText: 'Next✌' }, type: 1 },
 	       { buttonId: `btss`, buttonText: { displayText: 'Sticker' }, type: 1 }]
 let buttonmessage1 = {
                     image: { url: hwe },
-                    caption: ` 𝓗𝓮𝓻𝓮 𝓨𝓸𝓾 𝓰𝓸❤`,
+                    caption: `𝓗𝓮𝓻𝓮 𝓨𝓸𝓾 𝓰𝓸❤`,
                     footer: botname,
                     buttons: buttons,
                     headerType: 4
@@ -3093,10 +3094,12 @@ let buttonmessage1 = {
 NEXUS.sendMessage(m.chat, buttonmessage1, { quoted: m })
 }
 break                    
-case'btss':{
-var ho = await fetchJson(`https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts`)
-let hh = pickRandom(ho)
-NEXUS.sendImageAsSticker(from,hh, m ,{packname: global.packname,author:global.author,})
+case'btss': case 'btssticker':{
+var ho = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
+var ss = ho.split('\n')
+let hh = pickRandom(ss)
+encymedia = NEXUS.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
+await fs.unlinkSync(encymedia)
 }
 break
 case 'bike':
@@ -5363,6 +5366,13 @@ encmedia = await NEXUS.sendImageAsSticker(from, wifegerakx, m, { packname: globa
 await fs.unlinkSync(encmedia)
 }
 break
+case 'hbd': case'happy birthday':{
+if(!m.isGroup) throw mess.group 
+let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+let hdv = ['https://media.tenor.com/R10x1pfpx4cAAAPo/kids-on-the-slope-jun.mp4']
+let to = `Cheers to you for another trip around the sun The day is all yours 💙Maybe you receive the greatest of joys and everlasting bliss. You are a gift yourself, and you deserve the best of everything. Happy birthday•\n 🥂🎂💙 *HAPPY BIRTHDAY* 🎂🥂\n🥳🥳🥳✨ Enyoy this special day in celebration of a most wonderful you🙂🥳🤩😍 @${users.split('@')[0]}\n`
+NEXUS.sendMessage(m.chat,{image:{url:hdv},caption:to,mentions:participants.map(a=>a.id)},{quoted:m})
+}
 case 'rate': {
             	if (!text) throw `Example : ${prefix + command} my profile`
             	let ra = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44','45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90','91','92','93','94','95','96','97','98','99','100']
@@ -6353,6 +6363,7 @@ const buttonMessage = {
 ╠❤️‍🔥${prefix}𝙲𝚘𝚞𝚙𝚕𝚎𝚙𝚒𝚌𝚝𝚞𝚛𝚎
 ╠❤️‍🔥${prefix}𝚆𝚊𝚕𝚕𝚙𝚑𝚘𝚗𝚎
 ╠❤️‍🔥${prefix}𝚆𝚊𝚕𝚕𝚖𝚕
+╠❤️‍🔥${prefix}BŢŞ
 ╚═════════════✪`,
     footer: `${botname}`,
     buttons: buttons,
