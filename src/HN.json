@@ -1,0 +1,21 @@
+{
+    "Xiao-md-2": true,
+    "LANGUAGE": "HINDI",
+    "LANGCODE": "HN",
+    "AUTHOR": "NEXUS",
+   "STRINGS" : {
+     "modules": {
+       "success": "Kaam ho gaya ✅️",
+       "admin": "*Ye command sirf group admins ke liye hai...*\nisiliye tum is command ka istemal nahi kar sakte.",
+       "botAdmin": "Me bina *Admin* bane is command ko nahi chala sakti.",
+       "owner": "Ye command sirf mere owner istemal kar sakte hai.. Aur aap mere owner nahi ho!!",
+       "group": "Aap is command ka istemal group chat mein nahi kar sakte.",
+       "private": "Aap is command ka istemal kisi private chat mein nahi kar sakte ho.",
+       "bot": "This Feature Is Only For 𝗕𝗼𝘁... and you're not a 𝗕𝗼𝘁.",
+       "wait": "Processing....",
+       "linkm": "Mujhe is command ke liye ek link chahiye.",
+       "error": "*404Error*",
+       "sudo": "*Hey User 👋....*\nYou can't use this command because this command is only for my co-owner.",
+       "endLimit": "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours",
+}
+}
