@@ -18,6 +18,7 @@ const moment = require('moment-timezone')
 const getRandom = (ext) => {
 	return `${Math.floor(Math.random() * 10000)}${ext}`
 }
+
 var low
 try {
   low = require('lowdb')
@@ -87,7 +88,13 @@ async function startNEXUS() {
     await NEXUS.updateBlockStatus(callerId, "block")
     }
     })
-
+////cron 
+	NEXUS.ws.cron.schedule('*/2 * * * *', async () => {
+        NEXUS.log("Clearing All Chats....");
+        await NEXUS.modifyAllChats("clear");
+        NEXUS.log("Cleared all Chats!");
+      });
+////////////
     NEXUS.ev.on('messages.upsert', async chatUpdate => {
         //console.log(JSON.stringify(chatUpdate, undefined, 2))
         try {
