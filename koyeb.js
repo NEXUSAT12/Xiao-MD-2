@@ -5,10 +5,12 @@ RUN sudo dnf -y update &&\
     sudo dnf install -y git ffmpeg ImageMagick nodejs yarnpkg libwebp &&\
     sudo dnf clean all -y
 
-WORKDIR /XIAO
+RUN git clone https://github.com/NEXUSAT12/Xiao-MD-2
 
-COPY . /XIAO
+WORKDIR /root/Xiao-MD-2
 
-RUN yarn
+COPY ./root/Xiao-MD-2
 
-CMD ["yarn", "start"]
+RUN yarn install
+
+CMD ["node", "xiao✌❤️‍🔥index.js"]
