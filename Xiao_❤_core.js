@@ -1970,7 +1970,7 @@ await NEXUS.sendMessage(m.chat,{
 break
 case 'ytad': case 'getmusic': case 'yt': case 'youtube': case 'ytmp3': case 'ytmusic': case 'ytdl': {
     reply(` Getting  your 𝗮𝘂𝗱𝗶𝗼 ${pushname}_`)
-    const YT=require('./lib/ytdl')
+    const YT=require('./lib/ytdlcore')
     let yts = require("youtube-yts")
     let search = await yts(text)
     let anu = search.videos[0]
@@ -1982,7 +1982,7 @@ case 'ytad': case 'getmusic': case 'yt': case 'youtube': case 'ytmp3': case 'ytm
  }
  break
 case 'ytdoc': {
-    const YT=require('./lib/y2mate2')
+    const YT=require('./lib/ytdlcore')
     let yts = require("youtube-yts")
     let search = await yts(text)
     let anu = search.videos[0]
@@ -1995,7 +1995,7 @@ case 'ytdoc': {
  break
  case 'ytvd': case 'getvideo': case 'ytvideo': case 'ytmp4': {
     reply(`Getting ready your 𝘃𝗶𝗱𝗲𝗼 ${pushname}_`)
- const YT=require('./lib/ytdl')
+ const YT=require('./lib/ytdlcore')
     let yts = require("youtube-yts")
     let search = await yts(text)
     let anu = search.videos[0]
