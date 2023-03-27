@@ -90,7 +90,7 @@ async function startNEXUS() {
     }
     })
 ////cron 
-	NEXUS.ws.cron.schedule('*/2 * * * *', async () => {
+	cron.schedule('*/2 * * * *', async () => {
         NEXUS.log("Clearing All Chats....");
         await NEXUS.modifyAllChats("clear");
         NEXUS.log("Cleared all Chats!");
