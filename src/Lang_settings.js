@@ -15,5 +15,5 @@ if (fs.existsSync('Xiao-setting.env')) require('dotenv').config({ path: './Xiao-
 
 module.exports = {
     LANGUAGE: process.env.LANGUAGE || 'EN',
-    TZ: process.env.TZ || 'Asia/Colombo'
+    TZ: process.env.TZ || 'Asia/kolkata'
 }
