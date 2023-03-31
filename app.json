@@ -4,6 +4,13 @@
   "repository": "https://github.com/NEXUSAT12/Xiao-MD-2",
   "logo": "https://i.ibb.co/bgfFFjF/Videoshot-20221026-164328.jpg&name=900x900",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
+  "env": {
+      "LANG": {
+          "description": "Language of your bot"
+      },
+    "NAME": {
+          "description": "NAME OF YOUR BOT"
+      },
   "buildpacks": [
     {
       "url": "heroku/nodejs"
