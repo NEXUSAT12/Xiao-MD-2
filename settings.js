@@ -31,7 +31,7 @@ global.themeemoji = "🌹" //ur theme emoji
 global.packname = "Sticker By" //ur sticker watermark packname
 global.author = "XBOT\n\n\nA whatsapp bot developed by\n☤𝙣𝙚𝙭𝙪𝙨☤\n\n\n\n\n\n\n\n       --------______-------\n\n\n\n\n\n\n\nContact No. : +91918130784851" //ur sticker watermark author
 global.wm = "☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰." //ur watermark
-global.LANG = process.env.LANGUAGE || 'EN'
+global.mess = process.env.LANGUAGE || 'EN'
 global.BOT_LANGUAGE = "EN"
 // Other
 global.sessionName = 'session'
