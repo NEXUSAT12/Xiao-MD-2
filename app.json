@@ -6,10 +6,12 @@
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
   "env": {
       "LANG": {
-          "description": "Language of your bot"
+        "description": "Language of your bot"
+        "required": true
       },
     "NAME": {
-          "description": "NAME OF YOUR BOT"
+      "description": "NAME OF YOUR BOT"
+      "required": true
       },
   "buildpacks": [
     {
