@@ -24,7 +24,8 @@
       "description" : "YOUR NAME",
       "requred" : true,
       "value" :"Nexus"
-      },
+      }
+  },
   "buildpacks": [
     {
       "url": "heroku/nodejs"
