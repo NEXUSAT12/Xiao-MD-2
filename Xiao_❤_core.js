@@ -70,7 +70,14 @@ let autoresetgclink = JSON.parse(fs.readFileSync('./database/autoresetgclink.jso
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
+//////////////////////
+const LANG = require('./language.js')
+if (global.mess == 'EN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/EN.json`)),
+if (global.mess == 'HN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/HN.json`)),
+if (global.mess == 'AR' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/AR.json`))
+ 
 //database auto reply
+					    
 let Xysticker = JSON.parse(fs.readFileSync('./Xiao-❤-Media/sticker/sticker.json'));
 let Xyaudio = JSON.parse(fs.readFileSync('./Xiao-❤-Media/audio/audio.json'));
 module.exports = NEXUS = async (NEXUS, m, chatUpdate, store) => {
