@@ -3,7 +3,7 @@
     "LANGUAGE": "English",
     "LANGCODE": "EN",
     "AUTHOR": "NEXUS",
-    "modules": {
+    "mess": {
     "success": "Processing done ✅️",
     "admin": "Hey dear user,\nYou are not an admin, so you can't use this command.",
     "botAdmin": "I am not an admin, so i can't process this action.",
