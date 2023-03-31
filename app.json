@@ -5,13 +5,25 @@
   "logo": "https://i.ibb.co/bgfFFjF/Videoshot-20221026-164328.jpg&name=900x900",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
   "env": {
-      "LANG": {
-        "description": "Language of your bot"
-        "required": true
+    "LANGUAGE" :{
+        "descrption" : "SELECT YOUR BOT LANGUAGE [ HN - Hindi / EN - english / AR - Arabic] ",
+        "requred" : true,
+        "value" : "EN"
       },
-    "NAME": {
-      "description": "NAME OF YOUR BOT"
-      "required": true
+    "OWNER_NUMBER" :{
+      "description" : "OWNER NUMBER",
+      "required" : true,
+      "value" :"918130784851"
+      },
+    "BOT_NAME" :{
+      "description" : "YOUR BOT NAME",
+      "requred" : false,
+      "value" :"𓆩⍣⃝🇽‌𝐢𝐚𝐨-𝐁𝐎𝐓⃢𓆪"
+      },
+    "OWNER_NAME" :{
+      "description" : "YOUR NAME",
+      "requred" : true,
+      "value" :"Nexus"
       },
   "buildpacks": [
     {
