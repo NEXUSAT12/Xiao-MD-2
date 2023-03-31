@@ -72,8 +72,8 @@ let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
 //////////////////////
 const LANG = require('./language.js')
-if (global.mess == 'EN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/EN.json`)),
-if (global.mess == 'HN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/HN.json`)),
+if (global.mess == 'EN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/EN.json`))
+if (global.mess == 'HN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/HN.json`))
 if (global.mess == 'AR' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/AR.json`))
  
 //database auto reply
