@@ -14,16 +14,16 @@ global.doc5 = 'application/pdf'
 global.doc6 = 'application/vnd.android.package-archive'
 
 //owmner v card
-global.owner = ['918130784851'] //ur owner number
-global.ownername = "𝙈𝘼𝙎𝙏𝙀𝙍☤​᭄𝙉𝙀𝙓𝙐𝙎" 
+global.owner = [process.env.OWNER_NUMBER] || ['918130784851'] //ur owner number
+global.ownername =  process.env.OWNER_NAME || 'NEXUS' 
 global.ytname = "YT: NEXUSMODS" //ur yt chanel name
 global.socialm = "GitHub: NEXUSAT12" //ur github or insta name
 global.location = "India, Ghaziabad, Rajnagar" //ur location
 
 //bot bomdy 
-global.ownernomer = "918130784851" //ur number
+global.ownernomer =  [process.env.OWNER_NUMBER] || ['918130784851'] //ur number
 global.premium = ['918130784851'] //ur premium number
-global.botname = '𓆩⍣⃝🇽‌𝐢𝐚𝐨-𝐁𝐎𝐓⃢𓆪' //ur bot name
+global.botname = process.env.BOT_NAME || '𓆩⍣⃝🇽‌𝐢𝐚𝐨-𝐁𝐎𝐓⃢𓆪' //ur bot name
 global.linkz = "https://chat.whatsapp.com/KdCiUuENgOFEYJMHV3jZNj" //your theme url which will be displayed on whatsapp
 global.websitex = "https://nexus21.carrd.co/" //ur website to be displayed
 global.botscript = 'https://github.com/NEXUSAT12/Xiao-MD-2' //script link
@@ -31,6 +31,8 @@ global.themeemoji = "🌹" //ur theme emoji
 global.packname = "Sticker By" //ur sticker watermark packname
 global.author = "XBOT\n\n\nA whatsapp bot developed by\n☤𝙣𝙚𝙭𝙪𝙨☤\n\n\n\n\n\n\n\n       --------______-------\n\n\n\n\n\n\n\nContact No. : +91918130784851" //ur sticker watermark author
 global.wm = "☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰." //ur watermark
+global.LANG = process.env.LANGUAGE || 'EN'
+global.BOT_LANGUAGE = "EN"
 // Other
 global.sessionName = 'session'
 global.prefa = ['#']
