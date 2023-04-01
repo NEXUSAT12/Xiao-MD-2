@@ -759,11 +759,6 @@ m.reply("Emoji error, please enter another emoji\nNOTE : Just enter 1 emoji")
 }
 }
 
-case 'restart': {
-await m.reply('_Rebooting..._')
-require('pm2').restart('xiao✌❤️‍🔥index.js');
-}
-break 
 // Respon Cmd with media
 if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
 let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
@@ -1242,6 +1237,12 @@ Cieeee, What's Going On❤️💖👀`
 		await NEXUS.updateBlockStatus(users, 'unblock')
 	}
 	break
+case 'restart': {
+if (!isCreator) throw Lang.owner
+await m.reply('_Rebooting..._')
+require('pm2').restart('xiao✌❤️‍🔥index.js');
+}
+break 
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw Lang.group
                 if (!isBotAdmins) throw Lang.botAdmin
