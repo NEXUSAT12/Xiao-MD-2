@@ -306,7 +306,7 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if (!isCmd && !m.isGroup ){
+if(m.quoted == '919971690443@s.whatsapp.net'){
 const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
 let txt = `${botreply.data.cnt}`
 m.reply(txt)
@@ -440,7 +440,7 @@ let buttonMessage = {
         // Anti Link
         if (Antilinkgc) {
         if (budy.match(`chat.whatsapp.com`)) {
-        if (!isBotAdmins) return m.reply(`${Lang.botadmin}, to kick the person who send link`)
+        if (!isBotAdmins) return m.reply(`${Lang.botAdmin}, to kick the person who send link`)
         let gclink = (`https://chat.whatsapp.com/`+await NEXUS.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
@@ -507,7 +507,7 @@ NEXUS.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kic
 //antivirtex by X
   if (antiVirtex) {
   if (budy.length > 2500) {
-  if (!isBotAdmins) return m.reply(Lang.botadmin)
+  if (!isBotAdmins) return m.reply(Lang.botAdmin)
           await NEXUS.sendMessage(m.chat,
 			    {
 			        delete: {
@@ -758,6 +758,12 @@ NEXUS.sendMessage(from, buttonMessage, {quoted:m})
 m.reply("Emoji error, please enter another emoji\nNOTE : Just enter 1 emoji")
 }
 }
+
+case 'restart': {
+await m.reply('_Rebooting..._')
+require('pm2').restart('xiao✌❤️‍🔥index.js');
+}
+break 
 // Respon Cmd with media
 if (isMedia && m.msg.fileSha256 && (m.msg.fileSha256.toString('base64') in global.db.data.sticker)) {
 let hash = global.db.data.sticker[m.msg.fileSha256.toString('base64')]
@@ -1194,7 +1200,7 @@ Cieeee, What's Going On❤️💖👀`
             break
 	case 'kick': {
 		if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'remove').then(m.reply("𝓡𝓮𝓶𝓸𝓿𝓮𝓭 🤫" )) 
@@ -1202,7 +1208,7 @@ Cieeee, What's Going On❤️💖👀`
 	break
 	case 'add': {
 		if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'add').then(m.reply("𝓐𝓭𝓮𝓭😎❤️‍🔥")) 
@@ -1210,7 +1216,7 @@ Cieeee, What's Going On❤️💖👀`
 	break
 	case 'promote': {
 		if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
@@ -1218,7 +1224,7 @@ Cieeee, What's Going On❤️💖👀`
 	break
 	case 'demote': {
 		if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'demote')
@@ -1238,7 +1244,7 @@ Cieeee, What's Going On❤️💖👀`
 	break
 	    case 'setname': case 'setsubject': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Text ?'
                 await NEXUS.groupUpdateSubject(m.chat, text).then((res) => m.reply(Lang.success)).catch((err) => m.reply(jsonformat(err)))
@@ -1246,7 +1252,7 @@ Cieeee, What's Going On❤️💖👀`
             break
           case 'setdesc': case 'setdesk': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Text ?'
                 await NEXUS.groupUpdateDescription(m.chat, text).then((res) => m.reply(Lang.success)).catch((err) => m.reply(jsonformat(err)))
@@ -1275,7 +1281,7 @@ Cieeee, What's Going On❤️💖👀`
                 break
             case 'tagall':  case 'ping' : case 'everyone': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
  🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n\n╭──────⊹⊱𝓜𝓮𝓶𝓫𝓮𝓻𝓼 ✨⊰⊹──────╮
@@ -1288,7 +1294,7 @@ let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
                 break
                 case 'hidetag': case 'texttag': {
             if (!m.isGroup) throw Lang.group
-            if (!isBotAdmins) throw Lang.botadmin
+            if (!isBotAdmins) throw Lang.botAdmin
             if (!isAdmins) throw Lang.admin
             let tex = `🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
             NEXUS.sendMessage(m.chat, { text : tex , mentions: participants.map(a => a.id)}, { quoted: m })
@@ -1471,7 +1477,7 @@ break
             break
 case 'group': case 'grup': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
                 if (args[0] === 'close'){
                     await NEXUS.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`*Successfully Closed The Group*`)).catch((err) => m.reply(jsonformat(err)))
@@ -1489,7 +1495,7 @@ case 'group': case 'grup': {
             break
             case 'editinfo': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
              if (args[0] === 'open'){
                 await NEXUS.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`*Successfully Opened Edit Group Info*`)).catch((err) => m.reply(jsonformat(err)))
@@ -1518,7 +1524,7 @@ NEXUS.sendMessage(m.chat, { text: Xkak }, { quoted: m })
 break
 case 'mute': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].mute) return m.reply(`It's Been Active Before`)
@@ -1554,14 +1560,14 @@ NEXUS.sendTextWithMentions(m.chat, teks, m)
 break
             case 'linkgroup': case 'linkgc': case 'gclink': case 'grouplink': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 let response = await NEXUS.groupInviteCode(m.chat)
                 NEXUS.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nGroup Link : ${groupMetadata.subject}`, m, { detectLink: true })
             }
             break
             case 'ephemeral': {
                 if (!m.isGroup) throw Lang.group
-                if (!isBotAdmins) throw Lang.botadmin
+                if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Enter the value enable/disable'
                 if (args[0] === 'enable') {
@@ -3776,7 +3782,7 @@ NEXUS.sendMessage(group.id, { text: 'Halo!!' }) // say hello to everyone on the 
 break
 case 'antilinkyoutubevideo': case 'antilinkyoutubevid': case 'antilinkytvid': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkYoutubeVid) return m.reply('Already activated')
@@ -3807,7 +3813,7 @@ m.reply('Success in turning off youtube video antilink in this group')
   break
     case 'antilinkyoutubech': case 'antilinkyoutubechannel': case 'antilinkytch': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkYoutubeChannel) return m.reply('Already activated')
@@ -3838,7 +3844,7 @@ m.reply('Success in turning off youtube channel antilink in this group')
   break
       case 'antilinkinstagram': case 'antilinkig': case 'antilinkinsta': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkInstagram) return m.reply('Already activated')
@@ -3869,7 +3875,7 @@ m.reply('Success in turning off instagram antilink in this group')
   break
         case 'antilinkfacebook': case 'antilinkfb': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkFacebook) return m.reply('Already activated')
@@ -3900,7 +3906,7 @@ m.reply('Success in turning off facebook antilink in this group')
   break
           case 'antilinktelegram': case 'antilinktg': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTelegram) return m.reply('Already activated')
@@ -3931,7 +3937,7 @@ m.reply('Success in turning off telegram antilink in this group')
   break
             case 'antilinktiktok': case 'antilinktt': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTiktok) return m.reply('Already activated')
@@ -3962,7 +3968,7 @@ m.reply('Success in turning off tiktok antilink in this group')
   break
             case 'antilinktwt': case 'antilinktwitter': case 'antilinktwit': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTwitter) return m.reply('Already activated')
@@ -3993,7 +3999,7 @@ m.reply('Success in turning off twitter antilink in this group')
   break
               case 'antilinkall': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTwitter) return m.reply('Already activated')
@@ -4024,7 +4030,7 @@ m.reply('Success in turning off all antilink in this group')
   break
 case 'antitoxic': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiToxic) return m.reply('Already activated')
@@ -4055,7 +4061,7 @@ m.reply('Success in turning off antitoxic in this group')
   break
 case 'autoreply': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (Autoreply) return m.reply('Already activated')
@@ -4086,7 +4092,7 @@ m.reply('Success in turning off auto reply in this group')
   break
 case 'antiwame': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiWame) return m.reply('Already activated')
@@ -4117,7 +4123,7 @@ m.reply('Success in turning off antiwame in this group')
   break
 case 'antilinkgc': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (Antilinkgc) return m.reply('Already activated')
@@ -4351,7 +4357,7 @@ NEXUS.sendMessage(m.chat, {image: {url: anuoncr2},viewOnce : true},{quoted: m })
         break
 case 'autostickergc': case 'autosticker':{
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args.length < 1) return m.reply('type auto sticker on to enable\ntype auto sticker off to disable')
 if (args[0]  === 'on'){
@@ -4369,7 +4375,7 @@ m.reply('auto sticker deactivated')
 break
 case 'autoresetgclink': case 'autoreset':{
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args.length < 1) return m.reply('type auto sticker on to enable\ntype autoresetgclink off to disable')
 if (args[0]  === 'on'){
@@ -4387,7 +4393,7 @@ m.reply('auto reset gc link  deactivated')
 break
 case 'antivirus': case 'antivirtex': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiVirtex) return m.reply('Already activated')
@@ -5734,7 +5740,7 @@ case 'resetgrouplink':
 case 'resetgclink':
 case 'resetgruplink': {
 if (!m.isGroup) return m.reply(Lang.group)
-if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isBotAdmins) return m.reply(Lang.botAdmin)
 if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 NEXUS.groupRevokeInvite(m.chat)
 }
