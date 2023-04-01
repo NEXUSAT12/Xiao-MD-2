@@ -70,10 +70,6 @@ let autoresetgclink = JSON.parse(fs.readFileSync('./database/autoresetgclink.jso
 let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
-//////////////////////
-const Language = require('./language')
-const mess = Language.getString('xioabot')
-
 var success  = ' ' 
 if (global.mess == 'EN') success = `Processing done ✅️`
 if (global.mess == 'HN') success = `काम हो गया ✅️`
