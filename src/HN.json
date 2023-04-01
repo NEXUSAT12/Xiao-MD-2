@@ -1,21 +1,22 @@
 {
-    "Xiao-MD-2": true,
+   "_XIAOJSON_": true,
     "LANGUAGE": "HINDI",
     "LANGCODE": "HN",
-    "AUTHOR": "NEXUS",
-   "STRINGS" : {
-     "modules": {
-       "success": "Kaam ho gaya ✅️",
-       "admin": "*Ye command sirf group admins ke liye hai...*\nisiliye tum is command ka istemal nahi kar sakte.",
-       "botAdmin": "Me bina *Admin* bane is command ko nahi chala sakti.",
-       "owner": "Ye command sirf mere owner istemal kar sakte hai.. Aur aap mere owner nahi ho!!",
-       "group": "Aap is command ka istemal group chat mein nahi kar sakte.",
-       "private": "Aap is command ka istemal kisi private chat mein nahi kar sakte ho.",
-       "bot": "This Feature Is Only For 𝗕𝗼𝘁... and you're not a 𝗕𝗼𝘁.",
-       "wait": "Processing....",
-       "linkm": "Mujhe is command ke liye ek link chahiye.",
-       "error": "*404Error*",
-       "sudo": "*Hey User 👋....*\nYou can't use this command because this command is only for my co-owner.",
-       "endLimit": "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours",
-}
+    "AUTHOR": "MR.NEXUS",
+  
+  "STRINGS": {
+        "xiaobot": {
+            "success": "काम हो गया ✅️",
+            "admin": "*ये कमांड सिर्फ ग्रुप एडमिन के लिए है...*निसिलिये तुम कमांड का इस्तेमल नहीं कर सकते..",
+            "botAdmin": "मैं बिना *व्यवस्थापक* बने कमांड को नहीं चला सकता..",
+            "owner": "ये आदेश सिर्फ मेरे मालिक इस्तेमल कर सकते हैं.. और आप मेरे मालिक नहीं हो!!",
+            "group": "आप कमांड का इस्टेमल ग्रुप चैट में नहीं कर सकते..",
+            "private": "आप कमांड का इस्तेमल किसी प्राइवेट चैट में नहीं कर सकते हो..",
+            "bot": "यह सुविधा केवल बॉट के लिए है... और आप एक बॉट नहीं हैं..",
+            "wait": "संसाधन.......",
+            "linkm": "मुझे इस कमांड के लिए एक लिंक चाहिए.",
+            "error": "* 404 त्रुटि *..",
+            "endLimit": "आपकी दैनिक सीमा समाप्त हो गई है, सीमा हर 12 घंटे में रीसेट की जाएगी",
+        }
+    }
 }
