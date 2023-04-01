@@ -16,7 +16,7 @@
             "wait": "أنا أقوم بمعالجة الأمر الخاص بك ، يرجى الانتظار ",
             "linkm": "أحتاج رابط",
             "error": "لدي خطأ!",
-            "endLimit": "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours",
+            "endLimit": "انتهت صلاحية الحد اليومي الخاص بك ، وسيتم إعادة تعيين الحد كل 12 ساعة"
         }
     }
 }
