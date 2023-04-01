@@ -71,11 +71,58 @@ let bad = JSON.parse(fs.readFileSync('./src/toxic/bad.json'));
 let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 
 //////////////////////
-const LANG = require('./language.js')
-if (global.mess == 'EN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/EN.json`))
-if (global.mess == 'HN' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/HN.json`))
-if (global.mess == 'AR' ).then(await axios.get(`https://raw.githubusercontent.com/DEVILL-MASCOT/Xiao-MD-2/main/src/AR.json`))
- 
+const Language = require('./language')
+const mess = Language.getString('xioabot')
+
+var success  = ' ' 
+if (global.mess == 'EN') success = `Processing done ✅️`
+if (global.mess == 'HN') success = `काम हो गया ✅️`
+if (global.mess == 'AR') success = `* تم المعالجة !! * ✅️`
+var admin = ' ' 
+if (global.mess == 'EN') admin = `Hey dear user,\nYou are not an admin,so you can't use this command` 
+if (global.mess == 'HN') admin = `*ये कमांड सिर्फ ग्रुप एडमिन के लिए है...*निसिलिये तुम कमांड का इस्तेमल नहीं कर सकते।`
+if (global.mess == 'AR') admin = `عزيزي المستخدم ، لا يمكنني متابعة هذا الأمر نيابة عنك. لأنك لست مشرفًا.`
+var botadmin = ' ' 
+if (global.mess == 'EN') botadmin = `I am not an admin, so i can't process this action.`
+if (global.mess == 'HN') botadmin = `मैं बिना *व्यवस्थापक* बने कमांड को नहीं चला सकती`
+if (global.mess == 'AR') botadmin = `لا يمكنني متابعة هذا الأمر دون أن أكون مسؤولاً`
+var owner = ' '
+if (global.mess == 'EN') owner = `This command is only made for my owner.` 
+if (global.mess == 'HN') owner = `ये आदेश सिर्फ मेरे मालिक इस्तेमल कर सकते हैं.. और आप मेरे मालिक नहीं हो!!`
+if (global.mess == 'AR') owner = `لا يمكنك استعمال هذا الامر، هذا مخصص فقط للمالك.`
+var premime = ' '
+if (global.mess == 'EN') premime = `Premium Special Features If You Want to Register Type Rent`
+if (global.mess == 'HN') premime  = `प्रीमियम विशेष विशेषताएं यदि आप पंजीकरण प्रकार किराए पर पंजीकरण करना चाहते हैं`
+if (global.mess == 'AR') premime = `ميزات خاصة متميزة إذا كنت ترغب في التسجيل نوع الإيجار`
+var group = ' ' 
+if (global.mess == 'EN') group = `Huh... I can't use this command in a private chat!!`
+
+if (global.mess == 'HN') group = `ना।।। मैं एक निजी चैट में इस आदेश का उपयोग नहीं कर सकता !!`
+if (global.mess == 'AR') group = `هاه... لا يمكنني استخدام هذا الأمر في دردشة خاصة !!`
+var private = ' '
+if (global.mess == 'EN') group = `Uff... I can't take this action in a private chat...`
+if (global.mess == 'HN') group = `उफ़... मैं निजी चैट में यह कार्रवाई नहीं कर सकता...`
+if (global.mess == 'AR') group = `أوف... لا يمكنني اتخاذ هذا الإجراء في دردشة خاصة...`
+var bot = ' '
+if (global.mess == 'EN') bot = `This Feature Is Only For 𝗕𝗼𝘁... and you're not a 𝗕𝗼𝘁.`
+if (global.mess == 'HN') bot = `यह सुविधा केवल बॉट के लिए है... और आप एक बॉट नहीं हैं।`
+if (global.mess == 'AR') bot = `هذه الميزة مخصصة فقط للروبوت... وأنت لست روبوتا.`
+var wait = ' '
+if (global.mess == 'EN') wait = `*Processing started....*`
+if (global.mess == 'HN') wait = `* प्रसंस्करण शुरू हुआ...*`
+if (global.mess == 'AR') wait = `*بدأت المعالجة....*`
+var linkm = ' '
+if (global.mess == 'EN') wait = `I need a link to process this command for you...`
+if (global.mess == 'HN') wait = `मुझे आपके लिए इस आदेश को संसाधित करने के लिए एक लिंक की आवश्यकता है...`
+if (global.mess == 'AR') wait = `أحتاج إلى رابط لمعالجة هذا الأمر نيابة عنك...`
+var error = ' '
+if (global.mess == 'EN') error = `Process stopped!!...i got an error`
+if (global.mess == 'HN') error = `प्रक्रिया रुक गई!... मुझे एक त्रुटि मिली`
+if (global.mess == 'AR') error = `توقفت العملية!!... حصلت على خطأ`
+var endLimit = ' '
+if (global.mess == 'EN') endLimit = `Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours`
+if (global.mess == 'HN') endLimit = `आपकी दैनिक सीमा समाप्त हो गई है, सीमा हर 12 घंटे में रीसेट की जाएगी`
+if (global.mess == 'AR') endLimit = `انتهت صلاحية الحد اليومي الخاص بك ، وسيتم إعادة تعيين الحد كل 12 ساعة`
 //database auto reply
 					    
 let Xysticker = JSON.parse(fs.readFileSync('./Xiao-❤-Media/sticker/sticker.json'));
