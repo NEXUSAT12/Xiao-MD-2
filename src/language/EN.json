@@ -17,7 +17,7 @@
             "wait": "*Processing started....*",
             "linkm": "I need a link to process this command for you...",
             "error": "Process stopped!!...i got an error",
-            "endLimit": "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours",
+            "endLimit": "Your Daily Limit Has Expired, The Limit Will Be Reset Every 12 Hours"
         }
     }
 }
