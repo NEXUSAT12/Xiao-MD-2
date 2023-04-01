@@ -72,7 +72,7 @@ let autorep =JSON.parse(fs.readFileSync('./database/autoreply.json'));
 /////LANGUAGE////
 
 const language = require('./language.js')
-const Lang = Language.getString('xiaobot')
+const Lang = language.getString('xiaobot')
 var success  = ' ' 
 if (global.mess == 'EN') success = 'Processing done ✅️'
 if (global.mess == 'HN') success = 'काम हो गया ✅️'
@@ -440,7 +440,7 @@ let buttonMessage = {
         // Anti Link
         if (Antilinkgc) {
         if (budy.match(`chat.whatsapp.com`)) {
-        if (!isBotAdmins) return m.reply(`${mess.botAdmin}, to kick the person who send link`)
+        if (!isBotAdmins) return m.reply(`${Lang.botadmin}, to kick the person who send link`)
         let gclink = (`https://chat.whatsapp.com/`+await NEXUS.groupInviteCode(m.chat))
         let isLinkThisGc = new RegExp(gclink, 'i')
         let isgclink = isLinkThisGc.test(m.text)
@@ -507,7 +507,7 @@ NEXUS.sendMessage(from, {text:`\`\`\`「 Wa.me Link Detected 」\`\`\`\n\n@${kic
 //antivirtex by X
   if (antiVirtex) {
   if (budy.length > 2500) {
-  if (!isBotAdmins) return m.reply(mess.botAdmin)
+  if (!isBotAdmins) return m.reply(Lang.botadmin)
           await NEXUS.sendMessage(m.chat,
 			    {
 			        delete: {
@@ -1059,7 +1059,7 @@ Type *surrender* to surrender and admit defeat`
             }
             break
             case 'chat': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 if (!q) throw 'Option : 1. mute\n2. unmute\n3. archive\n4. unarchive\n5. read\n6. unread\n7. delete'
                 if (args[0] === 'mute') {
                     NEXUS.chatModify({ mute: 'Infinity' }, m.chat, []).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
@@ -1122,7 +1122,7 @@ break
             }
             break
             case 'soulmate': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -1137,7 +1137,7 @@ break
             }
             break
             case 'couple': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             let member = participants.map(u => u.id)
             let orang = member[Math.floor(Math.random() * member.length)]
             let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -1151,7 +1151,7 @@ Cieeee, What's Going On❤️💖👀`
             }
             break
             case 'buttonmaker': {
-            if (!isPremium) throw mess.premime
+            if (!isPremium) throw Lang.premime
 			if (!text) throw `Example : ${prefix + command} hi|hello`
             let jawab = `${text.split("|")[0]}`
             let buttons = [{ buttonId: 'menu', buttonText: { displayText: `${themeemoji}` }, type: 1 }]
@@ -1160,7 +1160,7 @@ Cieeee, What's Going On❤️💖👀`
             break
             
             case 'react': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 reactionMessage = {
                     react: {
                         text: args[0],
@@ -1171,21 +1171,21 @@ Cieeee, What's Going On❤️💖👀`
             }
             break  
             case 'join': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 if (!text) throw 'Enter the group link!'
                 if (!isUrl(args[0]) && !args[0].includes('whatsapp.com')) throw 'Link Invalid!'
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
                 let result = args[0].split('https://chat.whatsapp.com/')[1]
                 await NEXUS.groupAcceptInvite(result).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
             }
             break
             case 'leavegc': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 await NEXUS.groupLeave(m.chat).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
             }
             break
             case 'setexif': {
-               if (!isCreator) throw mess.owner
+               if (!isCreator) throw Lang.owner
                if (!text) throw `Example : ${prefix + command} packname|author`
           global.packname = text.split("|")[0]
           global.author = text.split("|")[1]
@@ -1193,90 +1193,90 @@ Cieeee, What's Going On❤️💖👀`
             }
             break
 	case 'kick': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+		if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'remove').then(m.reply("𝓡𝓮𝓶𝓸𝓿𝓮𝓭 🤫" )) 
 	}
 	break
 	case 'add': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+		if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
 		let users = m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'add').then(m.reply("𝓐𝓭𝓮𝓭😎❤️‍🔥")) 
 	}
 	break
 	case 'promote': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+		if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
 	}
 	break
 	case 'demote': {
-		if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+		if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'demote')
 	}
 	break
         case 'block': {
-		if (!isCreator) throw mess.owner
+		if (!isCreator) throw Lang.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.updateBlockStatus(users, 'block')
 	}
 	break
         case 'unblock': {
-		if (!isCreator) throw mess.owner
+		if (!isCreator) throw Lang.owner
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 		await NEXUS.updateBlockStatus(users, 'unblock')
 	}
 	break
 	    case 'setname': case 'setsubject': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Text ?'
-                await NEXUS.groupUpdateSubject(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
+                await NEXUS.groupUpdateSubject(m.chat, text).then((res) => m.reply(Lang.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
           case 'setdesc': case 'setdesk': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Text ?'
-                await NEXUS.groupUpdateDescription(m.chat, text).then((res) => m.reply(mess.success)).catch((err) => m.reply(jsonformat(err)))
+                await NEXUS.groupUpdateDescription(m.chat, text).then((res) => m.reply(Lang.success)).catch((err) => m.reply(jsonformat(err)))
             }
             break
           case 'setbotpp': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 await NEXUS.updateProfilePicture(botNumber, { url: media }).catch((err) => fs.unlinkSync(media))
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 }
                 break
            case 'setgrouppp': case 'setgruppp': case 'setgcpp': {
-                if (!m.isGroup) throw mess.group
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isAdmins) throw Lang.admin
                 if (!quoted) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (!/image/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 if (/webp/.test(mime)) throw `Send/Reply Image With Caption ${prefix + command}`
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 await NEXUS.updateProfilePicture(m.chat, { url: media }).catch((err) => fs.unlinkSync(media))
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 }
                 break
             case 'tagall':  case 'ping' : case 'everyone': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
 let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
  🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🌿 *Message : ${q ? q : 'empty'}*\n\n╭──────⊹⊱𝓜𝓮𝓶𝓫𝓮𝓻𝓼 ✨⊰⊹──────╮
 `
@@ -1287,15 +1287,15 @@ let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
                 }
                 break
                 case 'hidetag': case 'texttag': {
-            if (!m.isGroup) throw mess.group
-            if (!isBotAdmins) throw mess.botAdmin
-            if (!isAdmins) throw mess.admin
+            if (!m.isGroup) throw Lang.group
+            if (!isBotAdmins) throw Lang.botadmin
+            if (!isAdmins) throw Lang.admin
             let tex = `🎀 Group: ${groupName}*\n📢 *Announcer: @${m.sender.split("@")[0]} *\n🧧 *Tags: HIDDEN*\n ✨Message : ${q ? q : 'empty'}`
             NEXUS.sendMessage(m.chat, { text : tex , mentions: participants.map(a => a.id)}, { quoted: m })
             }
             break
 	    case 'style': case 'styletext': {
-	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(mess.endLimit) // response when limit runs out
+	        if (!isPremium && global.db.data.users[m.sender].limit < 1) return m.reply(Lang.endLimit) // response when limit runs out
 		db.data.users[m.sender].limit -= 1 // -1 limit
 		let { styletext } = require('./lib/scraper')
 		if (!text) throw 'Enter Query text!'
@@ -1308,7 +1308,7 @@ let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
 	    }
 	    break
                case 'vote': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             if (m.chat in vote) throw `_There are still votes in this chat!_\n\n*❤️‍🔥${prefix}deletevote* - to delete votes`
             if (!text) throw `Enter Reason for Vote, Example: *${prefix + command} Handsome Owner*`
             m.reply(`Vote dimulai!\n\n*❤️‍🔥${prefix}upvote* - for sure\n*❤️‍🔥${prefix}devote* - for devote\n*❤️‍🔥${prefix}cekvote* - to check the vote\n*❤️‍🔥${prefix}deletevote* - to delete votes`)
@@ -1350,7 +1350,7 @@ let buttonsVote = [
 	    }
             break
                case 'upvote': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*❤️‍🔥${prefix}vote* - to start voting`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1392,7 +1392,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 	    }
              break
                 case 'devote': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*❤️‍🔥${prefix}vote* - to start voting`
             isVote = vote[m.chat][1].concat(vote[m.chat][2])
             wasVote = isVote.includes(m.sender)
@@ -1435,7 +1435,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             break
                  
 case 'checkvote':
-if (!m.isGroup) throw mess.group
+if (!m.isGroup) throw Lang.group
 if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*❤️‍🔥${prefix}vote* - to start voting`
 teks_vote = `* VOTE *
 
@@ -1463,16 +1463,16 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
 NEXUS.sendTextWithMentions(m.chat, teks_vote, m)
 break
 		case 'deletevote': case'delvote': case 'hapusvote': {
-            if (!m.isGroup) throw mess.group
+            if (!m.isGroup) throw Lang.group
             if (!(m.chat in vote)) throw `_*no voting in this group!*_\n\n*❤️‍🔥${prefix}vote* - to start voting`
             delete vote[m.chat]
             m.reply('Successfully Deleted Vote Session In This Group')
 	    }
             break
 case 'group': case 'grup': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
                 if (args[0] === 'close'){
                     await NEXUS.groupSettingUpdate(m.chat, 'announcement').then((res) => m.reply(`*Successfully Closed The Group*`)).catch((err) => m.reply(jsonformat(err)))
                 } else if (args[0] === 'open'){
@@ -1488,9 +1488,9 @@ case 'group': case 'grup': {
             }
             break
             case 'editinfo': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
              if (args[0] === 'open'){
                 await NEXUS.groupSettingUpdate(m.chat, 'unlocked').then((res) => m.reply(`*Successfully Opened Edit Group Info*`)).catch((err) => m.reply(jsonformat(err)))
              } else if (args[0] === 'close'){
@@ -1517,9 +1517,9 @@ const Xkak = okebnh1[Math.floor(Math.random() * okebnh1.length)]
 NEXUS.sendMessage(m.chat, { text: Xkak }, { quoted: m })
 break
 case 'mute': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
                 if (args[0] === "on") {
                 if (db.data.chats[m.chat].mute) return m.reply(`It's Been Active Before`)
                 db.data.chats[m.chat].mute = true
@@ -1553,16 +1553,16 @@ NEXUS.sendTextWithMentions(m.chat, teks, m)
 }
 break
             case 'linkgroup': case 'linkgc': case 'gclink': case 'grouplink': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
                 let response = await NEXUS.groupInviteCode(m.chat)
                 NEXUS.sendText(m.chat, `https://chat.whatsapp.com/${response}\n\nGroup Link : ${groupMetadata.subject}`, m, { detectLink: true })
             }
             break
             case 'ephemeral': {
-                if (!m.isGroup) throw mess.group
-                if (!isBotAdmins) throw mess.botAdmin
-                if (!isAdmins) throw mess.admin
+                if (!m.isGroup) throw Lang.group
+                if (!isBotAdmins) throw Lang.botadmin
+                if (!isAdmins) throw Lang.admin
                 if (!text) throw 'Enter the value enable/disable'
                 if (args[0] === 'enable') {
                     await NEXUS.sendMessage(m.chat, { disappearingMessagesInChat: WA_DEFAULT_EPHEMERAL }).then((res) => m.reply(jsonformat(res))).catch((err) => m.reply(jsonformat(err)))
@@ -1592,7 +1592,7 @@ break
             break
             
             case 'bctext': case 'broadcasttext': case 'broadcast':
-			    if (!isCreator) throw mess.owner
+			    if (!isCreator) throw Lang.owner
 		            if (!text) throw `Enter text`
 		                            var data = await store.chats.all()
                             for (let i of data) {
@@ -1601,7 +1601,7 @@ break
                             }
                             break
 case 'broadcastimage': case 'bcimage': case 'broadcastvideo': case 'broadcastvid':
-if(!isCreator) throw mess.owner
+if(!isCreator) throw Lang.owner
         if (!text) throw `enter text`
         let getGroups = await NEXUS.groupFetchAllParticipating()
         let groups = Object.entries(getGroups).slice(0).map(entry => entry[1])
@@ -1655,7 +1655,7 @@ await NEXUS.sendMessage(i, { video:media,  caption: txt, mentions:participants.m
              break
 case 'sticker': case 's': case 'stickergif': case 'sgif': {
             if (!quoted) throw `*Reply Video/Image With Caption* ${prefix + command}`
-            m.reply(mess.wait)
+            m.reply(Lang.wait)
                     if (/image/.test(mime)) {
                 let media = await quoted.download()
                 let encmedia = await NEXUS.sendImageAsSticker(m.chat, media, m, { packname: global.packname, author: global.author })
@@ -1688,7 +1688,7 @@ case 'buypreim':
 m.reply(`Chat owner bro, please type .owner`)
 break
   case 'addprem':
-if (!isCreator) throw mess.owner
+if (!isCreator) throw Lang.owner
 if (!q) return m.reply(`Enter the sample number\n\nExample: \n❤️‍🔥${prefix}${command} 918130784851`)
 if(isNaN(q)) return await m.reply('must be a number')
   if (q.includes(`+`)) return m.reply('Do not use + direct number 9169****')
@@ -1699,7 +1699,7 @@ m.reply(`* PREMIUM ADDED *\n\n${themeemoji} *ID*: ${prmi}`)
 break
 case 'delprem':
  case 'dellprem':
-if (!isCreator) throw mess.owner
+if (!isCreator) throw Lang.owner
   if (!q) return m.reply(`Enter the Number\n\nExample: \n❤️‍🔥${prefix}${command} 918130784851`)
   if(isNaN(q)) return await m.reply('must be a number')
   if (q.includes(`+`)) return m.reply('Do not use + direct number 9169****')
@@ -1740,7 +1740,7 @@ let { TelegraPh } = require('./lib/uploader')
 if (!text) return m.reply(`Send/Reply Photo With Caption ${prefix + command} *text*`)
 if (text.includes('|')) return m.reply(`Send/Reply Photo With Caption ${prefix + command} *text*`)
 if (!/image/.test(mime)) return m.reply(`Send/Reply Photo With Caption ${prefix + command} *text*`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 mee = await NEXUS.downloadAndSaveMediaMessage(quoted)
 mem = await TelegraPh(mee)
 meme = `https://api.memegen.link/images/custom/-/${text}.png?background=${mem}`
@@ -1751,7 +1751,7 @@ break
 case 'toimage': case 'toimg': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `Reply sticker with caption *${prefix + command}*`
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 let ran = await getRandom('.png')
                 exec(`ffmpeg -i ${media} ${ran}`, (err) => {
@@ -1766,7 +1766,7 @@ case 'toimage': case 'toimg': {
 case 'tomp4': case 'tovideo': {
                 if (!quoted) throw 'Reply Image'
                 if (!/webp/.test(mime)) throw `reply sticker with caption *${prefix + command}*`
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
@@ -1777,7 +1777,7 @@ case 'tomp4': case 'tovideo': {
             case 'toaud': case 'toaudio': {
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Send/Reply Video/Audio You Want to Use as Audio With Caption ${prefix + command}`
             if (!quoted) throw `Send/Reply Video/Audio You Want to Use as Audio With Caption ${prefix + command}`
-            m.reply(mess.wait)
+            m.reply(Lang.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
@@ -1788,7 +1788,7 @@ case 'tomp4': case 'tovideo': {
             if (/document/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
             if (!quoted) throw `Send/Reply Video/Audio You Want to Convert into MP3 With Caption ${prefix + command}`
-            m.reply(mess.wait)
+            m.reply(Lang.wait)
             let media = await quoted.download()
             let { toAudio } = require('./lib/converter')
             let audio = await toAudio(media, 'mp4')
@@ -1798,7 +1798,7 @@ case 'tomp4': case 'tovideo': {
             case 'tovn': case 'toptt': {
             if (!/video/.test(mime) && !/audio/.test(mime)) throw `Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`
             if (!quoted) throw `Reply Video/Audio That You Want To Be VN With Caption ${prefix + command}`
-            m.reply(mess.wait)
+            m.reply(Lang.wait)
             let media = await quoted.download()
             let { toPTT } = require('./lib/converter')
             let audio = await toPTT(media, 'mp4')
@@ -1808,7 +1808,7 @@ case 'tomp4': case 'tovideo': {
             case 'togif': {
                 if (!quoted) throw 'Reply video'
                 if (!/webp/.test(mime)) throw `reply sticker with caption *${prefix + command}*`
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
 		let { webp2mp4File } = require('./lib/uploader')
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 let webpToMp4 = await webp2mp4File(media)
@@ -1839,7 +1839,7 @@ case 'imagenobg': case 'removebg': case 'remove-bg': {
 	    hmm = await './src/remobg-'+getRandom('')
 	    localFile = await NEXUS.downloadAndSaveMediaMessage(quoted, hmm)
 	    outputFile = await './src/hremo-'+getRandom('.png')
-	    m.reply(mess.wait)
+	    m.reply(Lang.wait)
 	    remobg.removeBackgroundFromImageFile({
 	      path: localFile,
 	      apiKey: apinobg,
@@ -1848,7 +1848,7 @@ case 'imagenobg': case 'removebg': case 'remove-bg': {
 	      scale: "100%",
 	      outputFile 
 	    }).then(async result => {
-	    NEXUS.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: mess.success}, { quoted : m })
+	    NEXUS.sendMessage(m.chat, {image: fs.readFileSync(outputFile), caption: Lang.success}, { quoted : m })
 	    await fs.unlinkSync(localFile)
 	    await fs.unlinkSync(outputFile)
 	    })
@@ -2058,7 +2058,7 @@ NEXUS.sendMessage(from, {video:{url:ytmp4play.videoUrl}, mimetype:"video/mp4", c
  }
  break
 case 'pinterest': {
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
 		let { pinterest } = require('./lib/scraper')
                 anupint = await pinterest(text)
                 result = anupint[Math.floor(Math.random() * anupint.length)]
@@ -2066,7 +2066,7 @@ case 'pinterest': {
             }
             break
             case 'waifu': {
-            	m.reply(mess.wait)
+            	m.reply(Lang.wait)
                 anufux = await fetchJson(`https://waifu.pics/api/sfw/waifu`)
                 buffer13x = await getBuffer(anufux.url)
                 let buttons = [{buttonId: `waifu`, buttonText: {displayText: 'Next Image'}, type: 1},{buttonId: `animemenu`, buttonText: {displayText: '⬅️Back'}, type: 1}]
@@ -2081,7 +2081,7 @@ case 'pinterest': {
             }
             break
 	    case 'couplepp': case 'ppcouple': {
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
                 let anucpp = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/Xiao-❤-Media/main/couple.json')
                 let random = anucpp[Math.floor(Math.random() * anucpp.length)]
                 NEXUS.sendMessage(m.chat, { image: { url: random.male }, caption: `Couple Male` }, { quoted: m })
@@ -2160,7 +2160,7 @@ case 'chocolate': case 'strawberry': case 'matrix': case 'blood': case 'dropwate
 case 'lava': case 'rockart': case 'bloodglas': case 'halloween': case 'darkgold': case 'joker': case 'wicker':
  case 'firework': case 'skeleton': case 'blackpinkart': case 'sand': case 'glue': case '1917': case 'leaves': case 'demon': {
              if (!q) throw `Example : ${prefix + command} ${global.ownername}`
-             m.reply(mess.wait)
+             m.reply(Lang.wait)
              let link
              if (/candy/.test(command)) link = 'https://textpro.me/create-christmas-candy-cane-text-effect-1056.html'
              if (/christmas/.test(command)) link = 'https://textpro.me/christmas-tree-text-effect-online-free-1057.html'
@@ -2225,7 +2225,7 @@ case 'lava': case 'rockart': case 'bloodglas': case 'halloween': case 'darkgold'
              break
 case'glitch3':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-glitch-text-effect-style-tik-tok-983.html", [
@@ -2236,7 +2236,7 @@ maker.textpro("https://textpro.me/create-glitch-text-effect-style-tik-tok-983.ht
 
 case '3dbox':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-box-text-effect-online-880.html", [
     `${q}`,])
 .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2245,7 +2245,7 @@ break
 
 case 'waterdrop':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
  maker.textpro("https://textpro.me/dropwater-text-effect-872.html", [
      `${q}`,])
     .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2254,7 +2254,7 @@ m.reply(mess.wait)
 
 case 'lion2':
   if(!q) throw `Use ${prefix + command} text`
-  m.reply(mess.wait)
+  m.reply(Lang.wait)
   maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
       `${q}`,])
      .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2263,7 +2263,7 @@ case 'lion2':
 
 case 'papercut':
       if(!q) throw `Use ${prefix + command} text`
-      m.reply(mess.wait)
+      m.reply(Lang.wait)
       maker.textpro("https://textpro.me/create-art-paper-cut-text-effect-online-1022.html", [
 `${q}`,])
          .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2272,7 +2272,7 @@ case 'papercut':
 
 case 'transformer':
       if(!q) throw `Use ${prefix + command} text`
-      m.reply(mess.wait)
+      m.reply(Lang.wait)
       maker.textpro("https://textpro.me/create-a-transformer-text-effect-online-1035.html", [
 `${q}`,])
 .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2281,7 +2281,7 @@ break
    
 case 'harrypot':
        if(!q) throw `Use ${prefix + command} text|text`
-       m.reply(mess.wait)
+       m.reply(Lang.wait)
        teks1 = q.split("|")[0]
        teks2 = q.split("|")[1]
        maker.textpro("https://textpro.me/create-harry-potter-text-effect-online-1025.html", [
@@ -2292,7 +2292,7 @@ case 'harrypot':
 
 case 'neondevil':
       if(!q) throw `Use ${prefix + command} text`
-      m.reply(mess.wait)
+      m.reply(Lang.wait)
       maker.textpro("https://textpro.me/create-neon-devil-wings-text-effect-online-free-1014.html", [
 `${q}`,])
          .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2301,7 +2301,7 @@ case 'neondevil':
 
 case '3dstone':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-stone-cracked-cool-text-effect-1029.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2310,7 +2310,7 @@ maker.textpro("https://textpro.me/3d-stone-cracked-cool-text-effect-1029.html", 
 
 case '3davengers':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2319,7 +2319,7 @@ maker.textpro("https://textpro.me/create-3d-avengers-logo-online-974.html", [
 
 case 'thunder':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/online-thunder-text-effect-generator-1031.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2328,7 +2328,7 @@ maker.textpro("https://textpro.me/online-thunder-text-effect-generator-1031.html
    
 case 'window':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2337,7 +2337,7 @@ maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.ht
 
    case 'blackpinkneon':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-neon-light-blackpink-logo-text-effect-online-1081.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2347,7 +2347,7 @@ maker.textpro("https://textpro.me/create-neon-light-blackpink-logo-text-effect-o
 case 'graffiti':
    case 'grafiti':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.html", [
@@ -2358,7 +2358,7 @@ maker.textpro("https://textpro.me/create-a-cool-graffiti-text-on-the-wall-1010.h
 
 case 'pornhub2':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.html", [
@@ -2369,7 +2369,7 @@ maker.textpro("https://textpro.me/pornhub-style-logo-online-generator-free-977.h
 
 case 'blackpink2':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2378,7 +2378,7 @@ maker.textpro("https://textpro.me/create-blackpink-logo-style-online-1001.html",
 
 case 'glitch':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-impressive-glitch-text-effects-online-1027.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2387,7 +2387,7 @@ maker.textpro("https://textpro.me/create-impressive-glitch-text-effects-online-1
 
 case 'glitch2':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-a-glitch-text-effect-online-free-1026.html", [
@@ -2398,7 +2398,7 @@ maker.textpro("https://textpro.me/create-a-glitch-text-effect-online-free-1026.h
 
 case 'glitch3':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-glitch-text-effect-style-tik-tok-983.html", [
@@ -2409,7 +2409,7 @@ maker.textpro("https://textpro.me/create-glitch-text-effect-style-tik-tok-983.ht
 
 case '3dspace':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", [
@@ -2420,7 +2420,7 @@ maker.textpro("https://textpro.me/create-space-3d-text-effect-online-985.html", 
 
 case 'lion':
 if(!q) throw `Use ${prefix + command} text|text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
@@ -2431,7 +2431,7 @@ maker.textpro("https://textpro.me/create-lion-logo-mascot-online-938.html", [
 
 case '3dneon':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-3d-neon-light-text-effect-online-1028.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2440,7 +2440,7 @@ maker.textpro("https://textpro.me/create-3d-neon-light-text-effect-online-1028.h
 
 case 'neon':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/neon-text-effect-online-879.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2449,7 +2449,7 @@ maker.textpro("https://textpro.me/neon-text-effect-online-879.html", [
 
 case 'greenneon':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/green-neon-text-effect-874.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2458,7 +2458,7 @@ maker.textpro("https://textpro.me/green-neon-text-effect-874.html", [
     
 case 'bokeh':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2469,7 +2469,7 @@ maker.textpro("https://textpro.me/bokeh-text-effect-876.html", [
 
 case 'holographic':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2481,7 +2481,7 @@ maker.textpro("https://textpro.me/holographic-3d-text-effect-975.html", [
 case 'bear':
 
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
@@ -2493,7 +2493,7 @@ maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creati
 case 'wolf':
 
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 teks1 = q.split("|")[0]
 teks2 = q.split("|")[1]
 maker.textpro("https://textpro.me/create-wolf-logo-galaxy-online-936.html", [
@@ -2504,7 +2504,7 @@ maker.textpro("https://textpro.me/create-wolf-logo-galaxy-online-936.html", [
 
 case 'joker':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-logo-joker-online-934.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2513,7 +2513,7 @@ maker.textpro("https://textpro.me/create-logo-joker-online-934.html", [
 
 case 'dropwater2':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/dropwater-text-effect-872.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2522,7 +2522,7 @@ maker.textpro("https://textpro.me/dropwater-text-effect-872.html", [
    
    case 'summertime':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-summer-neon-light-text-effect-online-1076.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2531,7 +2531,7 @@ maker.textpro("https://textpro.me/create-a-summer-neon-light-text-effect-online-
 
 case 'neonlight2':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/neon-light-text-effect-with-galaxy-style-981.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2540,7 +2540,7 @@ maker.textpro("https://textpro.me/neon-light-text-effect-with-galaxy-style-981.h
 
 case 'thewall':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2549,7 +2549,7 @@ maker.textpro("https://textpro.me/break-wall-text-effect-871.html", [
    
 case 'natural':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2558,7 +2558,7 @@ maker.textpro("https://textpro.me/natural-leaves-text-effect-931.html", [
 
 case 'carbon':
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/carbon-text-effect-833.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2567,7 +2567,7 @@ maker.textpro("https://textpro.me/carbon-text-effect-833.html", [
 
 case 'pencil':
 if(!q) throw`Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2602,7 +2602,7 @@ case 'hoorror':{
 case 'whitebear':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creation-1012.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2611,7 +2611,7 @@ maker.textpro("https://textpro.me/online-black-and-white-bear-mascot-logo-creati
 case 'thunder2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-thunder-text-effect-online-881.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2621,7 +2621,7 @@ maker.textpro("https://textpro.me/create-thunder-text-effect-online-881.html", [
 case 'neon':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/neon-light-text-effect-online-882.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2630,7 +2630,7 @@ maker.textpro("https://textpro.me/neon-light-text-effect-online-882.html", [
 case 'matrix2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2639,7 +2639,7 @@ maker.textpro("https://textpro.me/matrix-style-text-effect-online-884.html", [
 case 'sky':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-cloud-text-effect-on-the-sky-online-1004.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2648,7 +2648,7 @@ maker.textpro("https://textpro.me/create-a-cloud-text-effect-on-the-sky-online-1
 case 'magma':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-magma-hot-text-effect-online-1030.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2657,7 +2657,7 @@ maker.textpro("https://textpro.me/create-a-magma-hot-text-effect-online-1030.htm
 case 'sand':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2666,7 +2666,7 @@ maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
 case 'pencil':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2675,7 +2675,7 @@ maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html",
 case 'graffiti':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2684,7 +2684,7 @@ maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011
 case 'metallic':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2693,7 +2693,7 @@ maker.textpro("https://textpro.me/create-a-metallic-text-effect-free-online-1041
 case 'steel':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2702,7 +2702,7 @@ maker.textpro("https://textpro.me/steel-text-effect-online-921.html", [
 case 'harrpotter':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-harry-potter-text-effect-online-1025.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2711,7 +2711,7 @@ maker.textpro("https://textpro.me/create-harry-potter-text-effect-online-1025.ht
 case 'underwater':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-underwater-text-effect-generator-online-1013.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2720,7 +2720,7 @@ maker.textpro("https://textpro.me/3d-underwater-text-effect-generator-online-101
 case 'luxury':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-luxury-gold-text-effect-online-1003.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2729,7 +2729,7 @@ maker.textpro("https://textpro.me/3d-luxury-gold-text-effect-online-1003.html", 
 case 'glue2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-3d-glue-text-effect-with-realistic-style-986.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2738,7 +2738,7 @@ maker.textpro("https://textpro.me/create-3d-glue-text-effect-with-realistic-styl
 case 'fabric':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2747,7 +2747,7 @@ maker.textpro("https://textpro.me/fabric-text-effect-online-964.html", [
 case 'neonlight':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/neon-light-glitch-text-generator-online-1063.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2756,7 +2756,7 @@ maker.textpro("https://textpro.me/neon-light-glitch-text-generator-online-1063.h
 case 'lava':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/lava-text-effect-online-914.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2765,7 +2765,7 @@ maker.textpro("https://textpro.me/lava-text-effect-online-914.html", [
 case 'toxic':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/toxic-text-effect-online-901.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2774,7 +2774,7 @@ maker.textpro("https://textpro.me/toxic-text-effect-online-901.html", [
 case 'ancient':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2783,7 +2783,7 @@ maker.textpro("https://textpro.me/3d-golden-ancient-text-effect-online-free-1060
 case 'christmas2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/sparkles-merry-christmas-text-effect-1054.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2792,7 +2792,7 @@ maker.textpro("https://textpro.me/sparkles-merry-christmas-text-effect-1054.html
 case 'sci_fi':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-3d-sci-fi-text-effect-online-1050.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2801,7 +2801,7 @@ maker.textpro("https://textpro.me/create-3d-sci-fi-text-effect-online-1050.html"
 case 'rainbow':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/3d-rainbow-color-calligraphy-text-effect-1049.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2810,7 +2810,7 @@ maker.textpro("https://textpro.me/3d-rainbow-color-calligraphy-text-effect-1049.
 case 'classic':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2819,7 +2819,7 @@ maker.textpro("https://textpro.me/video-game-classic-8-bit-text-effect-1037.html
 case 'watercolor2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-free-online-watercolor-text-effect-1017.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2828,7 +2828,7 @@ maker.textpro("https://textpro.me/create-a-free-online-watercolor-text-effect-10
 case 'halloweem2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-spooky-halloween-text-effect-online-1046.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2837,7 +2837,7 @@ maker.textpro("https://textpro.me/create-a-spooky-halloween-text-effect-online-1
 case 'halloweenfire':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/halloween-fire-text-effect-940.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2846,7 +2846,7 @@ maker.textpro("https://textpro.me/halloween-fire-text-effect-940.html", [
 case 'writing':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2855,7 +2855,7 @@ maker.textpro("https://textpro.me/sand-writing-text-effect-online-990.html", [
 case 'foggy':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2864,7 +2864,7 @@ maker.textpro("https://textpro.me/write-text-on-foggy-window-online-free-1015.ht
 case 'marvel':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2873,7 +2873,7 @@ maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972
 case 'skeleton2':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-halloween-skeleton-text-effect-online-1047.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2882,7 +2882,7 @@ maker.textpro("https://textpro.me/create-halloween-skeleton-text-effect-online-1
 case 'sketch':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2891,7 +2891,7 @@ maker.textpro("https://textpro.me/create-a-sketch-text-effect-online-1044.html",
 case 'wonderful':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2900,7 +2900,7 @@ maker.textpro("https://textpro.me/create-wonderful-graffiti-art-text-effect-1011
 case 'batman':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2909,7 +2909,7 @@ maker.textpro("https://textpro.me/make-a-batman-logo-online-free-1066.html", [
 case 'juice':
    
 if(!q) throw `Use ${prefix + command} text`
-m.reply(mess.wait)
+m.reply(Lang.wait)
 maker.textpro("https://textpro.me/fruit-juice-text-effect-861.html", [
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
@@ -2918,7 +2918,7 @@ maker.textpro("https://textpro.me/fruit-juice-text-effect-861.html", [
 case 'pornhub':{
 	
 if(!q) throw `Example: ${prefix + command} ajg | ea`
-m.reply(mess.wait)
+m.reply(Lang.wait)
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
@@ -2930,7 +2930,7 @@ NEXUS.sendMessage(from,{image:{url:anuphub}, caption:"Here you go!"},{quoted:m})
 break
 case 'retro':{
 if(!q) throw `Example: ${prefix + command} ajg | ea`
-m.reply(mess.wait)
+m.reply(Lang.wait)
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
@@ -2942,7 +2942,7 @@ NEXUS.sendMessage(from,{image:{url:anutro2}, caption:"Here you go!"},{quoted:m})
 break
 case 'horror':{
 if(!q) throw `Example: ${prefix + command} ajg | ea`
-m.reply(mess.wait)
+m.reply(Lang.wait)
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
@@ -2954,7 +2954,7 @@ NEXUS.sendMessage(from,{image:{url:anuror2}, caption:"Here you go!"},{quoted:m})
 break
 case '8bit':{
 if(!q) throw `Example: ${prefix + command} ajg | ea`
-m.reply(mess.wait)
+m.reply(Lang.wait)
   inilogo4 = args.join(" ")
 inilogo9 = args.join(" ")
    var logo4 = inilogo4.split('|')[0]
@@ -2967,7 +2967,7 @@ break
 case 'tiktok':{ 
 if (!text) return m.reply( `Example : ${prefix + command} link`)
 if (!q.includes('tiktok')) return m.reply(`Link Invalid!!`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 require('./lib/tiktok').Tiktok(q).then( data => {
     var button = [{ buttonId: `tiktokaudio ${q}`, buttonText: { displayText: `AUDIO‡` }, type: 1 }, { buttonId: `menu`, buttonText: { displayText: `Menu` }, type: 1 }]
 NEXUS.sendMessage(m.chat, { caption: `Here you go!`, video: { url: data.watermark }, buttons: button, footer: botname, mentions: [sender] })
@@ -2977,158 +2977,158 @@ break
 case 'tiktokaudio':{
 if (!text) return m.reply( `Example : ${prefix + command} link`)
 if (!q.includes('tiktok')) return m.reply(`Link Invalid!!`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 require('./lib/tiktok').Tiktok(q).then( data => {
 NEXUS.sendMessage(m.chat, { audio: { url: data.audio }, mimetype: 'audio/mp4' }, { quoted: m })
 })
 }
 break
 case 'tiktokgirl':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var asupan = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/tiktokgirl.json'))
 var hasil = pickRandom(asupan)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktokghea':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var gheayubi = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/gheayubi.json'))
 var hasil = pickRandom(gheayubi)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktokbocil':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var bocil = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/bocil.json'))
 var hasil = pickRandom(bocil)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktoknukhty':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ukhty = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/ukhty.json'))
 var hasil = pickRandom(ukhty)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktoksantuy':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var santuy = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/santuy.json'))
 var hasil = pickRandom(santuy)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktokkayes':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var kayes = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/kayes.json'))
 var hasil = pickRandom(kayes)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktokpanrika':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var rikagusriani = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/panrika.json'))
 var hasil = pickRandom(rikagusriani)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'tiktoknotnot':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokvids/notnot.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, video: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'chinese':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/china.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'hijab':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/hijab.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'indo':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/indonesia.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'japanese':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/japan.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'korean':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/korea.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'malay':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/malaysia.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'randomgirl':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/random.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'randomboy':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/random2.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'thai':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/thailand.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'vietnamese':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/vietnam.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'aesthetic':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/aesthetic.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'antiwork':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/antiwork.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'blackpink':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/blackpink.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'BTS' : case 'bts':{ 
 var hi  = await fetchJson('https://raw.githubusercontent.com/NEXUSAT12/XBOTMedia/main/bts')
@@ -3154,144 +3154,144 @@ NEXUS.sendImageAsSticker(m.chat, hh, m, { packname: global.packname, author: glo
 }
 break
 case 'bike':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/bike.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'boneka':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/boneka.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'cosplay':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/cosplay.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'cat':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/cat.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'doggo':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/doggo.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'hacking':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/hacking.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'justina':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/justina.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'kayes':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/kayes.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'kpop':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/kpop.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'notnot':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/notnot.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'car':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/car.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'couplepic':case 'couplepicture':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/ppcouple.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'profilepic':  case 'profilepicture':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/profile.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'pubg':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/pubg.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'rose':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/rose.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'ryujin':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/ryujin.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'ulzzangboy':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/ulzzangboy.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'ulzzanggirl':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/ulzzanggirl.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'wallml': case 'wallpaperml':case 'mobilelegend':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/wallml.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'wallpaperphone': case 'wallphone':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/randompics/wallhp.json'))
 var hasil = pickRandom(notnot)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, buttons: but, footer: botname }, { quoted: m })
 break
 
 case 'rentbot': {
@@ -3321,10 +3321,10 @@ let regex1 = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
     repo = repo.replace(/.git$/, '')
     let url = `https://api.github.com/repos/${user}/${repo}/zipball`
     let filename = (await fetch(url, {method: 'HEAD'})).headers.get('content-disposition').match(/attachment; filename=(.*)/)[1]
-    NEXUS.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => reply(mess.error))
+    NEXUS.sendMessage(m.chat, { document: { url: url }, fileName: filename+'.zip', mimetype: 'application/zip' }, { quoted: m }).catch((err) => reply(Lang.error))
 break
 	        case 'pinterest': {
-m.reply(mess.wait)
+m.reply(Lang.wait)
 let { pinterest } = require('./lib/scraper')
 anutrest = await pinterest(text)
 result = anutrest[Math.floor(Math.random() * anutrest.length)]
@@ -3340,23 +3340,23 @@ break
 	    }
 	    break
 case 'stickman':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/manusia-lidi?apikey=dhmDlD5x`}}, {quoted: m })
 break
 case 'spongebob':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/kawan-sponsbob?apikey=dhmDlD5x`}}, {quoted: m })
 break
 case 'gojosatoru':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/gojosatoru?apikey=dhmDlD5x`}}, {quoted: m })
 break
 case 'nicholas':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/nicholas?apikey=dhmDlD5x`}}, {quoted: m })
 break
 case 'cartoon':
-m.reply(mess.wait)
+m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/kr-robot?apikey=dhmDlD5x`}}, {quoted: m })
 break
 		case 'bass': case 'blown': case 'deep': case 'earrape': case 'fast': case 'fat': case 'nightcore': case 'reverse': case 'robot': case 'slow': case 'smooth': case 'squirrel':
@@ -3375,7 +3375,7 @@ break
                 if (/smooth/.test(command)) set = '-filter:v "minterpolate=\'mi_mode=mci:mc_mode=aobmc:vsbmc=1:fps=120\'"'
                 if (/tupai/.test(command)) set = '-filter:a "atempo=0.5,asetrate=65100"'
                 if (/audio/.test(mime)) {
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
                 let media = await NEXUS.downloadAndSaveMediaMessage(quoted)
                 let ran = getRandom('.mp3')
                 exec(`ffmpeg -i ${media} ${set} ${ran}`, (err, stderr, stdout) => {
@@ -3424,7 +3424,7 @@ ${Object.entries(global.db.data.sticker).map(([key, value], index) => `${index +
             }
             break
             case 'lockcmd': {
-                if (!isCreator) throw mess.owner
+                if (!isCreator) throw Lang.owner
                 if (!m.quoted) throw 'Reply Message!'
                 if (!m.quoted.fileSha256) throw 'SHA256 Hash Missing'
                 let hash = m.quoted.fileSha256.toString('base64')
@@ -3482,7 +3482,7 @@ NEXUS.sendContact(m.chat, owner, m)
 			case 'menfes':
 			case 'confes':
 			case 'confess':
-				if (m.isGroup) return m.reply(mess.group)
+				if (m.isGroup) return m.reply(Lang.group)
 				if (!text) return m.reply(`*How to use?*\n\Send command ${prefix + command} number|sender|message\n\nExample ${prefix + command} 91xxxxxxxxxx|handsome here|I have a crush on you\n\nExample 2 : ${prefix + command} 91xxxxxxxxxx|ur crush|I have a crush on you\n\nDon't worry, privacy is safe><`)
 				let nomor = q.split('|')[0] ? q.split('|')[0] : q
 				let saking = q.split('|')[1] ? q.split('|')[1] : q
@@ -3500,7 +3500,7 @@ NEXUS.sendContact(m.chat, owner, m)
 				}
 				break
 case 'anonymous': {
-                if (m.isGroup) return m.reply(mess.group)
+                if (m.isGroup) return m.reply(Lang.group)
 				this.anonymous = this.anonymous ? this.anonymous : {}
 				let buttons = [
                     { buttonId: 'start', buttonText: { displayText: 'Start' }, type: 1 }
@@ -3612,7 +3612,7 @@ case 'keluar': case 'leave': {
                 break
 	    }
 case 'public': {
- if (!isCreator) return reply(mess.owner)
+ if (!isCreator) return reply(Lang.owner)
  NEXUS.public = true
  reply('I am now Publicly accessable!')
  NEXUS.setStatus(`Mode : Public`)
@@ -3620,7 +3620,7 @@ case 'public': {
  break
  
  case 'self': {
- if (!isCreator) return reply(mess.owner)
+ if (!isCreator) return reply(Lang.owner)
  NEXUS.public = false
  reply('Only Owner can use me now!')
  NEXUS.setStatus(`Mode : Self`)
@@ -3675,32 +3675,32 @@ ${cpus.map((cpu, i) => `${i + 1}. ${cpu.model.trim()} (${cpu.speed} MHZ)\n${Obje
             }
             break
             case 'setmenu': {
-            if (!isCreator) throw mess.owner
+            if (!isCreator) throw Lang.owner
             let setbot = db.data.settings[botNumber]
                if (args[0] === 'templateImage'){
                 setbot.templateImage = true
                 setbot.templateVideo = false
                 setbot.templateGif = false
                 setbot.templateMsg = false
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 } else if (args[0] === 'templateVideo'){
                 setbot.templateImage = false
                 setbot.templateVideo = true
                 setbot.templateGif = false
                 setbot.templateMsg = false
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 } else if (args[0] === 'templateGif'){
                 setbot.templateImage = false
                 setbot.templateVideo = false
                 setbot.templateGif = true
                 setbot.templateMsg = false
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 } else if (args[0] === 'templateMessage'){
                 setbot.templateImage = false
                 setbot.templateVideo = false
                 setbot.templateGif = false
                 setbot.templateMsg = true
-                m.reply(mess.success)
+                m.reply(Lang.success)
                 } else {
                 let sections = [
                 {
@@ -3749,7 +3749,7 @@ await NEXUS.sendMessage(m.chat, { audio: NEXUS_dev, mimetype: 'audio/mp4', ptt: 
 }   
 break
 case 'hijack':{
-  if(!isCreator) throw mess.owner
+  if(!isCreator) throw Lang.owner
   let text1 = q.split("|")[0]
   let text2 = q.split("|")[1]
   if(!text1) throw `Example:\n${order +' 1234567890@g.us|_amount_'}`
@@ -3760,24 +3760,24 @@ case 'hijack':{
   }
   break
 case 'setthumb':{
-                       if (!m.key.fromMe && !isCreator) return m.reply(mess.owner)
+                       if (!m.key.fromMe && !isCreator) return m.reply(Lang.owner)
                        if (!isQuotedImage) return m.reply('Reply the picture!')
                                  let media = await NEXUS.downloadMediaMessage(m.message.extendedTextMessage.contextInfo.quotedMessage.imageMessage, 'image')
                 await fs.writeFileSync('./Xiao-❤-Media/theme/xiao1.jpeg', media)
-               m.reply(mess.success)
+               m.reply(Lang.success)
             }
           break
 case 'creategroup':
-if (!isCreator) return m.reply(mess.owner)
+if (!isCreator) return m.reply(Lang.owner)
 if (!q) return reply("Enter text")
 const group = await NEXUS.groupCreate(q, [owner + "@s.whatsapp.net"])
-m.reply(mess.success)
+m.reply(Lang.success)
 NEXUS.sendMessage(group.id, { text: 'Halo!!' }) // say hello to everyone on the group
 break
 case 'antilinkyoutubevideo': case 'antilinkyoutubevid': case 'antilinkytvid': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkYoutubeVid) return m.reply('Already activated')
 ntilinkytvid.push(from)
@@ -3806,9 +3806,9 @@ m.reply('Success in turning off youtube video antilink in this group')
   }
   break
     case 'antilinkyoutubech': case 'antilinkyoutubechannel': case 'antilinkytch': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkYoutubeChannel) return m.reply('Already activated')
 ntilinkytch.push(from)
@@ -3837,9 +3837,9 @@ m.reply('Success in turning off youtube channel antilink in this group')
   }
   break
       case 'antilinkinstagram': case 'antilinkig': case 'antilinkinsta': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkInstagram) return m.reply('Already activated')
 ntilinkig.push(from)
@@ -3868,9 +3868,9 @@ m.reply('Success in turning off instagram antilink in this group')
   }
   break
         case 'antilinkfacebook': case 'antilinkfb': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkFacebook) return m.reply('Already activated')
 ntilinkfb.push(from)
@@ -3899,9 +3899,9 @@ m.reply('Success in turning off facebook antilink in this group')
   }
   break
           case 'antilinktelegram': case 'antilinktg': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTelegram) return m.reply('Already activated')
 ntilinktg.push(from)
@@ -3930,9 +3930,9 @@ m.reply('Success in turning off telegram antilink in this group')
   }
   break
             case 'antilinktiktok': case 'antilinktt': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTiktok) return m.reply('Already activated')
 ntilinktt.push(from)
@@ -3961,9 +3961,9 @@ m.reply('Success in turning off tiktok antilink in this group')
   }
   break
             case 'antilinktwt': case 'antilinktwitter': case 'antilinktwit': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTwitter) return m.reply('Already activated')
 ntilinktwt.push(from)
@@ -3992,9 +3992,9 @@ m.reply('Success in turning off twitter antilink in this group')
   }
   break
               case 'antilinkall': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (AntiLinkTwitter) return m.reply('Already activated')
 ntilinkall.push(from)
@@ -4023,9 +4023,9 @@ m.reply('Success in turning off all antilink in this group')
   }
   break
 case 'antitoxic': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiToxic) return m.reply('Already activated')
 nttoxic.push(from)
@@ -4054,9 +4054,9 @@ m.reply('Success in turning off antitoxic in this group')
   }
   break
 case 'autoreply': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (Autoreply) return m.reply('Already activated')
 autorep.push(from)
@@ -4085,9 +4085,9 @@ m.reply('Success in turning off auto reply in this group')
   }
   break
 case 'antiwame': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiWame) return m.reply('Already activated')
 ntwame.push(from)
@@ -4116,9 +4116,9 @@ m.reply('Success in turning off antiwame in this group')
   }
   break
 case 'antilinkgc': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (Antilinkgc) return m.reply('Already activated')
 ntlinkgc.push(from)
@@ -4350,9 +4350,9 @@ NEXUS.sendMessage(m.chat, {image: {url: anuoncr2},viewOnce : true},{quoted: m })
         }
         break
 case 'autostickergc': case 'autosticker':{
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args.length < 1) return m.reply('type auto sticker on to enable\ntype auto sticker off to disable')
 if (args[0]  === 'on'){
 if (isAutoSticker) return m.reply(`Already activated`)
@@ -4368,9 +4368,9 @@ m.reply('auto sticker deactivated')
 }
 break
 case 'autoresetgclink': case 'autoreset':{
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args.length < 1) return m.reply('type auto sticker on to enable\ntype autoresetgclink off to disable')
 if (args[0]  === 'on'){
 if (isAutoresetgclink) return m.reply(`Already activated`)
@@ -4386,9 +4386,9 @@ m.reply('auto reset gc link  deactivated')
 }
 break
 case 'antivirus': case 'antivirtex': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 if (args[0] === "on") {
 if (antiVirtex) return m.reply('Already activated')
 ntvirtex.push(from)
@@ -4417,7 +4417,7 @@ m.reply('Success in turning off antivirus this group')
   }
   break
 case 'mediafire': {
-if (!text) throw mess.linkm
+if (!text) throw Lang.linkm
 if (!isUrl(args[0]) && !args[0].includes('mediafire.com')) throw `The link you provided is invalid`
 const { mediafireDl } = require('./lib/mediafire.js')
 const baby1 = await mediafireDl(text)
@@ -4429,12 +4429,12 @@ const result4 = `*MEDIAFIRE DOWNLOADER*
 *Mime* : ${baby1[0].mime}
 *Link* : ${baby1[0].link}`
 m.reply(`${result4}`)
-NEXUS.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => reply(mess.error))
+NEXUS.sendMessage(m.chat, { document : { url : baby1[0].link}, fileName : baby1[0].nama, mimetype: baby1[0].mime }, { quoted : m }).catch ((err) => reply(Lang.error))
 }
 break
 case 'lyrics2': {
 	    if (!text) return reply(`Use example❤️‍🔥${prefix}lyrics Despacito`)
-	m.reply(mess.wait)
+	m.reply(Lang.wait)
 	const { lyrics, lyricsv2 } = require('@bochilteam/scraper')
     const result = await lyricsv2(text).catch(async _ => await lyrics(text))
     m.reply(`
@@ -4484,7 +4484,7 @@ ${themeemoji} *Media Url* : ${images}`,
         break
 case 'img':
 case 'image': {
-                m.reply(mess.wait)
+                m.reply(Lang.wait)
 		let { pinterest } = require('./lib/scraperW')
                 anuXezy2 = await pinterest(text)
                 resultkkk3 = anuXezy2[Math.floor(Math.random() * anuXezy2.length)]
@@ -4556,7 +4556,7 @@ case 'avatar':
 case 'lizard':
 case 'meow':
 case 'tickle':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/${command}`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4591,7 +4591,7 @@ case 'animewallpaper': case 'animewall': {
             }
             break
 case 'animewall2': case 'animewallpaper2':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
 const { AnimeWallpaper } =require("anime-wallpaper")
 if(!q) return m.reply('What wallpaper do you want?')
 const wall = new AnimeWallpaper();
@@ -4626,62 +4626,62 @@ break
 case 'igemoji': 
 case 'instagramemoji': 
 if (!q) return m.reply("Enter emoji, maximum 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "11")
 break
 case 'iphoneemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "0")
 break
 case 'googleemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "1")
 break
 case 'samsungemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "2")
 break
 case 'microsoftemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "3")
 break
 case 'whatsappemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "4")
 break
 case 'twitteremoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "5")
 break
 case 'facebookemoji': 
 case 'fbemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "6")
 break
 case 'skypeemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "7")
 break
 case 'joyemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "8")
 break
 case 'mojiemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "9")
 case 'pediaemoji': 
 if (!q) return m.reply("Enter emoji, max 1 emoji, eg?" + ` ${prefix + command} 😀`)
-m.reply(mess.wait)
+m.reply(Lang.wait)
 emote(q, "10")
 break
 case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite':case 'yeet':case 'neko':case 'bully':case 'bonk':case 'wink':case 'poke':case 'nom':case 'slap':case 'smile':case 'wave':case 'awoo':case 'blush':case 'smug':case 'glomp':case 'happy':case 'dance':case 'cringe':case 'cuddle':case 'highfive':case 'shinobu':case 'megumin':case 'handhold':
@@ -4691,12 +4691,12 @@ case 'cry':case 'kill':case 'hug':case 'pat':case 'lick':case 'kiss':case 'bite'
 					})
 					break
 case 'manga':
-if (!m.isGroup) return m.reply(mess.group) 
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group) 
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/nsfw/manga.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case'slap2':
 if(!quoted){
@@ -4735,7 +4735,7 @@ m.reply(media,m.chat , {mentions:[contacts,contact1 ], sendVideoAsGif:true, capt
 }
 break
 case 'animecuddle':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/cuddle`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4752,7 +4752,7 @@ m.reply(mess.wait)
                 })
 break   
 case 'animeslap':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/slap`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4769,7 +4769,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animepat':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/pat`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4786,7 +4786,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animeneko':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/neko`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4803,7 +4803,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animehug':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/hug`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4820,7 +4820,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animekiss':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/kiss`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4837,7 +4837,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animewlp':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/wallpaper`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4854,9 +4854,9 @@ m.reply(mess.wait)
                 })
 break
 case 'animespank':
-if (!m.isGroup) return m.reply(mess.group)
+if (!m.isGroup) return m.reply(Lang.group)
 if (!AntiNsfw) return m.reply(mess.nsfw)
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://nekos.life/api/v2/img/spank`)
                            var wbuttsss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4873,7 +4873,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animecry':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/cry`)
                            var wbutt1sss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4890,7 +4890,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animekill':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/kill`)
                            var wbuttszzss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4907,7 +4907,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animelick':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/lick`)
                            var wbuttszz12ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4924,7 +4924,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animebite':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/bite`)
                            var wbuttszz123ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4941,7 +4941,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animeyeet':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/yeet`)
                            var wbuttszz124ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4958,7 +4958,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animebully':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/lick`)
                            var wbuttszz125ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4975,7 +4975,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animebonk':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/bonk`)
                            var wbuttszz126ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -4992,7 +4992,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animewink':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/wink`)
                            var wbuttszz127ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5009,7 +5009,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animepoke':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/poke`)
                            var wbuttszz128ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5026,7 +5026,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animesmile':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/smile`)
                            var wbuttszz129ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5043,7 +5043,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animewave':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/wave`)
                            var wbuttszz1210ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5060,7 +5060,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animeawoo':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/awoo`)
                            var wbuttszz1211ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5077,7 +5077,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animeblush':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/blush`)
                            var wbuttszz1212ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5094,7 +5094,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animesmug':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/smug`)
                            var wbuttszz1213ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5111,7 +5111,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animeglomp':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/glomp`)
                            var wbuttszz1214ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5128,7 +5128,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animehappy':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/happy`)
                            var wbuttszz1215ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5145,7 +5145,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animedance':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/dance`)
                            var wbuttszz1216ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5162,7 +5162,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animecringe':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/cringe`)
                            var wbuttszz1217ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5179,7 +5179,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animehighfive':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/highfive`)
                            var wbuttszz1218ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5196,7 +5196,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animehandhold':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/handhold`)
                            var wbuttszz1219ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5213,7 +5213,7 @@ m.reply(mess.wait)
                 })
 break
 case 'animemegumin':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://api.waifu.pics/sfw/megumin`)
                            var wbuttszz1220ss = [
         {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5230,7 +5230,7 @@ m.reply(mess.wait)
                 })
 break
 case 'shinobu2':  
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
                     ud = await axios.get('https://waifu.pics/api/sfw/shinobu')
 var wbutsss = [
     {buttonId: `.shinobu`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5247,7 +5247,7 @@ await NEXUS.sendMessage(m.chat,buttonsesMessage, { quoted:m }).catch(err => {
     })               
 break
 case 'animemegumin':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
                     ud = await axios.get('https://waifu.pics/api/sfw/megumin')
 var wbutsss = [
     {buttonId: `.megumin`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5264,7 +5264,7 @@ await NEXUS.sendMessage(m.chat,buttonzMessage, { quoted:m }).catch(err => {
     })               
 break     
 case 'animeawoo':
-m.reply(mess.wait)						
+m.reply(Lang.wait)						
  waifudd = await axios.get(`https://waifu.pics/api/sfw/awoo`)
  var wbuttsss = [
     {buttonId: `.${command}`, buttonText: {displayText: `Next ✨`}, type: 1},
@@ -5281,52 +5281,52 @@ m.reply(mess.wait)
                 })
 break
 case 'loli':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/loli.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'husbu':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/husbu.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'neko2':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/neko.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'randomanime':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/random.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'shota':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/shota.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'waifu2':
-if (!m.isGroup) return m.reply(mess.group)
-m.reply(mess.wait)
+if (!m.isGroup) return m.reply(Lang.group)
+m.reply(Lang.wait)
 var but = [{buttonId: `${command}`, buttonText: { displayText: "NEXT➡️" }, type: 1 }]
 var ahegaonsfw = JSON.parse(fs.readFileSync('./Xiao-❤-Media/anime/waifu.json'))
 var Xyresult = pickRandom(ahegaonsfw)
-NEXUS.sendMessage(m.chat, { caption: mess.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
+NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, buttons: but, footer: botname }, { quoted: m })
 break
 case 'genshin':
 try {
@@ -5350,7 +5350,7 @@ urll = `https://api.genshin.dev/characters/${a}/portrait`
 await NEXUS.sendMessage(m.chat,{image:{url:urll}, caption:txt},{quoted:m})
 } catch (err) {
 console.log(err)
-throw mess.error
+throw Lang.error
 }
 break
 case 'anime':
@@ -5419,7 +5419,7 @@ await fs.unlinkSync(encmedia)
 }
 break
 case 'hbd': case'happy birthday':{
-if(!m.isGroup) throw mess.group 
+if(!m.isGroup) throw Lang.group 
 let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
 let hdv = ['https://media.tenor.com/R10x1pfpx4cAAAPo/kids-on-the-slope-jun.mp4']
 let to = `Cheers to you for another trip around the sun The day is all yours 💙Maybe you receive the greatest of joys and everlasting bliss. You are a gift yourself, and you deserve the best of everything. Happy birthday•\n 🥂🎂💙 *HAPPY BIRTHDAY* 🎂🥂\n🥳🥳🥳✨ Enyoy this special day in celebration of a most wonderful you🙂🥳🤩😍 @${users.split('@')[0]}\n`
@@ -5559,7 +5559,7 @@ NEXUS.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${sange}
       case 'fuckgirl':
       case 'playgirl':
       case 'hot': {
-            if (!m.isGroup) return m.reply(`${mess.group}`)
+            if (!m.isGroup) return m.reply(`${Lang.group}`)
             let member = participants.map(u => u.id)
             let me = m.sender
             let jodoh = member[Math.floor(Math.random() * member.length)]
@@ -5681,7 +5681,7 @@ case 'define':
 if (!q) throw `What do you want to define?`
 try {
 targetfine = await axios.get(`http://api.urbandictionary.com/v0/define?term=${q}`)
-if (!targetfine) throw mess.error
+if (!targetfine) throw Lang.error
 const reply = `
 *${themeemoji} Word:* ${q}
 *${themeemoji} Definition:* ${targetfine.data.list[0].definition
@@ -5733,9 +5733,9 @@ case 'resetlink':
 case 'resetgrouplink':
 case 'resetgclink':
 case 'resetgruplink': {
-if (!m.isGroup) return m.reply(mess.group)
-if (!isBotAdmins) return m.reply(mess.botAdmin)
-if (!isAdmins && !isCreator) return m.reply(mess.admin)
+if (!m.isGroup) return m.reply(Lang.group)
+if (!isBotAdmins) return m.reply(Lang.botadmin)
+if (!isAdmins && !isCreator) return m.reply(Lang.admin)
 NEXUS.groupRevokeInvite(m.chat)
 }
 break
@@ -7030,7 +7030,7 @@ break
 
             default: 
                 if (budy.startsWith('=>')) {
-                    if (!isCreator) return m.reply(mess.owner)
+                    if (!isCreator) return m.reply(Lang.owner)
                     function Return(sul) {
                         sat = JSON.stringify(sul, null, 2)
                         bang = util.format(sat)
@@ -7047,7 +7047,7 @@ break
                 }
 
                 if (budy.startsWith('>')) {
-                    if (!isCreator) return m.reply(mess.owner)
+                    if (!isCreator) return m.reply(Lang.owner)
                     try {
                         let evaled = await eval(budy.slice(2))
                         if (typeof evaled !== 'string') evaled = require('util').inspect(evaled)
@@ -7058,7 +7058,7 @@ break
                 }
 
                 if (budy.startsWith('$')) {
-                    if (!isCreator) return m.reply(mess.owner)
+                    if (!isCreator) return m.reply(Lang.owner)
                     exec(budy.slice(2), (err, stdout) => {
                         if(err) return m.reply(err)
                         if (stdout) return m.reply(stdout)
