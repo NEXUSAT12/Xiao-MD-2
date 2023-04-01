@@ -14,14 +14,14 @@ global.doc5 = 'application/pdf'
 global.doc6 = 'application/vnd.android.package-archive'
 
 //owmner v card
-global.owner = [process.env.OWNER_NUMBER] || ['918130784851'] //ur owner number
+global.owner = [process.env.OWNER_NUMBER] || [' '] //ur owner number
 global.ownername =  process.env.OWNER_NAME || 'NEXUS' 
 global.ytname = "YT: NEXUSMODS" //ur yt chanel name
 global.socialm = "GitHub: NEXUSAT12" //ur github or insta name
 global.location = "India, Ghaziabad, Rajnagar" //ur location
 
 //bot bomdy 
-global.ownernomer =  [process.env.OWNER_NUMBER] || ['918130784851'] //ur number
+global.ownernomer =  [process.env.OWNER_NUMBER] || [' '] //ur number
 global.premium = ['918130784851'] //ur premium number
 global.botname = process.env.BOT_NAME || '𓆩⍣⃝🇽‌𝐢𝐚𝐨-𝐁𝐎𝐓⃢𓆪' //ur bot name
 global.linkz = "https://chat.whatsapp.com/KdCiUuENgOFEYJMHV3jZNj" //your theme url which will be displayed on whatsapp
