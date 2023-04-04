@@ -1198,6 +1198,7 @@ Cieeee, What's Going On❤️💖👀`
                 if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		if ( users == !isCreator) return m.reply(`𝙊𝙒𝙉𝙀𝙍-𝘾𝘼𝙉'𝙏 𝘽𝙀 𝙆𝙄𝘾𝙆𝙀𝘿  𝘾𝙃𝙊𝙈𝙐 𝙃 𝙆𝙔𝘼 😒😒??`
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'remove').then(m.reply("𝓡𝓮𝓶𝓸𝓿𝓮𝓭 🤫" )) 
 	}
 	break
@@ -1214,6 +1215,15 @@ Cieeee, What's Going On❤️💖👀`
                 if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
+		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
+	}
+	break
+	case 'ownerpromote': case 'ownerpro': {
+		if (!m.isGroup) throw Lang.group
+        if (!isBotAdmins) throw Lang.botAdmin
+        if (!isCreator) throw Lang.owner
+        let ownernya = ownernomer + '@s.whatsapp.net'   
+		let users = ownernya
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
 	}
 	break
@@ -6058,6 +6068,26 @@ const listMessage = {
 const sendMsg = await NEXUS.sendMessage(m.chat, listMessage)
 }
 break
+case 'qr': case 'qrcode': {
+        if (!m.isGroup) throw Lang.group
+    m. reply(`Running repl....Please wait until repl.it responds...`)						
+    var replqr =  await getBuffer(`https://Xiao-md.devill-mascot.repl.co`)
+                               var qrbutton = [
+            {buttonId: `qr`, buttonText: {displayText: `Re-run Repl`}, type: 1}
+            ]
+          let bmffg = {
+           image: replqr,
+           caption:  `Scan the qr within 10-15 seconds...`,
+          footer:  `${botname}`,
+          buttons: qrbutton,
+          headerType: 4
+          }     
+                await NEXUS.sendMessage(m.chat, bmffg,{ quoted:m }).catch(err => {
+                        return('Error!')
+                    })
+         }
+    break
+
       case 'ownermenu':{
 	   var unicorn = await getBuffer(picak+'Owner Menu')
 const buttons = [
