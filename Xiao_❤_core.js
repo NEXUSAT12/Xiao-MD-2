@@ -5956,13 +5956,12 @@ NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': { 
 NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
-let latensi = speed() - timestamp
 let teks = `*◯───────[ 𝐒𝐘𝐒𝐓𝐄𝐌 𝐌𝐄𝐍𝐔 ]───────◯*
 
 ╭⛒  *ＯＷＮＥＲ* : ${ownername}
 ├⛒  *ＯＷＮＥＲ ＴＡＧ* : ${ownernya}
 ├⛒  *ＧＲＯＵＰ* : ${gclist}
-├⛒  *ＲＥＳＰＯＮＳＥ* : ${latensi.toFixed(4)}
+├⛒  *ＲＥＳＰＯＮＳＥ* : ${ping}
 ├⛒  *ＴＩＭＥ* : ${bottime}
 ╰⛒  *​​Ｕｓｅｒｓ* : ${pclist}
 
