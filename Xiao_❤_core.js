@@ -5959,7 +5959,7 @@ NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
 let teks = `*◯───────[ 𝐒𝐘𝐒𝐓𝐄𝐌 𝐌𝐄𝐍𝐔 ]───────◯*
 
 ╭⛒  *ＯＷＮＥＲ* : ${ownername}
-├⛒  *ＯＷＮＥＲ ＴＡＧ* : ${ownernya}
+├⛒  *ＯＷＮＥＲ ＴＡＧ* : ${ownernya.id.split("@")[0]}
 ├⛒  *ＧＲＯＵＰ* : ${gclist}
 ├⛒  *ＲＥＳＰＯＮＳＥ* : ${ping}
 ├⛒  *ＴＩＭＥ* : ${bottime}
@@ -6156,24 +6156,30 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╔═══════✪ OWNER 	
-╠ ❤️‍🔥${prefix}𝚂𝚎𝚕𝚏
-╠ ❤️‍🔥${prefix}𝙿𝚞𝚋𝚕𝚒𝚌
-╠ ❤️‍🔥${prefix}𝙹𝚘𝚒𝚗 [𝙻𝚒𝚗𝚔]
-╠ ❤️‍🔥${prefix}𝙻𝚎𝚊𝚟𝚎𝚐𝚌
-╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚋𝚒𝚘
-╠ ❤️‍🔥${prefix}𝙷𝚒𝚓𝚊𝚌𝚔
-╠ ❤️‍🔥${prefix}𝙲𝚛𝚎𝚊𝚝𝚎𝚐𝚛𝚘𝚞𝚙 [𝙽𝚊𝚖𝚎]
-╠ ❤️‍🔥${prefix}𝙱𝚕𝚘𝚌𝚔 [𝚄𝚜𝚎𝚛]
-╠ ❤️‍🔥${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔 [𝚄𝚜𝚎𝚛]
-╠ ❤️‍🔥${prefix}𝙱𝚛𝚘𝚊𝚍𝚌𝚊𝚜𝚝 [𝚃𝚎𝚡𝚝]
-╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝 [𝙸𝚖𝚊𝚐𝚎]
-╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚝𝚑𝚞𝚖𝚋 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐]
-╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚎𝚡𝚒𝚏
-╠ ❤️‍🔥${prefix}𝚀𝚁 [ 𝙰𝚃𝚃𝙰𝙲𝙷 𝙱𝙾𝚃 ] 
-╠ ❤️‍🔥${prefix}𝙾𝚠𝚗𝚎𝚛𝚙𝚛𝚘 [𝚃𝙾 𝙼𝙰𝙺𝙴 𝙾𝚆𝙽𝙴𝚁 𝙰𝙳𝙼𝙸𝙽]
-╚═════════════✪`,
-    footer: `${botname}`,
+    caption: `*◯───────[ OWNER MENU  ]───────◯*	
+    
+╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
+├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
+╰⛒  *ᴛɪᴍᴇ* ${bottime}
+
+${prefix}𝚂𝚎𝚕𝚏
+${prefix}𝙿𝚞𝚋𝚕𝚒𝚌
+${prefix}𝙹𝚘𝚒𝚗 [𝙻𝚒𝚗𝚔]
+${prefix}𝙻𝚎𝚊𝚟𝚎𝚐𝚌
+${prefix}𝚂𝚎𝚝𝚋𝚒𝚘
+${prefix}𝙷𝚒𝚓𝚊𝚌𝚔
+${prefix}𝙲𝚛𝚎𝚊𝚝𝚎𝚐𝚛𝚘𝚞𝚙 [𝙽𝚊𝚖𝚎]
+${prefix}𝙱𝚕𝚘𝚌𝚔 [𝚄𝚜𝚎𝚛]
+${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔 [𝚄𝚜𝚎𝚛]
+${prefix}𝙱𝚛𝚘𝚊𝚍𝚌𝚊𝚜𝚝 [𝚃𝚎𝚡𝚝]
+${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝 [𝙸𝚖𝚊𝚐𝚎]
+${prefix}𝚂𝚎𝚝𝚝𝚑𝚞𝚖𝚋 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐]
+${prefix}𝚂𝚎𝚝𝚎𝚡𝚒𝚏
+${prefix}𝚀𝚁 [ 𝙰𝚃𝚃𝙰𝙲𝙷 𝙱𝙾𝚃 ] 
+${prefix}𝙾𝚠𝚗𝚎𝚛𝚙𝚛𝚘 [𝚃𝙾 𝙼𝙰𝙺𝙴 𝙾𝚆𝙽𝙴𝚁 𝙰𝙳𝙼𝙸𝙽]
+
+*◯───────[ ${botname} ]───────◯*`,
+    footer: `𝙡𝙤𝙖𝙙 𝙤𝙛 ${botname}\n➥${loading}__*ᗰᗩ᙭*_`,
     buttons: buttons,
     headerType: 4
 }
