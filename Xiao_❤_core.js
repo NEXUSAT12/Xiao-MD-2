@@ -1020,7 +1020,7 @@ Type *surrender* to surrender and admit defeat`
             state: 'WAITING'
             }
             if (text) room.name = text
-            m.reply('Waiting For Partner' + (text ? ` Type The Command Below❤️‍🔥│${prefix}${command} ${text}` : ''))
+            m.reply('Waiting For Partner' + (text ? ` Type The Command Below❤️‍🔥${prefix}${command} ${text}` : ''))
             this.game[room.id] = room
             }
             }
@@ -1714,7 +1714,7 @@ m.reply(`Chat owner bro, please type .owner`)
 break
   case 'addprem':
 if (!isCreator) throw Lang.owner
-if (!q) return m.reply(`Enter the sample number\n\nExample: \n❤️‍🔥│${prefix}${command} 918130784851`)
+if (!q) return m.reply(`Enter the sample number\n\nExample: \n❤️‍🔥${prefix}${command} 918130784851`)
 if(isNaN(q)) return await m.reply('must be a number')
   if (q.includes(`+`)) return m.reply('Do not use + direct number 9169****')
 prmi = args.join(" ")
@@ -1725,7 +1725,7 @@ break
 case 'delprem':
  case 'dellprem':
 if (!isCreator) throw Lang.owner
-  if (!q) return m.reply(`Enter the Number\n\nExample: \n❤️‍🔥│${prefix}${command} 918130784851`)
+  if (!q) return m.reply(`Enter the Number\n\nExample: \n❤️‍🔥${prefix}${command} 918130784851`)
   if(isNaN(q)) return await m.reply('must be a number')
   if (q.includes(`+`)) return m.reply('Do not use + direct number 9169****')
   prmin = `${q}@s.whatsapp.net`
@@ -5998,7 +5998,7 @@ break
 									{
 										"title": "Other ☕",
 										"description": "Displays The List Of Other Features",
-										"rowId": `│${prefix}othermenu`
+										"rowId": `${prefix}othermenu`
 									}
 								]
 							},
@@ -6008,92 +6008,92 @@ break
 									{
 										"title": "Owner Menu 💠",
 										"description": "Displays The List Of Owner Features",
-										"rowId": `│${prefix}ownermenu`
+										"rowId": `${prefix}ownermenu`
 										},
 									{
 										"title": "Group Menu ✨",
 										"description": "Displays The List Of Main Features",
-										"rowId": `│${prefix}groupmenu`
+										"rowId": `${prefix}groupmenu`
 										},
 										{
 										"title": "Maker Menu 🌈",
 										"description": "Displays The List Of Logo Making Features",
-										"rowId": `│${prefix}makermenu`
+										"rowId": `${prefix}makermenu`
 									},
 									{
 										"title": "Sound Menu 🎵",
 										"description": "Displays The List Of Sound Features",
-										"rowId": `│${prefix}soundmenu`
+										"rowId": `${prefix}soundmenu`
 									},
 									{
 										"title": "Download Menu ↘️",
 										"description": "Displays The List Of Download Features",
-										"rowId": `│${prefix}downloadmenu`
+										"rowId": `${prefix}downloadmenu`
 									},
 									{
 										"title": "Sticker Menu 🃏",
 										"description": "Displays The List Of Sticker Features",
-										"rowId": `│${prefix}stickermenu`
+										"rowId": `${prefix}stickermenu`
 									},
 									{
 										"title": "Search Menu 🔎",
 										"description": "Displays The List Of Searching Features",
-										"rowId": `│${prefix}searchmenu`
+										"rowId": `${prefix}searchmenu`
 									},
 									{
 										"title": "Random Image Menu 🌆",
 										"description": "Displays The List Of Random Image Features",
-										"rowId": `│${prefix}randomimagemenu`
+										"rowId": `${prefix}randomimagemenu`
 									},
 									{
 										"title": "Random Video Menu 🌆",
 										"description": "Displays The List Of Random Video Features",
-										"rowId": `│${prefix}randomvideomenu`
+										"rowId": `${prefix}randomvideomenu`
 									},
 									{
 										"title": "Image Effect Menu 🖼️",
 										"description": "Displays The List Of Image Effect Features",
-										"rowId": `│${prefix}imageeffectmenu`
+										"rowId": `${prefix}imageeffectmenu`
 									},
 										{
 											"title": "Anime Menu 😘",
 										"description": "Displays The List Of Random Anime Features",
-										"rowId": `│${prefix}animemenu`
+										"rowId": `${prefix}animemenu`
 										},
 										{
 											"title": "Emote Menu 😀",
 										"description": "Displays The List Of Emote Features",
-										"rowId": `│${prefix}emotemenu`
+										"rowId": `${prefix}emotemenu`
 										},
 										{
 										"title": "Anime Sticker Menu ☺️",
 										"description": "Displays The List Of Anime Sticker Features",
-										"rowId": `│${prefix}animestickermenu`
+										"rowId": `${prefix}animestickermenu`
 									     },
 										{
 											"title": "Fun Menu 🕺",
 										"description": "Displays The List Of Fun Features",
-										"rowId": `│${prefix}funmenu`
+										"rowId": `${prefix}funmenu`
 										},
 										{
 										"title": "Game Menu 🎮",
 										"description": "Displays The List Of Game Features",
-										"rowId": `│${prefix}gamemenu`
+										"rowId": `${prefix}gamemenu`
 									},
 										{
 											"title": "Convert Menu ⚒️",
 										"description": "Displays The List Of Convert Features",
-										"rowId": `│${prefix}convertmenu`
+										"rowId": `${prefix}convertmenu`
 										},
 										{
 											"title": "Database Menu ♻️",
 										"description": "Displays The List Of Database Features",
-										"rowId": `│${prefix}databasemenu`
+										"rowId": `${prefix}databasemenu`
 										},
 										{
 										"title": "Other Menu 🐸",
 										"description": "Displays The List Miscellaneous Features",
-										"rowId": `│${prefix}othermenu`
+										"rowId": `${prefix}othermenu`
 									     }
 								]
 							},
@@ -6103,7 +6103,7 @@ break
 									{
 										"title": "Anonymous Chat Menu 🏻‍♂️",
 										"description": "Displays The List Of Anonymous Chat Features",
-										"rowId": `│${prefix}anonymousmenu`
+										"rowId": `${prefix}anonymousmenu`
 									}
 								]
 							},
@@ -6113,7 +6113,7 @@ break
 									{
 										"title": "Thanks To ❤️",
 										"description": "Displays The List Of Credit Of The Bot !!",
-										"rowId": `│${prefix}tqtt`
+										"rowId": `${prefix}tqtt`
 									}
 								]
 							}
@@ -6156,7 +6156,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	
+    caption: `╭───────[ 𝚘𝚠𝚗𝚎𝚛 𝚖𝚎𝚗𝚞  ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6196,7 +6196,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＧＲＯＵＰ ＭＥＮＵ ]───────◯*	  
+    caption: `╭───────[ 𝙶𝚁𝙾𝚄𝙿 𝙼𝙴𝙽𝚄 ]───────◯*	  
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6261,7 +6261,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＬＯＧＯ ＭＥＮＵ  ]───────◯*	
+    caption: `╭───────[ 𝙻𝙾𝙶𝙾 𝙼𝙴𝙽𝚄 ]───────◯*	
 │ ╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │ ├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │ ╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6391,7 +6391,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＤＯＷＮＬＯＡＤ ＭＥＮＵ  ]───────◯*	  
+    caption: `╭───────[ 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 𝙼𝙴𝙽𝚄  ]───────◯*	  
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6424,7 +6424,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＳＥＡＲＣＨ  ＭＥＮＵ  ]───────◯*	
+    caption: `╭───────[ 𝚂𝙴𝙰𝚁𝙲𝙷 𝙼𝙴𝙽𝚄 ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6467,7 +6467,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＣＯＮＶＥＲＴ  ＭＥＮＵ  ]───────◯*	  
+    caption: `╭───────[ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃 𝙼𝙴𝙽𝚄  ]───────◯*	  
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6520,7 +6520,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＲＡＮＤＯＭ ＭＥＮＵ  ]───────◯*	   
+    caption: `╭───────[ 𝚁𝙰𝙽𝙳𝙾𝙼 𝙼𝙴𝙽𝚄 ]───────◯*	   
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6583,7 +6583,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＲＡＮＤＯＭＥ ＶＩＤＥＯ ]───────◯   
+    caption: `╭───────[ 𝚁𝙰𝙽𝙳𝙾𝙼 𝚅𝙸𝙳𝙴𝙾 𝙼𝙴𝙽𝚄 ]───────◯   
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6617,7 +6617,7 @@ const buttons = [
 const buttonMessage = { 
     image: unicorn,
     caption: `
-╭───────[ ＥＭＯＴＥ ＭＥＮＵ  ]───────◯*	  
+╭───────[ 𝙴𝙼𝙾𝚃 𝙼𝙴𝙽𝚄  ]───────◯*	  
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6655,7 +6655,7 @@ const buttons = [
 const buttonMessage = {
     image: unicorn,
     caption: `
-╭───────[ OWNER MENU  ]───────◯*	
+╭───────[ 𝙾𝚆𝙽𝙴𝚁 𝙼𝙴𝙽𝚄 ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6681,7 +6681,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	
+    caption: `╭───────[ 𝙰𝙽𝙸𝙼𝙴 𝙼𝙴𝙽𝚄 ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6757,7 +6757,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	
+    caption: `╭───────[ 𝚂𝚃𝙸𝙲𝙺𝙴𝚁 𝙼𝙴𝙽𝚄  ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6793,7 +6793,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	
+    caption: `╭───────[ 𝙰𝙽𝙸𝙼𝙴 𝚂𝚃𝙸𝙲𝙺𝙴𝚁 𝙼𝙴𝙽𝚄  ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6847,7 +6847,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	
+    caption: `╭───────[ 𝙵𝚄𝙽 𝙼𝙴𝙽𝚄 ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -6947,7 +6947,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	 
+    caption: `╭───────[ 𝚂𝙾𝚄𝙽𝙳 𝙼𝙴𝙽𝚄  ]───────◯*	 
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -7133,7 +7133,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ OWNER MENU  ]───────◯*	    
+    caption: `╭───────[ 𝙶𝙰𝙼𝙴 𝙼𝙴𝙽𝚄  ]───────◯*	    
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -7165,7 +7165,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭─────[ ＡＮＯＮＹＭＵＳ ＭＥＮＵ  ]──────◯*
+    caption: `╭─────[ 𝙰𝙽𝙾𝙽𝚈𝙼𝙾𝚄𝚂 𝙼𝙴𝙽𝚄 ]──────◯*
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -7194,7 +7194,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭──────[ ＤＡＴＡＢＡＳＥ ＭＥＮＵ ]───────◯*	
+    caption: `╭──────[ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 𝙼𝙴𝙽𝚄 ]───────◯*	
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
@@ -7227,7 +7227,7 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╭───────[ ＯＴＨＥＲ ＭＥＮＵ  ]───────◯*	    
+    caption: `╭───────[ 𝙾𝚃𝙷𝙴𝚁 𝙼𝙴𝙽𝚄  ]───────◯*	    
 │╭⛒  *ᴏᴡɴᴇʀ* ${ownername}
 │├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ* ${ping}
 │╰⛒  *ᴛɪᴍᴇ* ${bottime}
