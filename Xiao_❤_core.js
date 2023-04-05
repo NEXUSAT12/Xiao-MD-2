@@ -38,6 +38,8 @@ const ownernya = ownernomer + '@s.whatsapp.net'
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
+const botloading = [ '■■□□20%','■■■□□□30%','■■■■□□□□40%','■■■■■□□□□□50%','■■■■■■□□□□□60%','■■■■■■■□□□□□□70%','■■■■■■■■□□□□□□80%','■■■■■■■■■□□□□□□□90%','■■■■■■■■■■■■■■■■■100%']
+const loading = pickRandom(botloading)
  if(time2 < "23:59:00"){
 var ucapanWaktu = `Good Night 🌌`
  }
@@ -1198,7 +1200,7 @@ Cieeee, What's Going On❤️💖👀`
                 if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		if ( users == !isCreator) return m.reply(`𝙊𝙒𝙉𝙀𝙍-𝘾𝘼𝙉'𝙏 𝘽𝙀 𝙆𝙄𝘾𝙆𝙀𝘿  𝘾𝙃𝙊𝙈𝙐 𝙃 𝙆𝙔𝘼 😒😒??`
+		if ( users == !isCreator) return m.reply(`𝙊𝙒𝙉𝙀𝙍-𝘾𝘼𝙉'𝙏 𝘽𝙀 𝙆𝙄𝘾𝙆𝙀𝘿  𝘾𝙃𝙊𝙈𝙐 𝙃 𝙆𝙔𝘼 😒😒??)`
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'remove').then(m.reply("𝓡𝓮𝓶𝓸𝓿𝓮𝓭 🤫" )) 
 	}
 	break
@@ -1219,12 +1221,12 @@ Cieeee, What's Going On❤️💖👀`
 	}
 	break
 	case 'ownerpromote': case 'ownerpro': {
-		if (!m.isGroup) throw Lang.group
+	if (!m.isGroup) throw Lang.group
         if (!isBotAdmins) throw Lang.botAdmin
         if (!isCreator) throw Lang.owner
         let ownernya = ownernomer + '@s.whatsapp.net'   
-		let users = ownernya
-		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
+	let users = ownernya
+	await NEXUS.groupParticipantsUpdate(m.chat, [users], 'promote').then(m.reply("𝓟𝓻𝓸𝓶𝓸𝓽𝓮𝓭 " )) 
 	}
 	break
 	case 'demote': {
@@ -5907,28 +5909,40 @@ NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
 NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
-let teks = `*「 ${global.botname} Script 」*\n\nYouTube: ${global.websitex}\nGitHub: ${global.botscript}\n\nDont forget to give a star and follow`
+const start = new Date().getTime()
+const end = new Date().getTime()
+let ping = (end - start) + ' *_ᴍs_*' 
+let anulistg = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+let anulistp = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+let teks = `*◯───────[ SYSTEM MENU ]───────◯*
+╭⛒  *ᴏᴡɴᴇʀ*: ${ownername}
+├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ*: ${ping}
+├⛒  *ᵍʳᵒᵘᵖˢ* : ${anulistg.length}
+╰⛒  *​🇺​🇸​🇪​🇷​🇸​*: ${anulistp.length}
+
+*──────────◯*`
 let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1},
 {buttonId: `command`, buttonText: {displayText: 'ᥬ☤🄻🄸🅂🅃 🄼🄴🄽🅄☤​᭄'}, type: 1}
 ]
 let buttonMessage = {
-image: fs.readFileSync('./Xiao-❤-Media/Xiao2.jpeg' ), 
-jpegThumbnail: log0,
+document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
+mimetype: docs,
+fileName: `${pushname}`,
+fileLength: 99999999999999,
 caption: teks,
-footer: `${botname}`,
+footer: `𝙡𝙤𝙖𝙙 𝙤𝙛 ${botname}\n➥${loading}__*ᗰᗩ᙭*_`,
 buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
-title:"I deserve something for my hardwork",
-body: "Click to donate", 
-thumbnail: fs.readFileSync("Xiao-❤-Media/xiao1.jpeg"),
-mediaType:1,
-mediaUrl: 'https://youtu.be/5IGmJCEErCg',
-sourceUrl: "https://linktr.ee/Nexus_21"
+title: `${ownername}`,
+body: "I deserve something for my hardwork",
+mediaType:2,
+thumbnail:fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'),
+sourceUrl: 'https://linktr.ee/Nexus_21/',
+mediaUrl: 'https://youtu.be/5IGmJCEErCg'
 }}
 }
-NEXUS.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
             break
             case 'command': {
@@ -6110,6 +6124,8 @@ const buttonMessage = {
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝 [𝙸𝚖𝚊𝚐𝚎]
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚝𝚑𝚞𝚖𝚋 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐]
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚎𝚡𝚒𝚏
+╠ ❤️‍🔥${prefix}qr [ ATTACH TO YOUR NO ] 
+╠ ❤️‍🔥${prefix}ownerpro [TO MAKE OWNER PRO ]
 ╚═════════════✪`,
     footer: `${botname}`,
     buttons: buttons,
