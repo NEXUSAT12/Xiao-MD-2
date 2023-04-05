@@ -145,6 +145,10 @@ const sender = m.isGroup ? (mek.key.participant ? mek.key.participant : mek.part
 const messagesD = body.slice(0).trim().split(/ +/).shift().toLowerCase()
 const type = Object.keys(mek.message)[0]  
 const from = mek.key.remoteJid      
+const anulistg = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
+const anulistp = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+const pclist = anulistp.length
+const gclist = anulistg.length
 const content = JSON.stringify(mek.message)
 let allmenureact = ['🐦','🐤','🍒','📃','🎃','📑','🗞️','🔥','❤️','❤️‍🩹','👿','💙','✌','☕','🍜']
 let allmenureactemoji = pickRandom(allmenureact)
@@ -5906,18 +5910,11 @@ let  lol = fs.readFileSync('./Xiao-❤-Media/Xiao2.jpeg')
 NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 }
 break
-case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': {
-NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
-const start = new Date().getTime()
-const end = new Date().getTime()
-let ping = (end - start) + ' *_ᴍs_*' 
-let anulistg = await store.chats.all().filter(v => v.id.endsWith('@g.us')).map(v => v.id)
-let anulistp = await store.chats.all().filter(v => v.id.endsWith('.net')).map(v => v.id)
+case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': { 
 let teks = `*◯───────[ SYSTEM MENU ]───────◯*
 ╭⛒  *ᴏᴡɴᴇʀ*: ${ownername}
-├⛒  *ʀᴇsᴘᴏɴ sᴘᴇᴇᴅ*: ${ping}
-├⛒  *ᵍʳᵒᵘᵖˢ* : ${anulistg.length}
-╰⛒  *​🇺​🇸​🇪​🇷​🇸​*: ${anulistp.length}
+├⛒  *ᵍʳᵒᵘᵖˢ* : ${gclist}
+╰⛒  *​🇺​🇸​🇪​🇷​🇸​*: ${pclist}
 
 *──────────◯*`
 let buttons = [
