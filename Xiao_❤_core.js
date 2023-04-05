@@ -5913,15 +5913,16 @@ NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 }
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': { 
+NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
 let teks = `*◯───────[ SYSTEM MENU ]───────◯*
-╭⛒  *ᴏᴡɴᴇʀ*: ${ownername}
-├⛒  *ᵍʳᵒᵘᵖˢ* : ${gclist}
-╰⛒  *​🇺​🇸​🇪​🇷​🇸​*: ${pclist}
+╭⛒  *ＯＷＮＥＲ*: ${ownername}
+├⛒  *ＧＲＯＵＰ* : ${gclist}
+╰⛒  *​​Ｕｓｅｒｓ*: ${pclist}
 
 *──────────◯*`
 let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1},
-{buttonId: `command`, buttonText: {displayText: 'ᥬ☤🄻🄸🅂🅃 🄼🄴🄽🅄☤​᭄'}, type: 1}
+{buttonId: `command`, buttonText: {displayText: 'ＬＩＳＴ MENU ٩😎۶ '}, type: 1}
 ]
 let buttonMessage = {
 document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
@@ -5939,9 +5940,9 @@ mediaType:2,
 thumbnail:fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'),
 sourceUrl: 'https://linktr.ee/Nexus_21/',
 mediaUrl: 'https://youtu.be/5IGmJCEErCg'
+}}
 }
-}
-}
+NEXUS.sendMessage(m.chat, buttonMessage, { quoted: m })
 }
 break
             case 'command': {
