@@ -39,7 +39,7 @@ const end = new Date().getTime()
 const ping = (end - start) + ' *_ᴍs_*' 
 //TIME
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
-const bottime = new Date().toLocaleString('HI', { timeZone:xtime}).split(' ')[1]
+const bottime = new Date().toLocaleString('HI', { timeZone:Asia/Kolkata}).split(' ')[1]
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
 if(time2 < "23:59:00"){
