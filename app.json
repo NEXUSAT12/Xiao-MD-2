@@ -24,6 +24,26 @@
       "description" : "YOUR NAME",
       "requred" : true,
       "value" :"Nexus"
+      }, 
+    "GROUPLINK" :{
+      "description" : "YOUR GROUP LINK ",
+      "requred" : false,
+      "value" :"https://chat.whatsapp.com/KdCiUuENgOFEYJMHV3jZNj"
+      }, 
+    "PACKNAME" :{
+      "description" : "YOUR STICKER PACK NAME",
+      "requred" : false ,
+      "value" :" ☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰. "
+      }, 
+    "AUTHOR" :{
+      "description" : "YOUR STICKER AUTHOR NAME",
+      "requred" : false ,
+      "value" :"☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰."
+      },
+    "WATERMARK" :{
+      "description" : "WATER MARK OF YOUR BOT",
+      "requred" : false,
+      "value" :"☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰."
       }
   },
   "buildpacks": [

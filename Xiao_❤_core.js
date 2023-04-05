@@ -34,8 +34,12 @@ const { fetchBuffer } = require("./lib/myfunc2")
 const { smsg, formatp, tanggal, formatDate, getTime, isUrl, sleep, clockString, runtime, fetchJson, getBuffer, jsonformat, format, parseMention, getRandom, getGroupAdmins } = require('./lib/myfunc')
 const ini_mark = `0@s.whatsapp.net`
 const ownernya = ownernomer + '@s.whatsapp.net'
+const start = new Date().getTime()
+const end = new Date().getTime()
+const ping = (end - start) + ' *_ᴍs_*' 
 //TIME
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+const bottime = new Date().toLocaleString('HI', { timeZone:xtime}).split(' ')[1]
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
 if(time2 < "23:59:00"){
@@ -311,11 +315,11 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if(m.quoted == '919971690443@s.whatsapp.net'){
+if(!isCmd && !quoted == botNumber)
 const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
 let txt = `${botreply.data.cnt}`
 m.reply(txt)
-}
+
 
 // total hit
  global.hit = {}
@@ -1942,7 +1946,7 @@ if (!text) return m.reply(`Example : ${prefix + command} Stay jb`)
             for (let i of lagusearch.all) {
                 listSerch.push({
                     title: i.title,
-                    rowId: `❤️‍🔥${prefix}ytmp3 ${i.url}`,
+                    rowId: `ytad ${i.url}`,
                     description: `Duration: ${i.timestamp}`
                 })
             }
@@ -3361,6 +3365,47 @@ break
 		NEXUS.sendMessage(m.chat, { audio: { url: result.audio }, fileName: result.title+'.mp3', mimetype: 'audio/mpeg' }, { quoted: m })
 	    }
 	    break
+case 'stelegram' :{
+     if (!text) return reply('👸💬 Please give me a telegram sticker pack link')
+     if (!text.includes('https://t.me/addstickers')) return reply('*👸💬 Please give me a correct link*\n _.stelegram https://t.me/addstickers/ViniProduction_by_MekathKalawak_')          
+    await NEXUS.sendText(m.chat , '*Loading...*' )
+    await fetchJson(`https://my-shinz.herokuapp.com/api/dowloader/telesticker?url=${text}`)
+      .then(async (sticker) => {  
+    const stik = sticker.result
+    const img = stik[1].url
+    const img2 = stik[2].url
+    const img3 = stik[3].url
+    const img4 = stik[4].url
+    const img5 = stik[5].url
+    const img6 = stik[6].url
+    const img7 = stik[7].url
+    const img8 = stik[8].url
+    const img9 = stik[9].url
+    const img10 = stik[10].url
+    const img11 = stik[11].url
+    const img12 = stik[12].url
+    const img13 = stik[13].url
+    const img14 = stik[14].url
+    const img15 = stik[15].url
+    
+    await NEXUS.sendImageAsSticker(m.chat, img, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img2, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img3, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img4, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img5, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img6, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img7, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img8, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img9, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img10, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img11, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img12, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img13, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img14, m, { packname: global.packname, author: `${botname}`})
+    await NEXUS.sendImageAsSticker(m.chat, img15, m, { packname: global.packname, author: `${botname}`})
+    }).catch((err) => m.reply("This Telegram sticker can't be downloaded!!!*")
+}
+break
 case 'stickman':
 m.reply(Lang.wait)
 NEXUS.sendMessage(m.chat, {sticker: {url: `https://api.zeeoneofc.xyz/api/telegram-sticker/manusia-lidi?apikey=dhmDlD5x`}}, {quoted: m })
@@ -5912,12 +5957,17 @@ NEXUS.sendMessage(m.chat, { image:lol, caption:text}, { quoted: m })
 break
 case 'alive': case 'panel': case 'list': case 'menu': case 'help': case '?': { 
 NEXUS.sendMessage(from, { react: { text: `${allmenureactemoji}`, key: m.key }})
-let teks = `*◯───────[ SYSTEM MENU ]───────◯*
-╭⛒  *ＯＷＮＥＲ*: ${ownername}
-├⛒  *ＧＲＯＵＰ* : ${gclist}
-╰⛒  *​​Ｕｓｅｒｓ*: ${pclist}
+let latensi = speed() - timestamp
+let teks = `*◯───────[ 𝐒𝐘𝐒𝐓𝐄𝐌 𝐌𝐄𝐍𝐔 ]───────◯*
 
-*──────────◯*`
+╭⛒  *ＯＷＮＥＲ* : ${ownername}
+├⛒  *ＯＷＮＥＲ ＴＡＧ* : ${ownernya}
+├⛒  *ＧＲＯＵＰ* : ${gclist}
+├⛒  *ＲＥＳＰＯＮＳＥ* : ${latensi.toFixed(4)}
+├⛒  *ＴＩＭＥ* : ${bottime}
+╰⛒  *​​Ｕｓｅｒｓ* : ${pclist}
+
+*◯───────[ 𝐒𝐘𝐒𝐓𝐄𝐌 𝐌𝐄𝐍𝐔 ]───────◯*`
 let buttons = [
 {buttonId: `owner`, buttonText: {displayText: '𝓞𝔀𝓷𝓮𝓻 ⃝◡̈'}, type: 1},
 {buttonId: `command`, buttonText: {displayText: 'ＬＩＳＴ MENU ٩😎۶ '}, type: 1}
@@ -6122,8 +6172,8 @@ const buttonMessage = {
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝 [𝙸𝚖𝚊𝚐𝚎]
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚝𝚑𝚞𝚖𝚋 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐]
 ╠ ❤️‍🔥${prefix}𝚂𝚎𝚝𝚎𝚡𝚒𝚏
-╠ ❤️‍🔥${prefix}qr [ ATTACH TO YOUR NO ] 
-╠ ❤️‍🔥${prefix}ownerpro [TO MAKE OWNER PRO ]
+╠ ❤️‍🔥${prefix}𝚀𝚁 [ 𝙰𝚃𝚃𝙰𝙲𝙷 𝙱𝙾𝚃 ] 
+╠ ❤️‍🔥${prefix}𝙾𝚠𝚗𝚎𝚛𝚙𝚛𝚘 [𝚃𝙾 𝙼𝙰𝙺𝙴 𝙾𝚆𝙽𝙴𝚁 𝙰𝙳𝙼𝙸𝙽]
 ╚═════════════✪`,
     footer: `${botname}`,
     buttons: buttons,
@@ -6143,6 +6193,7 @@ const buttonMessage = {
     image: unicorn,
     caption: `╔═══════✪ GROUP 	
 ╠❤️‍🔥${prefix}𝙶𝚛𝚘𝚞𝚙𝚕𝚒𝚗𝚔
+╠❤️‍🔥${prefix}𝙱𝚘𝚝 [𝚃𝚘 𝚌𝚑𝚊𝚝]
 ╠❤️‍🔥${prefix}𝙴𝚙𝚑𝚎𝚖𝚎𝚛𝚊𝚕 [𝙾𝚙𝚝𝚒𝚘𝚗]
 ╠❤️‍🔥${prefix}𝚂𝚎𝚝𝚐𝚌𝚙𝚙 [𝙸𝚖𝚊𝚐𝚎]
 ╠❤️‍🔥${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎 [𝚃𝚎𝚡𝚝]
@@ -6171,7 +6222,7 @@ const buttonMessage = {
 ╠❤️‍🔥${prefix}𝙰𝚗𝚝𝚒𝚟𝚒𝚛𝚞𝚜 [𝙾𝚗/𝙾𝚏𝚏]
 ╠❤️‍🔥${prefix}𝙰𝚗𝚝𝚒𝚝𝚘𝚡𝚒𝚌 [𝙾𝚗/𝙾𝚏𝚏]
 ╠❤️‍🔥${prefix}𝙰𝚗𝚝𝚒𝚠𝚊𝚖𝚎 [𝙾𝚗/𝙾𝚏𝚏]
-╠❤️‍🔥${prefix}𝙽𝚜𝚏𝚠 [𝙾𝚗/𝙾𝚏𝚏]
+╠❤️‍🔥${prefix}𝙰𝚞𝚝𝚘𝚛𝚎𝚜𝚎𝚝𝚐𝚌𝚕𝚒𝚗𝚔 [𝙾𝚗/𝙾𝚏𝚏]
 ╠❤️‍🔥${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎 [𝚁𝚎𝚙𝚕𝚢/𝚃𝚊𝚐]
 ╠❤️‍🔥${prefix}𝙳𝚎𝚖𝚘𝚝𝚎 [𝚁𝚎𝚙𝚕𝚢/𝚃𝚊𝚐]
 ╠❤️‍🔥${prefix}𝚁𝚎𝚊𝚌𝚝 [𝚁𝚎𝚙𝚕𝚢 𝙴𝚖𝚘𝚓𝚒]
@@ -6385,7 +6436,8 @@ const buttonMessage = {
     image: unicorn,
     caption: `╔═══════✪ 𝚌𝚘𝚗𝚟𝚎𝚛𝚝 	
 ╠ ❤️‍🔥${prefix}𝚃𝚘𝚒𝚖𝚊𝚐𝚎 [𝚁𝚎𝚙𝚕𝚢 𝚂𝚝𝚒𝚌𝚔]
-╠ ❤️‍🔥${prefix}𝚂𝚝𝚒𝚌𝚔𝚎𝚛 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐|𝙶𝚒𝚏]
+╠ ❤️‍🔥${prefix}𝚂𝚝𝚒𝚌𝚔𝚎𝚛 [𝚁𝚎𝚙𝚕-𝚢 𝙸𝚖𝚐|𝙶𝚒𝚏]
+╠ ❤️‍🔥${prefix}𝚂𝚝𝚎𝚕𝚎𝚐𝚛𝚊𝚖 [𝚁𝚎𝚙𝚕𝚢 𝚞𝚛𝚕]
 ╠ ❤️‍🔥${prefix}𝚃𝚊𝚔𝚎 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐|𝙶𝚒𝚏|𝚂𝚝𝚒𝚔]
 ╠ ❤️‍🔥${prefix}𝚂𝚖𝚎𝚖𝚎 [𝚁𝚎𝚙𝚕𝚢 𝙸𝚖𝚐]
 ╠ ❤️‍🔥${prefix}𝙴𝚖𝚘𝚓𝚒 [𝙴𝚖𝚘𝚓𝚒]

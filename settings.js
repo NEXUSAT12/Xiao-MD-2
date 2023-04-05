@@ -24,13 +24,13 @@ global.location = "India, Ghaziabad, Rajnagar" //ur location
 global.ownernomer =  [process.env.OWNER_NUMBER] || [' '] //ur number
 global.premium = ['918130784851'] //ur premium number
 global.botname = process.env.BOT_NAME || '𓆩⍣⃝🇽‌𝐢𝐚𝐨-𝐁𝐎𝐓⃢𓆪' //ur bot name
-global.linkz = "https://chat.whatsapp.com/KdCiUuENgOFEYJMHV3jZNj" //your theme url which will be displayed on whatsapp
+global.linkz = process.env.GROUPLINK || 'https://chat.whatsapp.com/KdCiUuENgOFEYJMHV3jZNj' //your theme url which will be displayed on whatsapp
 global.websitex = "https://nexus21.carrd.co/" //ur website to be displayed
 global.botscript = 'https://github.com/NEXUSAT12/Xiao-MD-2' //script link
 global.themeemoji = "🌹" //ur theme emoji
-global.packname = "Sticker By" //ur sticker watermark packname
-global.author = "XBOT\n\n\nA whatsapp bot developed by\n☤𝙣𝙚𝙭𝙪𝙨☤\n\n\n\n\n\n\n\n       --------______-------\n\n\n\n\n\n\n\nContact No. : +91918130784851" //ur sticker watermark author
-global.wm = "☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰." //ur watermark
+global.packname = process.env.PACKNAME || ' ☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰ '//ur sticker  packname
+global.author = process.env.STICKER_AUTHOUR || ' ☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰ ' //ur sticker author
+global.wm = process.env.WATERMARK || ' ☤꙰𝙈𝘼𝙎𝙏𝙀𝙍꥟𝙉𝙀𝙓𝙐𝙎☤꙰ '//ur watermark
 global.mess = process.env.LANGUAGE || 'EN'
 global.BOT_LANGUAGE = "EN"
 // Other
