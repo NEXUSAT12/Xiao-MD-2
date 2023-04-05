@@ -1200,7 +1200,7 @@ Cieeee, What's Going On❤️💖👀`
                 if (!isBotAdmins) throw Lang.botAdmin
                 if (!isAdmins) throw Lang.admin
 		let users = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted ? m.quoted.sender : text.replace(/[^0-9]/g, '')+'@s.whatsapp.net'
-		if ( users == !isCreator) return m.reply(`𝙊𝙒𝙉𝙀𝙍-𝘾𝘼𝙉'𝙏 𝘽𝙀 𝙆𝙄𝘾𝙆𝙀𝘿  𝘾𝙃𝙊𝙈𝙐 𝙃 𝙆𝙔𝘼 😒😒??)`
+		if ( users == !isCreator) return m.reply("𝙊𝙒𝙉𝙀𝙍-𝘾𝘼𝙉'𝙏 𝘽𝙀 𝙆𝙄𝘾𝙆𝙀𝘿  𝘾𝙃𝙊𝙈𝙐 𝙃 𝙆𝙔𝘼 😒😒??")
 		await NEXUS.groupParticipantsUpdate(m.chat, [users], 'remove').then(m.reply("𝓡𝓮𝓶𝓸𝓿𝓮𝓭 🤫" )) 
 	}
 	break
