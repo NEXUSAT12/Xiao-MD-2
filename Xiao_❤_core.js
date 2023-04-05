@@ -38,9 +38,7 @@ const ownernya = ownernomer + '@s.whatsapp.net'
 const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
 const xdate = moment.tz('Asia/Kolkata').format('DD/MM/YYYY')
 const time2 = moment().tz('Asia/Kolkata').format('HH:mm:ss')  
-const botloading = [ '■■□□20%','■■■□□□30%','■■■■□□□□40%','■■■■■□□□□□50%','■■■■■■□□□□□60%','■■■■■■■□□□□□□70%','■■■■■■■■□□□□□□80%','■■■■■■■■■□□□□□□□90%','■■■■■■■■■■■■■■■■■100%']
-const loading = pickRandom(botloading)
- if(time2 < "23:59:00"){
+if(time2 < "23:59:00"){
 var ucapanWaktu = `Good Night 🌌`
  }
  if(time2 < "19:00:00"){
@@ -150,8 +148,9 @@ const from = mek.key.remoteJid
 const content = JSON.stringify(mek.message)
 let allmenureact = ['🐦','🐤','🍒','📃','🎃','📑','🗞️','🔥','❤️','❤️‍🩹','👿','💙','✌','☕','🍜']
 let allmenureactemoji = pickRandom(allmenureact)
-
-	    const cekUser = (users, id) => {     
+const botloading = [ '■■□□20%','■■■□□□30%','■■■■□□□□40%','■■■■■□□□□□50%','■■■■■■□□□□□60%','■■■■■■■□□□□□□70%','■■■■■■■■□□□□□□80%','■■■■■■■■■□□□□□□□90%','■■■■■■■■■■■■■■■■■100%']
+const loading = pickRandom(botloading)
+const cekUser = (users, id) => {     
 var cek = null
 Object.keys(user).forEach((i) => { 
 if (user[i].id === id){ cek = i } })
