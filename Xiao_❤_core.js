@@ -154,6 +154,8 @@ let allmenureact = ['🐦','🐤','🍒','📃','🎃','📑','🗞️','🔥','
 let allmenureactemoji = pickRandom(allmenureact)
 const botloading = [ '■■□□20%','■■■□□□30%','■■■■□□□□40%','■■■■■□□□□□50%','■■■■■■□□□□□60%','■■■■■■■□□□□□□70%','■■■■■■■■□□□□□□80%','■■■■■■■■■□□□□□□□90%','■■■■■■■■■■■■■■■■■100%']
 const loading = pickRandom(botloading)
+let documents = [doc1,doc2,doc3,doc4,doc5,doc6]
+let docs = pickRandom(documents)
 const cekUser = (users, id) => {     
 var cek = null
 Object.keys(user).forEach((i) => { 
@@ -5937,10 +5939,11 @@ mediaType:2,
 thumbnail:fs.readFileSync('./Xiao-❤-Media/xiao1.jpeg'),
 sourceUrl: 'https://linktr.ee/Nexus_21/',
 mediaUrl: 'https://youtu.be/5IGmJCEErCg'
-}}
 }
 }
-            break
+}
+}
+break
             case 'command': {
 	const sections = [{
 								"title": "Initial Features Of Bot 😎",
