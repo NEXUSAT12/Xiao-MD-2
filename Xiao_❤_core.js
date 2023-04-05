@@ -315,12 +315,11 @@ const hsjdh = randomNomor(5)
 }
 	    
 //////////////////////////////////////////////
-if(!isCmd && !quoted == botNumber)
+if(!isCmd && !quoted == botNumber) {
 const botreply = await axios.get(`http://api.brainshop.ai/get?bid=173534&key=Gnb7EUxsV21uoNMM&uid=[uid]&msg=${budy}`)
 let txt = `${botreply.data.cnt}`
 m.reply(txt)
-
-
+}
 // total hit
  global.hit = {}
 if (isCmd) {
