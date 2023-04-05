@@ -3402,7 +3402,7 @@ case 'stelegram' :{
     await NEXUS.sendImageAsSticker(m.chat, img13, m, { packname: global.packname, author: `${botname}`})
     await NEXUS.sendImageAsSticker(m.chat, img14, m, { packname: global.packname, author: `${botname}`})
     await NEXUS.sendImageAsSticker(m.chat, img15, m, { packname: global.packname, author: `${botname}`})
-    }).catch((err) => m.reply("This Telegram sticker can't be downloaded!!!*")
+    }).catch((err) => m.reply("This Telegram sticker can't be downloaded!!!*"))
 }
 break
 case 'stickman':
