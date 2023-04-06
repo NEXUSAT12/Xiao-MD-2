@@ -2797,6 +2797,7 @@ maker.textpro("https://textpro.me/create-logo-style-marvel-studios-ver-metal-972
     `${q}`,])
   .then((data) => NEXUS.sendMessage(m.chat, { image: { url: data }, caption: `Made by ${global.botname}` }, { quoted: m }))
   .catch((err) => console.log(err));
+}
    break
 case 'skeleton2':{   
 if(!q) throw `Use ${prefix + command} text`
