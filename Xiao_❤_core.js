@@ -3483,7 +3483,7 @@ case 'anonymous': {
                 NEXUS.sendButtonText(m.chat,  `\`\`\`Hi ${await NEXUS.getName(m.sender)} Welcome To Anonymous Chat\n\nClick the button below to find a partner\`\`\``, botname, m)
             }
 			break
-case 'keluar': case 'leave': {
+case 'keluar': case 'leave': 
                 if (m.isGroup) return m.reply('Features Cannot Be Used For Groups!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
                 let room = Object.values(this.anonymous).find(room => room.check(m.sender))
@@ -3495,9 +3495,7 @@ case 'keluar': case 'leave': {
                 let other = room.other(m.sender)
                 if (other) await NEXUS.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
                 delete this.anonymous[room.id]
-                if (command === 'leave') 
-}
-			break
+                if (command === 'leave') break
             case 'mulai': case 'start': {
                 if (m.isGroup) return m.reply('Features Cannot Be Used For Groups!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
@@ -3530,8 +3528,8 @@ case 'keluar': case 'leave': {
                     }
                     await NEXUS.sendButtonText(m.chat, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
-	    }
                 break
+	    }
             case 'next': case 'lanjut': {
                 if (m.isGroup) return m.reply('Features Cannot Be Used For Groups!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
@@ -3565,8 +3563,8 @@ case 'keluar': case 'leave': {
                     }
                     await NEXUS.sendButtonText(m.chat, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
-	    }
                 break
+	    }
 case 'public': {
  if (!isCreator) return reply(Lang.owner)
  NEXUS.public = true
