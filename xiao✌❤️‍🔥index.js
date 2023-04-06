@@ -1,5 +1,5 @@
 require('./lib/settings')
-const { default: NEXUSConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto } = require("@adiwajshing/baileys")
+const { default: NEXUSConnect, useSingleFileAuthState, DisconnectReason, fetchLatestBaileysVersion, generateForwardMessageContent, prepareWAMessageMedia, generateWAMessageFromContent, generateMessageID, downloadContentFromMessage, makeInMemoryStore, jidDecode, proto, WAConnection  } = require("@adiwajshing/baileys")
 const { state, saveState } = useSingleFileAuthState(`${sessionName}.json`)
 const pino = require('pino')
 const cron = require('node-cron')
@@ -185,9 +185,6 @@ let nexusLft = await getBuffer(ppuser)
 ║𝐓𝐈𝐌𝐄✡𝐃𝐀𝐓𝐄:${xtime} ${xdate}
 ╚══════✮❁•°❀°•❁✮══════╝
 `
-let buttons = [
-{buttonId: ` command`, buttonText: {displayText: 'Welcome '}, type: 1}
-]
 let buttonMessage = {
 document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
 mimetype: docs,
@@ -197,7 +194,6 @@ fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
 caption: nexusbody,
 footer: `${botname}`,
-buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
 title: `${ownername}`,
@@ -226,9 +222,6 @@ NEXUS.sendMessage(anu.id, buttonMessage, {quoted:unicorndoc})
 ║𝐃𝐀𝐓𝐄✡︎𝐓𝐈𝐌𝐄:${nexustime} ${nexusdate}
 ╚══════✮❁•°❀°•❁✮══════╝
 `
-let buttons = [
-{buttonId: `help`, buttonText: {displayText: 'Sayonara '}, type: 1}
-]
 let buttonMessage = {
 document: fs.readFileSync('./Xiao-❤-Media/XBOT.xlsx'),
 mimetype: docs,
@@ -238,7 +231,6 @@ fileName: `${metadata.subject}`,
 fileLength: 99999999999999,
 caption: nexusbody,
 footer: `${botname}`,
-buttons: buttons,
 headerType: 4,
 contextInfo:{externalAdReply:{
 title: `${ownername}`,
