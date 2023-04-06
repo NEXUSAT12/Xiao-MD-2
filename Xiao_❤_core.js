@@ -3470,6 +3470,7 @@ NEXUS.sendContact(m.chat, owner, m)
 				 var button = [{ buttonId: `menfesconfirm`, buttonText: { displayText: `CONFIRM‡` }, type: 1 }, { buttonId: `menu`, buttonText: { displayText: `Menu` }, type: 1 }]
 					NEXUS.sendMessage(`${nomor}@s.whatsapp.net`, { caption: teksnya, image: {url: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMkjAJhYezm4h6k1AJ6qfreGkaRdBcR7UHMw&usqp=CAU`}, buttons: button, footer: botname })
 				m.reply(`Success Sending Menfess!!`)
+			}
 				break
 			case 'menfesconfirm':{
  				 NEXUS.sendMessage(q, {text: `It's been confirmed, Confess🌹`})
@@ -3494,8 +3495,9 @@ case 'keluar': case 'leave': {
                 let other = room.other(m.sender)
                 if (other) await NEXUS.sendText(other, `\`\`\`Partner Has Left Anonymous Session\`\`\``, m)
                 delete this.anonymous[room.id]
-                if (command === 'leave') break
-            }
+                if (command === 'leave') 
+}
+			break
             case 'mulai': case 'start': {
                 if (m.isGroup) return m.reply('Features Cannot Be Used For Groups!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
@@ -3528,8 +3530,8 @@ case 'keluar': case 'leave': {
                     }
                     await NEXUS.sendButtonText(m.chat, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
+	    }
                 break
-            }
             case 'next': case 'lanjut': {
                 if (m.isGroup) return m.reply('Features Cannot Be Used For Groups!')
                 this.anonymous = this.anonymous ? this.anonymous : {}
@@ -3563,8 +3565,8 @@ case 'keluar': case 'leave': {
                     }
                     await NEXUS.sendButtonText(m.chat, `\`\`\`Please wait, looking for a partner\`\`\``, botname, m)
                 }
-                break
 	    }
+                break
 case 'public': {
  if (!isCreator) return reply(Lang.owner)
  NEXUS.public = true
