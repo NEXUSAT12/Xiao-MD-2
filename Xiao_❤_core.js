@@ -1329,7 +1329,7 @@ let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
             if (m.chat in vote) throw `_There are still votes in this chat!_\n\n*❤️‍🔥${prefix}deletevote* - to delete votes`
             if (!text) throw `Enter Reason for Vote, Example: *${prefix + command} Handsome Owner*`
             m.reply(`Vote dimulai!\n\n*❤️‍🔥${prefix}upvote* - for sure\n*❤️‍🔥${prefix}devote* - for devote\n*❤️‍🔥${prefix}cekvote* - to check the vote\n*❤️‍🔥${prefix}deletevote* - to delete votes`)
-           let  vote[m.chat] = [q, [], []]
+            vote[m.chat] = [q, [], []]
             await sleep(1000)
             let upvote = vote[m.chat][1]
             let devote = vote[m.chat][2]
