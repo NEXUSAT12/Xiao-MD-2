@@ -5139,7 +5139,8 @@ var Xyresult = pickRandom(ahegaonsfw)
 NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: Xyresult.url }, footer: botname }, { quoted: m })
 }
 break
-case 'genshin': {
+case 'genshin': 
+try {
 if (!text) throw `Which genshin are you lookin for?`
 const genshin = require("genshin-api")
 a = text.toLowerCase();
@@ -5156,7 +5157,7 @@ txt += `🌟 *Rarity:* ${anime.rarity}\n`
 txt += `❄️ *Constellation:* ${anime.constellation}\n`
 txt += `📖 *Description:* ${anime.description}\n`
 txt += `🌐 *Url:* https://genshin-impact.fandom.com/wiki/${a}\n`
-urll = `https://api.genshin.dev/characters/${a}/portrait`
+let urll = `https://api.genshin.dev/characters/${a}/portrait`
 await NEXUS.sendMessage(m.chat,{image:{url:urll}, caption:txt},{quoted:m})
 } catch (err) {
 console.log(err)
