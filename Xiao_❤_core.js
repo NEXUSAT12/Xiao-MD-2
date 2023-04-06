@@ -1367,7 +1367,7 @@ let teks = `✧(｡•̀ᴗ-)✧˙♥ ${botname}♥★~(◠ω◕✿) \n\n
             let isVote = vote[m.chat][1].concat(vote[m.chat][2])
             let wasVote = isVote.includes(m.sender)
             if (wasVote) throw 'You have Voted'
-            let vote[m.chat][1].push(m.sender)
+            vote[m.chat][1].push(m.sender)
             let menvote = vote[m.chat][1].concat(vote[m.chat][2])
             let teks_vote = `* VOTE *
 
@@ -1403,7 +1403,7 @@ ${vote[m.chat][2].map((v, i) => `├ ${i + 1}. @${v.split`@`[0]}`).join('\n')}
             let isVote = vote[m.chat][1].concat(vote[m.chat][2])
             let wasVote = isVote.includes(m.sender)
             if (wasVote) throw 'You have Voted'
-            let vote[m.chat][2].push(m.sender)
+            vote[m.chat][2].push(m.sender)
             let menvote = vote[m.chat][1].concat(vote[m.chat][2])
             let teks_vote = `* VOTE *
 
