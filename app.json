@@ -2,7 +2,7 @@
   "name": "Xiao-MD-2 ",
   "description": "whatsapp md bot build with nodejs",
   "repository": "https://github.com/NEXUSAT12/Xiao-MD-2",
-  "logo": "https://i.ibb.co/bgfFFjF/Videoshot-20221026-164328.jpg&name=900x900",
+  "logo": "https://replit.com/cdn-cgi/image/width=32,quality=80,format=auto/https://storage.googleapis.com/replit/images/1665557973526_2b706d389021f0925dd36eb6ddddc73c.jpeg",
   "keywords": ["nodejs", "bot", "whatsapp bot", "whatsapp automation", "multi device"],
   "env": {
     "LANGUAGE" :{
