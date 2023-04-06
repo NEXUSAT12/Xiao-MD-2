@@ -11,7 +11,7 @@
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/OOOqrc?referralCode=xUeEzP)
 
-<a href="https://heroku.com/deploy?template=https://github.com/DEVILL-MASCOT/Xiao-MD-2/"><img align="center" src="https://www.herokucdn.com/deploy/button.svg" alt="Fork and deploy" /></a>
+<a href="https://heroku.com/deploy?template=https://github.com/NEXUSAT12/Xiao-MD-2/"><img align="center" src="https://www.herokucdn.com/deploy/button.svg" alt="Fork and deploy" /></a>
 </P>
 
 
