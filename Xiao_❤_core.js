@@ -2986,6 +2986,7 @@ m.reply(Lang.wait)
 var notnot = JSON.parse(fs.readFileSync('./Xiao-❤-Media/tiktokpics/indonesia.json'))
 var hasil = pickRandom(notnot)
 NEXUS.sendMessage(m.chat, { caption: Lang.success, image: { url: hasil.url }, footer: botname }, { quoted: m })
+}
 break
 case 'japanese': {
 m.reply(Lang.wait)
