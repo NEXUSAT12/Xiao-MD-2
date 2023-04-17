@@ -15,6 +15,11 @@
       "required" : true,
       "value" :"918130784851"
       },
+    "SUDO" :{
+      "description" : "OWNER NUMBER",
+      "required" : true,
+      "value" :"918130784851"
+      },
     "BOT_NAME" :{
       "description" : "YOUR BOT NAME",
       "requred" : false,
